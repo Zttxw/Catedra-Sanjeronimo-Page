@@ -123,7 +123,7 @@
       transform: none;
     }
 
-    /* ─── HEADER (Nordiska Museet Minimalist Header) ─── */
+    /* ─── HEADER (MDSJ Logo Minimal Header) ─── */
     .site-header {
       position: fixed;
       top: 0;
@@ -132,12 +132,12 @@
       z-index: 100;
       padding: 0 clamp(1rem, 3vw, 2.5rem);
       transition: background 0.4s, backdrop-filter 0.4s;
-      background: linear-gradient(180deg, rgba(9, 31, 45, 0.92) 0%, rgba(9, 31, 45, 0) 100%);
+      background: linear-gradient(180deg, rgba(9, 31, 45, 0.95) 0%, rgba(9, 31, 45, 0) 100%);
     }
     .site-header.scrolled {
-      background: rgba(9, 31, 45, 0.95);
+      background: rgba(9, 31, 45, 0.96);
       backdrop-filter: blur(16px);
-      box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.4);
     }
     .header-inner {
       display: flex;
@@ -147,50 +147,28 @@
       margin: 0 auto;
       height: 76px;
     }
-    .header-left {
+    .header-brand-left {
       display: flex;
       align-items: center;
-      gap: 0.8rem;
-    }
-    .header-badge-btn {
-      padding: 0.45rem 1.1rem;
-      border: 1.5px solid var(--c-gold);
-      border-radius: 999px;
-      color: var(--c-gold);
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      transition: all 0.3s;
-    }
-    .header-badge-btn:hover {
-      background: var(--c-gold);
-      color: var(--c-primary-darkest);
-    }
-    .header-tagline {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.7);
-      font-weight: 400;
-    }
-    .header-brand-center {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-decoration: none;
+      gap: 0.85rem;
       color: #fff;
     }
-    .header-brand-center img {
-      height: 36px;
+    .header-brand-left img {
+      height: 40px;
       width: auto;
-      filter: brightness(0) invert(1);
     }
-    .header-brand-center span {
+    .header-brand-divider {
+      color: rgba(255,255,255,0.3);
+      font-weight: 300;
+      font-size: 1.2rem;
+    }
+    .header-brand-title {
       font-family: var(--font-display);
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
+      font-size: 0.92rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--c-gold);
-      margin-top: 2px;
     }
     .header-right {
       display: flex;
@@ -207,16 +185,16 @@
     }
     .header-nav a:hover { color: var(--c-gold); }
     .nav-cta {
-      padding: 0.45rem 1.1rem;
-      border: 1.5px solid rgba(255,255,255,0.3);
+      padding: 0.45rem 1.2rem;
+      border: 1.5px solid var(--c-gold);
       border-radius: 999px;
-      color: #fff !important;
+      color: var(--c-gold) !important;
       font-weight: 600;
       transition: all 0.3s !important;
     }
     .nav-cta:hover {
-      border-color: #fff !important;
-      background: rgba(255,255,255,0.1) !important;
+      background: var(--c-gold) !important;
+      color: var(--c-primary-darkest) !important;
     }
 
     #btn-mobile-menu {
@@ -228,163 +206,207 @@
       padding: 0.3rem;
     }
 
-    /* ─── HERO — Ultra Minimalist Ribbon (Nordiska Style) ─── */
-    .hero-nordiska {
-      position: relative;
+    /* ─── HERO — 50/50 Split Layout ─── */
+    .hero-split-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
       background: var(--c-primary-darkest);
-      overflow: hidden;
-      padding: 90px 1.5rem 2rem;
-    }
-
-    /* CONTINUOUS SCROLLING RIBBON / MARQUEE */
-    .hero-marquee-ribbon {
-      position: absolute;
-      top: 48%;
-      left: 0;
-      width: 100%;
-      transform: translateY(-50%);
-      z-index: 1;
-      overflow: hidden;
-      white-space: nowrap;
-      pointer-events: none;
-      user-select: none;
-    }
-    .marquee-track {
-      display: flex;
-      width: max-content;
-      animation: marqueeRibbon 30s linear infinite;
-    }
-    .marquee-track.paused {
-      animation-play-state: paused;
-    }
-    @keyframes marqueeRibbon {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-33.3333%); }
-    }
-    .marquee-segment {
-      display: flex;
-      align-items: center;
-      gap: 2.5rem;
-      padding-right: 2.5rem;
-    }
-    .marquee-text-gold {
-      font-family: var(--font-display);
-      font-size: clamp(3.8rem, 11vw, 11rem);
-      font-weight: 900;
-      text-transform: uppercase;
-      color: var(--c-gold);
-      letter-spacing: 0.02em;
-      line-height: 0.9;
-      text-shadow: 0 10px 40px rgba(0,0,0,0.6);
-    }
-    .marquee-text-teal {
-      font-family: var(--font-display);
-      font-size: clamp(3.8rem, 11vw, 11rem);
-      font-weight: 900;
-      text-transform: uppercase;
-      color: #FF6B4A; /* Vibrant Coral Accent like Nordiska reference */
-      letter-spacing: 0.02em;
-      line-height: 0.9;
-      text-shadow: 0 10px 40px rgba(0,0,0,0.6);
-    }
-    .marquee-sep {
-      color: rgba(255,255,255,0.25);
-      font-size: clamp(3rem, 8vw, 8rem);
-      font-weight: 300;
-    }
-
-    /* CENTER STAGE (Logo + Image Frame + Caption) */
-    .hero-center-stage {
       position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      max-width: 680px;
-      width: 100%;
-    }
-
-    /* INSTITUTION LOGO CENTERED IN MIDDLE OVER/ABOVE IMAGE */
-    .hero-institution-logo {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 1.2rem;
-      animation: heroFadeIn 1s 0.2s var(--ease-out) forwards;
-    }
-    .hero-institution-logo img {
-      height: 62px;
-      width: auto;
-      filter: drop-shadow(0 6px 18px rgba(0,0,0,0.5));
-    }
-    .hero-institution-tag {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--c-gold);
-      text-shadow: 0 2px 8px rgba(0,0,0,0.8);
-    }
-
-    /* CENTERED MAIN IMAGE FRAME */
-    .hero-main-card {
-      position: relative;
-      max-width: 440px;
-      width: 84vw;
-      aspect-ratio: 4/5;
-      max-height: 52vh;
-      border-radius: 6px;
       overflow: hidden;
-      box-shadow: 0 35px 80px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.12);
-      background: #000;
-      margin-bottom: 1.5rem;
-      transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out);
-      animation: heroFadeIn 1.2s 0.4s var(--ease-out) forwards;
     }
-    .hero-main-card:hover {
-      transform: scale(1.02);
-      box-shadow: 0 45px 90px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(240, 200, 79, 0.3);
+
+    /* LEFT 50% — Full Height Image with Overlaid Text */
+    .hero-split-left {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
     }
-    .hero-main-card img {
+    .hero-split-left img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
-      transition: transform 0.7s ease;
+      object-position: center;
+      transition: transform 10s ease-out;
     }
-    .hero-main-card:hover img {
+    .hero-split-left:hover img {
       transform: scale(1.05);
     }
-
-    .btn-pause-ribbon {
+    .hero-split-left::after {
+      content: '';
       position: absolute;
-      bottom: 12px;
-      right: 12px;
-      width: 32px;
-      height: 32px;
-      border-radius: 6px;
-      background: rgba(9, 31, 45, 0.75);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.2);
-      color: #fff;
-      display: grid;
-      place-items: center;
-      cursor: pointer;
-      transition: all 0.25s;
-      z-index: 5;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(9, 31, 45, 0.2) 0%,
+        rgba(9, 31, 45, 0.4) 40%,
+        rgba(9, 31, 45, 0.95) 88%,
+        var(--c-primary-darkest) 100%
+      );
     }
-    .btn-pause-ribbon:hover {
+
+    .hero-left-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      padding: clamp(2rem, 5vw, 4.5rem);
+    }
+    .hero-left-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(240, 200, 79, 0.15);
+      border: 1px solid var(--c-gold);
+      color: var(--c-gold);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .hero-left-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(2.4rem, 4.5vw, 4.5rem);
+      line-height: 0.95;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.7);
+      margin-bottom: 0.8rem;
+    }
+    .hero-left-title span {
+      display: block;
+      color: var(--c-gold);
+      font-style: italic;
+      font-weight: 700;
+    }
+    .hero-left-subtitle {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.8);
+      font-weight: 400;
+      letter-spacing: 0.05em;
+    }
+
+    /* RIGHT 50% — Information & MDSJ Logo */
+    .hero-split-right {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(2rem, 5vw, 5rem);
+      padding-top: 100px;
+      background: #091F2D;
+      z-index: 2;
+      border-left: 1px solid rgba(255,255,255,0.06);
+    }
+    .hero-right-content {
+      max-width: 540px;
+      width: 100%;
+    }
+
+    .hero-mdsj-logo-wrap {
+      margin-bottom: 2rem;
+    }
+    .hero-mdsj-logo-wrap img {
+      height: 48px;
+      width: auto;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+    }
+
+    .hero-right-overline {
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--c-gold);
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .hero-right-overline::before {
+      content: '';
+      width: 24px;
+      height: 1.5px;
       background: var(--c-gold);
-      color: var(--c-primary-darkest);
-      border-color: var(--c-gold);
+    }
+
+    .hero-right-heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+    .hero-right-lead {
+      font-size: 1.02rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.7;
+      font-weight: 300;
+      margin-bottom: 2rem;
+    }
+
+    .hero-info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem;
+      margin-bottom: 2.2rem;
+    }
+    .hero-info-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 0.9rem 1.1rem;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .hero-info-card:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(240, 200, 79, 0.3);
+    }
+    .hero-info-card-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--c-gold);
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .hero-info-card-label svg {
+      color: var(--c-gold);
+    }
+    .hero-info-card-val {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .hero-right-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 960px) {
+      .hero-split-container {
+        grid-template-columns: 1fr;
+      }
+      .hero-split-left {
+        height: 55vh;
+      }
+      .hero-split-right {
+        padding-top: 3rem;
+        padding-bottom: 4rem;
+      }
     }
 
     /* BOTTOM CAPTION */
@@ -1517,16 +1539,13 @@
 
 <body>
 
-  <!-- ═══ HEADER (Nordiska Museet Minimalist Header) ═══ -->
+  <!-- ═══ HEADER (MDSJ Logo Minimal Header) ═══ -->
   <header class="site-header" id="site-header">
     <div class="header-inner">
-      <div class="header-left">
-        <a href="#inscripcion" class="header-badge-btn">Inscripción libre</a>
-        <span class="header-tagline">21-22 Set 2026</span>
-      </div>
-      <a class="header-brand-center" href="#inicio">
-        <img src="imagenes/ESCUDO BLANCO.png" alt="Escudo San Jerónimo" />
-        <span>CÁTEDRA SAN JERÓNIMO</span>
+      <a class="header-brand-left" href="#inicio">
+        <img src="imagenes/MDSJ BLANCO.png" alt="Municipalidad Distrital de San Jerónimo" />
+        <span class="header-brand-divider">|</span>
+        <span class="header-brand-title">CÁTEDRA SAN JERÓNIMO</span>
       </a>
       <div class="header-right">
         <nav class="header-nav" id="header-nav">
@@ -1547,60 +1566,73 @@
     </div>
   </header>
 
-  <!-- ═══ HERO — Ultra Minimalist Ribbon (Nordiska-Style) ═══ -->
-  <section class="hero-nordiska" id="inicio">
-    <!-- MARQUEE RIBBON MOVING RIGHT TO LEFT -->
-    <div class="hero-marquee-ribbon" aria-hidden="true">
-      <div class="marquee-track" id="marquee-track">
-        <div class="marquee-segment">
-          <span class="marquee-text-teal">CÁTEDRA SAN JERÓNIMO</span>
-          <span class="marquee-sep">—</span>
-          <span class="marquee-text-gold">Primer Encuentro de Identidad Cultural</span>
-          <span class="marquee-sep">—</span>
-        </div>
-        <div class="marquee-segment">
-          <span class="marquee-text-teal">CÁTEDRA SAN JERÓNIMO</span>
-          <span class="marquee-sep">—</span>
-          <span class="marquee-text-gold">Primer Encuentro de Identidad Cultural</span>
-          <span class="marquee-sep">—</span>
-        </div>
-        <div class="marquee-segment">
-          <span class="marquee-text-teal">CÁTEDRA SAN JERÓNIMO</span>
-          <span class="marquee-sep">—</span>
-          <span class="marquee-text-gold">Primer Encuentro de Identidad Cultural</span>
-          <span class="marquee-sep">—</span>
-        </div>
+  <!-- ═══ HERO — 50/50 Split Layout ═══ -->
+  <section class="hero-split-container" id="inicio">
+    <!-- LEFT 50%: FULL BLEED IMAGE WITH OVERLAID BOLD TITLE AT BOTTOM -->
+    <div class="hero-split-left">
+      <img src="imagenes/PatronSanJeronimo.jpg" alt="Festividad del Patrón San Jerónimo" />
+      <div class="hero-left-overlay">
+        <div class="hero-left-badge">PRIMER ENCUENTRO CULTURAL 2026</div>
+        <h1 class="hero-left-title">
+          CÁTEDRA DE
+          <span>SAN JERÓNIMO</span>
+        </h1>
+        <p class="hero-left-subtitle">Municipalidad Distrital de San Jerónimo · Cusco, Perú</p>
       </div>
     </div>
 
-    <!-- CENTER STAGE -->
-    <div class="hero-center-stage">
-      <!-- CENTERED INSTITUTION LOGO OVER/ABOVE IMAGE -->
-      <div class="hero-institution-logo">
-        <img src="imagenes/ESCUDO BLANCO.png" alt="Escudo Municipalidad Distrital de San Jerónimo" />
-        <span class="hero-institution-tag">Municipalidad Distrital de San Jerónimo</span>
-      </div>
+    <!-- RIGHT 50%: INFO, MDSJ LOGO & ACTIONS -->
+    <div class="hero-split-right">
+      <div class="hero-right-content">
+        <!-- MDSJ BLANCO LOGO -->
+        <div class="hero-mdsj-logo-wrap">
+          <img src="imagenes/MDSJ BLANCO.png" alt="Municipalidad Distrital de San Jerónimo" />
+        </div>
 
-      <!-- CENTERED IMAGE CARD -->
-      <div class="hero-main-card">
-        <img src="imagenes/PatronSanJeronimo.jpg" alt="Festividad del Patrón San Jerónimo" />
-        <button class="btn-pause-ribbon" id="btn-pause-ribbon" title="Pausar / Reproducir movimiento">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
-        </button>
-      </div>
+        <span class="hero-right-overline">21 Y 22 DE SETIEMBRE DE 2026</span>
+        <h2 class="hero-right-heading">Primer Encuentro de Identidad Cultural</h2>
+        <p class="hero-right-lead">
+          Un espacio de reflexión, investigación y revaloración sobre nuestra historia, fe y patrimonio cultural vivo en el distrito de San Jerónimo.
+        </p>
 
-      <!-- BOTTOM CAPTION BELOW IMAGE -->
-      <div class="hero-bottom-caption">
-        <h1 class="hero-bottom-title">Primer Encuentro de Identidad Cultural</h1>
-        <p class="hero-bottom-sub">21 Y 22 DE SETIEMBRE DE 2026 · AUDITORIO MUNICIPAL</p>
-      </div>
-    </div>
+        <!-- INFO CHIPS GRID -->
+        <div class="hero-info-grid">
+          <div class="hero-info-card">
+            <span class="hero-info-card-label">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Fecha
+            </span>
+            <div class="hero-info-card-val">21 y 22 de Setiembre</div>
+          </div>
+          <div class="hero-info-card">
+            <span class="hero-info-card-label">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Hora
+            </span>
+            <div class="hero-info-card-val">3:00 p. m.</div>
+          </div>
+          <div class="hero-info-card">
+            <span class="hero-info-card-label">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Lugar
+            </span>
+            <div class="hero-info-card-val">Auditorio Municipal</div>
+          </div>
+          <div class="hero-info-card">
+            <span class="hero-info-card-label">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              Ingreso
+            </span>
+            <div class="hero-info-card-val">Entrada Libre</div>
+          </div>
+        </div>
 
-    <div class="scroll-indicator" aria-hidden="true">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <polyline points="7 13 12 18 17 13" />
-        <polyline points="7 6 12 11 17 6" />
-      </svg>
+        <!-- ACTION BUTTONS -->
+        <div class="hero-right-actions">
+          <a href="#inscripcion" class="btn btn-primary">Inscribirme gratis →</a>
+          <a href="#programa" class="btn btn-ghost">Ver programa</a>
+        </div>
+      </div>
     </div>
   </section>
 
