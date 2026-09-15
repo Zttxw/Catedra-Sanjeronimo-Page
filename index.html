@@ -1477,7 +1477,7 @@
       border: none !important;
       box-shadow: 0 18px 50px rgba(0, 0, 0, 0.95);
       overflow: hidden;
-      border-radius: 0 !important;
+      border-radius: 12px !important;
       transition: transform 0.5s var(--ease-out), box-shadow 0.4s;
     }
 
@@ -1510,6 +1510,43 @@
     .runway-photo-card:hover img {
       filter: brightness(1.06) contrast(1.14);
     }
+
+    /* Runway Navigation Buttons (Glassmorphism Arrows) */
+    .runway-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 12;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: rgba(14, 41, 56, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1.5px solid rgba(240, 200, 79, 0.5);
+      color: #F0C84F;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      transition: all 0.3s ease;
+    }
+
+    .runway-nav-btn:hover {
+      background: #F0C84F;
+      color: #0E2938;
+      border-color: #F0C84F;
+      transform: translateY(-50%) scale(1.12);
+      box-shadow: 0 10px 30px rgba(240, 200, 79, 0.5);
+    }
+
+    .runway-nav-btn:active {
+      transform: translateY(-50%) scale(0.92);
+    }
+
+    .runway-prev { left: 1rem; }
+    .runway-next { right: 1rem; }
 
 
 
@@ -2690,6 +2727,12 @@
 
     <!-- Pasarela Horizontal Lenta (Bucle Infinito Continuo) -->
     <div class="runway-wrapper reveal">
+      <button id="runway-prev" class="runway-nav-btn runway-prev" aria-label="Anterior foto">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button id="runway-next" class="runway-nav-btn runway-next" aria-label="Siguiente foto">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
       <div class="runway-track-container" id="runway-container">
         <div class="runway-track">
 
@@ -3647,7 +3690,7 @@ Juan Carlos Pérez, 10293847, 984654321, I.E. San Jerónimo"></textarea>
         win.print();
       });
 
-      /* ─── Pasarela Horizontal Lenta con Arrastre de Mouse (Infinite Drag Runway) ─── */
+      /* ─── Pasarela Horizontal Lenta e Infinita (Responsiva y Táctil) ─── */
       (function initRunway() {
         var container = document.getElementById('runway-container');
         var track = container ? container.querySelector('.runway-track') : null;
@@ -3655,7 +3698,7 @@ Juan Carlos Pérez, 10293847, 984654321, I.E. San Jerónimo"></textarea>
         var btnNext = document.getElementById('runway-next');
         if (!container || !track) return;
 
-        // Duplicar elementos dentro de track para bucle infinito perfecto y fluido
+        // Duplicar elementos dentro de track para bucle infinito continuo
         var originalCards = Array.from(track.children);
         originalCards.forEach(function (card) {
           track.appendChild(card.cloneNode(true));
@@ -3666,7 +3709,8 @@ Juan Carlos Pérez, 10293847, 984654321, I.E. San Jerónimo"></textarea>
         var startX = 0;
         var scrollLeftStart = 0;
         var pauseTimer = null;
-        var scrollSpeed = 0.8; // Velocidad del movimiento muy lento y suave
+        var scrollSpeed = 0.8;
+        var isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
         function getOriginalTrackWidth() {
           return track.scrollWidth / 2;
@@ -3675,33 +3719,33 @@ Juan Carlos Pérez, 10293847, 984654321, I.E. San Jerónimo"></textarea>
         function pauseAutoScroll(duration) {
           isHovered = true;
           if (pauseTimer) clearTimeout(pauseTimer);
-          if (duration) {
-            pauseTimer = setTimeout(function () {
-              if (!isDragging) isHovered = false;
-            }, duration);
-          }
+          pauseTimer = setTimeout(function () {
+            if (!isDragging) isHovered = false;
+          }, duration || 2000);
         }
 
-        // 1. Animación automática suave continua (Pasarela lenta)
+        // Animación de desplazamiento infinito continuo
         function autoRunway() {
           if (!isHovered && !isDragging && container) {
             container.scrollLeft += scrollSpeed;
             var origWidth = getOriginalTrackWidth();
             if (origWidth > 0 && container.scrollLeft >= origWidth) {
-              container.scrollLeft -= origWidth; // Reinicio imperceptible
+              container.scrollLeft -= origWidth;
             }
           }
           requestAnimationFrame(autoRunway);
         }
         requestAnimationFrame(autoRunway);
 
-        // Hover events
-        container.addEventListener('mouseenter', function () { isHovered = true; });
-        container.addEventListener('mouseleave', function () {
-          if (!isDragging) isHovered = false;
-        });
+        // Control Mouse (Solo en Escritorio sin touch)
+        if (!isTouchDevice) {
+          container.addEventListener('mouseenter', function () { isHovered = true; });
+          container.addEventListener('mouseleave', function () {
+            if (!isDragging) isHovered = false;
+          });
+        }
 
-        // 2. Control total con el MOUSE (Arrastre / Drag to Scroll)
+        // Arrastre con Mouse (Drag to scroll)
         container.addEventListener('mousedown', function (e) {
           isDragging = true;
           isHovered = true;
@@ -3727,26 +3771,30 @@ Juan Carlos Pérez, 10293847, 984654321, I.E. San Jerónimo"></textarea>
           if (isDragging) {
             isDragging = false;
             container.classList.remove('is-dragging');
-            pauseAutoScroll(2500); // Reanudar avance lento tras 2.5 seg
+            pauseAutoScroll(2000);
           }
         });
 
-        // 3. Control Tactil (Touch Swipe)
-        container.addEventListener('touchstart', function () { pauseAutoScroll(); }, { passive: true });
-        container.addEventListener('touchend', function () { pauseAutoScroll(2500); }, { passive: true });
+        // Eventos Táctiles (Mobile / Tablet)
+        container.addEventListener('touchstart', function () { pauseAutoScroll(2000); }, { passive: true });
+        container.addEventListener('touchmove', function () { pauseAutoScroll(2000); }, { passive: true });
+        container.addEventListener('touchend', function () { pauseAutoScroll(1800); }, { passive: true });
 
-        // 4. Control con Rueda del Mouse (Wheel / Trackpad)
+        // Wheel / Trackpad
         container.addEventListener('wheel', function () {
-          pauseAutoScroll(2000);
+          pauseAutoScroll(1800);
         }, { passive: true });
 
-        // 5. Botones de Flechas (Desplazamiento suave por tarjeta)
+        // Botones Flechas (Prev / Next)
         function navigate(direction) {
-          pauseAutoScroll(3500);
-          var scrollAmount = container.clientWidth * 0.6;
+          pauseAutoScroll(2500);
+          var cardWidth = 320;
+          var firstCard = track.querySelector('.runway-photo-card');
+          if (firstCard) cardWidth = firstCard.offsetWidth + 20;
+
           var targetScroll = direction === 'next'
-            ? container.scrollLeft + scrollAmount
-            : container.scrollLeft - scrollAmount;
+            ? container.scrollLeft + cardWidth
+            : container.scrollLeft - cardWidth;
 
           container.scrollTo({
             left: targetScroll,
