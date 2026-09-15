@@ -1440,10 +1440,7 @@
 
     .runway-track-container {
       width: 100%;
-      overflow-x: auto;
-      scroll-behavior: auto !important;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
+      overflow: hidden;
       padding: 1.5rem 0;
       cursor: grab;
       user-select: none;
@@ -1452,7 +1449,6 @@
 
     .runway-track-container.is-dragging {
       cursor: grabbing !important;
-      scroll-behavior: auto !important;
     }
 
     .runway-track-container::-webkit-scrollbar {
@@ -1466,6 +1462,7 @@
       align-items: center;
       width: max-content;
       padding: 0 max(2rem, calc((100vw - 1200px) / 2));
+      will-change: transform;
     }
 
     /* Individual Photo Card in Runway - NO BORDER */
@@ -3690,7 +3687,7 @@ Juan Carlos Pérez, 10293847, 984654321, I.E. San Jerónimo"></textarea>
         win.print();
       });
 
-      /* ─── Pasarela Horizontal Lenta e Infinita (Responsiva y Táctil) ─── */
+      /* ─── Pasarela Horizontal Lenta e Infinita por GPU (0% Tirones, Ultra Fluida) ─── */
       (function initRunway() {
         var container = document.getElementById('runway-container');
         var track = container ? container.querySelector('.runway-track') : null;
@@ -3707,14 +3704,13 @@ Juan Carlos Pérez, 10293847, 984654321, I.E. San Jerónimo"></textarea>
         var isHovered = false;
         var isDragging = false;
         var startX = 0;
-        var scrollLeftStart = 0;
+        var currentPos = 0;
+        var startPos = 0;
         var pauseTimer = null;
-        var scrollSpeed = 0.8;
+        var scrollSpeed = 0.65; // Velocidad lenta, elegante y totalmente uniforme
         var isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-        var currentPos = container.scrollLeft;
-
-        function getOriginalTrackWidth() {
+        function getOriginalWidth() {
           return track.scrollWidth / 2;
         }
 
@@ -3722,30 +3718,30 @@ Juan Carlos Pérez, 10293847, 984654321, I.E. San Jerónimo"></textarea>
           isHovered = true;
           if (pauseTimer) clearTimeout(pauseTimer);
           pauseTimer = setTimeout(function () {
-            if (!isDragging) {
-              isHovered = false;
-              if (container) currentPos = container.scrollLeft;
-            }
+            if (!isDragging) isHovered = false;
           }, duration || 2000);
         }
 
-        // Animación de desplazamiento infinito continuo de alta fluidez (60 FPS)
+        function updateTransform() {
+          var origWidth = getOriginalWidth();
+          if (origWidth > 0) {
+            if (currentPos >= origWidth) currentPos %= origWidth;
+            if (currentPos < 0) currentPos = (currentPos % origWidth) + origWidth;
+          }
+          track.style.transform = 'translate3d(' + (-currentPos) + 'px, 0, 0)';
+        }
+
+        // Bucle GPU ultra fluido a 60/120 FPS sin truncamiento de píxeles
         function autoRunway() {
-          if (!isHovered && !isDragging && container) {
+          if (!isHovered && !isDragging) {
             currentPos += scrollSpeed;
-            var origWidth = getOriginalTrackWidth();
-            if (origWidth > 0 && currentPos >= origWidth) {
-              currentPos -= origWidth;
-            }
-            container.scrollLeft = currentPos;
-          } else if (container) {
-            currentPos = container.scrollLeft;
+            updateTransform();
           }
           requestAnimationFrame(autoRunway);
         }
         requestAnimationFrame(autoRunway);
 
-        // Control Mouse (Solo en Escritorio sin touch)
+        // Control Mouse (Escritorio)
         if (!isTouchDevice) {
           container.addEventListener('mouseenter', function () { isHovered = true; });
           container.addEventListener('mouseleave', function () {
@@ -3753,26 +3749,21 @@ Juan Carlos Pérez, 10293847, 984654321, I.E. San Jerónimo"></textarea>
           });
         }
 
-        // Arrastre con Mouse (Drag to scroll)
+        // Arrastre con Mouse (Drag GPU)
         container.addEventListener('mousedown', function (e) {
           isDragging = true;
           isHovered = true;
           container.classList.add('is-dragging');
           startX = e.clientX;
-          scrollLeftStart = container.scrollLeft;
+          startPos = currentPos;
         });
 
         window.addEventListener('mousemove', function (e) {
           if (!isDragging) return;
           e.preventDefault();
           var dx = e.clientX - startX;
-          var newScrollLeft = scrollLeftStart - dx;
-          var origWidth = getOriginalTrackWidth();
-          if (origWidth > 0) {
-            if (newScrollLeft >= origWidth) newScrollLeft -= origWidth;
-            if (newScrollLeft < 0) newScrollLeft += origWidth;
-          }
-          container.scrollLeft = newScrollLeft;
+          currentPos = startPos - dx;
+          updateTransform();
         });
 
         window.addEventListener('mouseup', function () {
@@ -3784,30 +3775,55 @@ Juan Carlos Pérez, 10293847, 984654321, I.E. San Jerónimo"></textarea>
         });
 
         // Eventos Táctiles (Mobile / Tablet)
-        container.addEventListener('touchstart', function () { pauseAutoScroll(2000); }, { passive: true });
-        container.addEventListener('touchmove', function () { pauseAutoScroll(2000); }, { passive: true });
-        container.addEventListener('touchend', function () { pauseAutoScroll(1800); }, { passive: true });
+        var touchStartX = 0;
+        container.addEventListener('touchstart', function (e) {
+          isDragging = true;
+          pauseAutoScroll(2000);
+          if (e.touches && e.touches[0]) {
+            touchStartX = e.touches[0].clientX;
+            startPos = currentPos;
+          }
+        }, { passive: true });
 
-        // Wheel / Trackpad
-        container.addEventListener('wheel', function () {
+        container.addEventListener('touchmove', function (e) {
+          if (e.touches && e.touches[0]) {
+            var dx = e.touches[0].clientX - touchStartX;
+            currentPos = startPos - dx;
+            updateTransform();
+          }
+          pauseAutoScroll(2000);
+        }, { passive: true });
+
+        container.addEventListener('touchend', function () {
+          isDragging = false;
           pauseAutoScroll(1800);
         }, { passive: true });
 
-        // Botones Flechas (Prev / Next)
+        // Botones Flechas (Prev / Next) con desplazamiento suavizado por GPU
         function navigate(direction) {
           pauseAutoScroll(2500);
-          var cardWidth = 320;
+          var cardWidth = 340;
           var firstCard = track.querySelector('.runway-photo-card');
-          if (firstCard) cardWidth = firstCard.offsetWidth + 20;
+          if (firstCard) cardWidth = firstCard.offsetWidth + 25;
 
-          var targetScroll = direction === 'next'
-            ? container.scrollLeft + cardWidth
-            : container.scrollLeft - cardWidth;
+          var targetPos = direction === 'next' ? currentPos + cardWidth : currentPos - cardWidth;
+          var start = currentPos;
+          var distance = targetPos - start;
+          var startTime = null;
+          var duration = 450;
 
-          container.scrollTo({
-            left: targetScroll,
-            behavior: 'smooth'
-          });
+          function animateStep(timestamp) {
+            if (!startTime) startTime = timestamp;
+            var elapsed = timestamp - startTime;
+            var progress = Math.min(elapsed / duration, 1);
+            var ease = 1 - Math.pow(1 - progress, 3);
+            currentPos = start + distance * ease;
+            updateTransform();
+            if (progress < 1) {
+              requestAnimationFrame(animateStep);
+            }
+          }
+          requestAnimationFrame(animateStep);
         }
 
         if (btnPrev) {
