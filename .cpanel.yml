@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/sistema01/public_html/catedra/
+    - /bin/cp -R * $DEPLOYPATH
