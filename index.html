@@ -176,8 +176,8 @@
       align-items: center;
       justify-content: center;
       padding: 0.5rem 1.35rem;
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      background: linear-gradient(135deg, #2CA792 0%, #1F806F 100%);
+      border: 1px solid #3484A5;
+      background: #3484A5;
       color: #FFFFFF;
       border-radius: 999px;
       font-size: 0.85rem;
@@ -188,14 +188,18 @@
       white-space: nowrap;
       text-decoration: none;
       transition: all 0.25s;
-      box-shadow: 0 4px 16px rgba(44, 167, 146, 0.45);
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 14px rgba(52, 132, 165, 0.35);
+    }
+
+    .header-pill-btn .br-mobile-only {
+      display: none;
     }
 
     .header-pill-btn:hover {
-      background: linear-gradient(135deg, #3484A5 0%, #20627E 100%);
+      background: #2CA792;
+      border-color: #2CA792;
       transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(52, 132, 165, 0.5);
+      box-shadow: 0 6px 18px rgba(44, 167, 146, 0.4);
     }
 
     .subtext-free {
@@ -2212,13 +2216,20 @@
       }
 
       .header-pill-btn {
-        padding: 0.35rem 0.75rem;
-        font-size: 0.68rem;
+        padding: 0.25rem 0.65rem;
+        font-size: 0.58rem;
         font-weight: 800;
-        line-height: 1;
+        line-height: 1.12;
         text-align: center;
         border-radius: 999px;
-        white-space: nowrap;
+        white-space: normal;
+        background: #3484A5 !important;
+        border-color: #3484A5 !important;
+        box-shadow: 0 2px 8px rgba(52, 132, 165, 0.3) !important;
+      }
+
+      .header-pill-btn .br-mobile-only {
+        display: inline;
       }
 
       .subtext-free {
@@ -2332,7 +2343,7 @@
     <div class="header-inner">
       <div class="header-left">
         <div class="header-cta-group">
-          <a href="#inscripcion" class="header-pill-btn">Inscríbete aquí</a>
+          <a href="#inscripcion" class="header-pill-btn">Inscríbete<br class="br-mobile-only"> aquí</a>
           <span class="subtext-free">Entrada libre</span>
         </div>
       </div>
