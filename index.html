@@ -2156,6 +2156,47 @@
       .header-link-text {
         display: none;
       }
+
+      .header-inner {
+        padding: 0.6rem 0.85rem;
+        grid-template-columns: auto 1fr auto;
+        gap: 0.5rem;
+      }
+
+      .header-left {
+        gap: 0.4rem;
+      }
+
+      .header-pill-btn {
+        padding: 0.38rem 0.85rem;
+        font-size: 0.76rem;
+        white-space: nowrap;
+      }
+
+      .subtext-free {
+        font-size: 0.58rem;
+        letter-spacing: 0.05em;
+      }
+
+      .header-logo-center {
+        height: 44px;
+        max-width: 100%;
+      }
+
+      .hero-image-wrapper {
+        padding: 0 0.85rem;
+      }
+
+      .hero-image-wrapper img {
+        height: 380px !important;
+        max-height: 55vh !important;
+        transform: none !important;
+        clip-path: none !important;
+        border-radius: 16px !important;
+        filter: brightness(0.92) contrast(1.05) !important;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3) !important;
+        transition: none !important;
+      }
     }
 
     @media (max-width: 768px) {
@@ -2186,7 +2227,24 @@
       }
     }
 
-    @media (max-width: 540px) {
+    @media (max-width: 480px) {
+      .header-inner {
+        padding: 0.5rem 0.6rem;
+      }
+
+      .header-logo-center {
+        height: 36px;
+      }
+
+      .header-pill-btn {
+        padding: 0.32rem 0.65rem;
+        font-size: 0.7rem;
+      }
+
+      .subtext-free {
+        display: none;
+      }
+
       .runway-photo-card {
         height: 260px;
       }
@@ -2209,10 +2267,6 @@
 
       .modal-actions .btn {
         width: 100%;
-      }
-
-      .header-inner {
-        padding: 0.75rem 1rem;
       }
     }
   </style>
@@ -3121,10 +3175,16 @@ Juan Carlos Pérez, 10293847, 984654321, I.E. San Jerónimo"></textarea>
         });
       }
 
-      /* ─── Hero Image High-Impact Cinematic Scroll Reveal ─── */
+      /* ─── Hero Image High-Impact Cinematic Scroll Reveal (Static on Mobile) ─── */
       var heroImg = document.querySelector('.hero-image-wrapper img');
       if (heroImg) {
         function updateHeroExpand() {
+          if (window.innerWidth <= 768) {
+            heroImg.style.transform = 'none';
+            heroImg.style.clipPath = 'none';
+            heroImg.style.filter = 'brightness(0.92) contrast(1.05)';
+            return;
+          }
           var y = window.scrollY;
           var maxScroll = 480;
           var p = Math.min(y / maxScroll, 1);
@@ -3143,6 +3203,7 @@ Juan Carlos Pérez, 10293847, 984654321, I.E. San Jerónimo"></textarea>
         window.addEventListener('scroll', function () {
           requestAnimationFrame(updateHeroExpand);
         }, { passive: true });
+        window.addEventListener('resize', updateHeroExpand);
         updateHeroExpand();
       }
 
