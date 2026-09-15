@@ -181,6 +181,36 @@ if ($method === 'POST') {
         echo json_encode(['success' => true, 'total' => count($new_db)], JSON_UNESCAPED_UNICODE);
         exit;
     }
+
+    // 5. Editar datos del participante
+    if ($endpoint === 'editar' || strpos($uri, 'editar') !== false) {
+        $codigo = trim($body['codigo'] ?? '');
+        $nombres = mb_strtoupper(trim($body['nombres'] ?? ''), 'UTF-8');
+        $dni = trim($body['dni'] ?? '');
+        $celular = trim($body['celular'] ?? '');
+        $institucion = mb_strtoupper(trim($body['institucion'] ?? ''), 'UTF-8');
+
+        $found = null;
+        foreach ($db as &$item) {
+            if (strval($item['codigo'] ?? '') === $codigo) {
+                if ($nombres !== '') $item['nombres'] = $nombres;
+                if ($dni !== '') $item['dni'] = $dni;
+                if ($celular !== '') $item['celular'] = $celular;
+                if ($institucion !== '') $item['institucion'] = $institucion;
+                $found = $item;
+                break;
+            }
+        }
+
+        if ($found) {
+            save_db($db_file, $db);
+            echo json_encode(['success' => true, 'data' => $found], JSON_UNESCAPED_UNICODE);
+        } else {
+            http_response_code(404);
+            echo json_encode(['success' => false, 'error' => 'no_encontrado'], JSON_UNESCAPED_UNICODE);
+        }
+        exit;
+    }
 }
 
 // Respuesta por defecto

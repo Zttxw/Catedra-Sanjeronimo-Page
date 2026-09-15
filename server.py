@@ -177,6 +177,28 @@ class CentralizedHandler(SimpleHTTPRequestHandler):
             self.send_json({'success': True, 'total': len(db)})
             return
 
+        # 5. Editar Registro
+        elif 'editar' in path or endpoint == 'editar':
+            codigo = str(body_json.get('codigo', '')).strip()
+            nombres = str(body_json.get('nombres', '')).strip().upper()
+            dni = str(body_json.get('dni', '')).strip()
+            celular = str(body_json.get('celular', '')).strip()
+            institucion = str(body_json.get('institucion', '')).strip().upper()
+
+            found = next((r for r in db if str(r.get('codigo', '')).strip() == codigo), None)
+            if not found:
+                self.send_json({'success': False, 'error': 'no_encontrado'}, 404)
+                return
+
+            if nombres: found['nombres'] = nombres
+            if dni: found['dni'] = dni
+            if celular: found['celular'] = celular
+            if institucion: found['institucion'] = institucion
+
+            save_db(db)
+            self.send_json({'success': True, 'data': found})
+            return
+
         self.send_json({'success': False, 'error': 'endpoint_no_valido'}, 404)
 
 def run(port=8080):

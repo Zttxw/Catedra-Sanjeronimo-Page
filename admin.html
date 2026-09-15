@@ -805,7 +805,50 @@ Juan Carlos Pérez, 10293847, 984654321, Municipalidad San Jerónimo"></textarea
           </div>
         </form>
       </div>
-    </main>
+  <!-- ════ MODAL DE EDICIÓN DE PARTICIPANTE ════ -->
+  <div id="modal-edit" style="display:none; position:fixed; inset:0; z-index:2000; background:rgba(0,0,0,0.6); backdrop-filter:blur(4px); align-items:center; justify-content:center;">
+    <div style="background:#FFFFFF; border-radius:12px; max-width:500px; width:92%; padding:1.8rem; box-shadow:0 20px 60px rgba(0,0,0,0.25); position:relative; margin:auto;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.2rem; padding-bottom:0.8rem; border-bottom:1px solid var(--border);">
+        <h3 style="font-size:1.1rem; font-weight:700; color:var(--text-main); margin:0;">✏️ Editar Datos del Participante</h3>
+        <button type="button" id="btn-close-edit" style="background:none; border:none; font-size:1.4rem; cursor:pointer; color:var(--text-muted);">&times;</button>
+      </div>
+
+      <form id="form-edit-participant">
+        <input type="hidden" id="edit-codigo" />
+        
+        <div class="field" style="margin-bottom:1rem;">
+          <label style="font-size:0.78rem; font-weight:600; color:var(--text-muted); display:block; margin-bottom:0.25rem;">Código de Registro:</label>
+          <input type="text" id="edit-codigo-display" disabled style="background:var(--surface); font-family:var(--font-mono); font-weight:700; color:var(--accent); width:100%; border:1px solid var(--border); padding:0.5rem;" />
+        </div>
+
+        <div class="field" style="margin-bottom:1rem;">
+          <label style="font-size:0.8rem; font-weight:600; color:var(--text-main); display:block; margin-bottom:0.25rem;">Nombres y Apellidos Completos *</label>
+          <input type="text" id="edit-nombres" required class="search-input" style="width:100%; border:1px solid var(--border); padding:0.55rem;" />
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem;">
+          <div class="field">
+            <label style="font-size:0.8rem; font-weight:600; color:var(--text-main); display:block; margin-bottom:0.25rem;">DNI *</label>
+            <input type="text" id="edit-dni" required maxlength="8" class="search-input" style="width:100%; border:1px solid var(--border); padding:0.55rem;" />
+          </div>
+
+          <div class="field">
+            <label style="font-size:0.8rem; font-weight:600; color:var(--text-main); display:block; margin-bottom:0.25rem;">Celular / WhatsApp *</label>
+            <input type="text" id="edit-celular" required maxlength="9" class="search-input" style="width:100%; border:1px solid var(--border); padding:0.55rem;" />
+          </div>
+        </div>
+
+        <div class="field" style="margin-bottom:1.5rem;">
+          <label style="font-size:0.8rem; font-weight:600; color:var(--text-main); display:block; margin-bottom:0.25rem;">Institución / Centro de Estudios *</label>
+          <input type="text" id="edit-institucion" required class="search-input" style="width:100%; border:1px solid var(--border); padding:0.55rem;" placeholder="Ej. UNSAAC / UTEA / Fe y Alegría / San Jerónimo" />
+        </div>
+
+        <div style="display:flex; justify-content:flex-end; gap:0.75rem;">
+          <button type="button" id="btn-cancel-edit" class="btn-action-minimal" style="background:#E5E7EB; color:#374151;">Cancelar</button>
+          <button type="submit" class="btn-action-minimal btn-action-primary">💾 Guardar Cambios</button>
+        </div>
+      </form>
+    </div>
   </div>
 
   <script>
@@ -997,16 +1040,24 @@ Juan Carlos Pérez, 10293847, 984654321, Municipalidad San Jerónimo"></textarea
             ? '<span class="badge badge-apto"><span class="badge-dot"></span>Apto (2/2)</span>'
             : '<span class="badge badge-incompleto"><span class="badge-dot"></span>' + (d1 || d2 ? '1/2 Días' : '0/2 Días') + '</span>';
 
+          var phoneClean = (r.celular || '').replace(/\D/g, '');
+          var waBtn = phoneClean
+            ? '<a href="https://wa.me/51' + phoneClean + '?text=Hola%20' + encodeURIComponent(r.nombres || '') + ',%20te%20escribimos%20de%20la%20C%C3%A1tedra%20San%20Jer%C3%B3nimo%202026." target="_blank" rel="noopener noreferrer" title="Escribir por WhatsApp a ' + (r.nombres || '') + '" style="display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; background:#25D366; color:#FFF; border-radius:50%; text-decoration:none; font-size:0.75rem; margin-left:0.4rem; box-shadow:0 2px 6px rgba(37,211,102,0.35);">💬</a>'
+            : '';
+
           html += '<tr>' +
             '<td style="color:var(--text-light); font-size:0.75rem;">' + (index + 1) + '</td>' +
             '<td class="code-cell">' + (r.codigo || '—') + '</td>' +
-            '<td class="name-cell">' + (r.nombres || '—') + '</td>' +
+            '<td class="name-cell"><div style="display:flex; align-items:center;"><span>' + (r.nombres || '—') + '</span>' + waBtn + '</div></td>' +
             '<td class="mono-cell">' + (r.dni || '—') + '</td>' +
-            '<td style="color:var(--text-muted);">' + (r.institucion || '—') + '</td>' +
+            '<td style="color:var(--text-muted); font-weight:500;">' + (r.institucion || '—') + '</td>' +
             '<td style="text-align:center;"><input type="checkbox" class="att-checkbox chk-d1" data-code="' + r.codigo + '" ' + (d1 ? 'checked' : '') + '></td>' +
             '<td style="text-align:center;"><input type="checkbox" class="att-checkbox chk-d2" data-code="' + r.codigo + '" ' + (d2 ? 'checked' : '') + '></td>' +
             '<td style="text-align:center;">' + certBadge + '</td>' +
-            '<td style="text-align:center;"><button class="btn-row-del" data-code="' + r.codigo + '" title="Eliminar">✕</button></td>' +
+            '<td style="text-align:center; white-space:nowrap;">' +
+              '<button class="btn-row-edit" data-code="' + r.codigo + '" title="Editar datos" style="padding:0.25rem 0.55rem; background:var(--accent); color:#FFF; border:none; border-radius:4px; font-size:0.75rem; cursor:pointer; margin-right:4px;">✏️ Editar</button>' +
+              '<button class="btn-row-del" data-code="' + r.codigo + '" title="Eliminar" style="padding:0.25rem 0.55rem; background:var(--danger-bg); color:var(--danger); border:1px solid rgba(220,38,38,0.2); border-radius:4px; font-size:0.75rem; cursor:pointer;">✕</button>' +
+            '</td>' +
             '</tr>';
         });
         tbody.innerHTML = html;
@@ -1016,6 +1067,11 @@ Juan Carlos Pérez, 10293847, 984654321, Municipalidad San Jerónimo"></textarea
         });
         tbody.querySelectorAll('.chk-d2').forEach(function (c) {
           c.addEventListener('change', function () { toggleAtt(c.getAttribute('data-code'), 'attDay2'); });
+        });
+        tbody.querySelectorAll('.btn-row-edit').forEach(function (b) {
+          b.addEventListener('click', function () {
+            openEditModal(b.getAttribute('data-code'));
+          });
         });
         tbody.querySelectorAll('.btn-row-del').forEach(function (b) {
           b.addEventListener('click', function () {
@@ -1032,6 +1088,72 @@ Juan Carlos Pérez, 10293847, 984654321, Municipalidad San Jerónimo"></textarea
               });
             }
           });
+        });
+      }
+
+      // Modal Edit Handlers
+      var modalEdit = document.getElementById('modal-edit');
+      var formEdit = document.getElementById('form-edit-participant');
+
+      function openEditModal(code) {
+        var records = getRecords();
+        var found = records.find(function (x) { return x.codigo === code; });
+        if (!found) return;
+
+        document.getElementById('edit-codigo').value = found.codigo;
+        document.getElementById('edit-codigo-display').value = found.codigo;
+        document.getElementById('edit-nombres').value = found.nombres || '';
+        document.getElementById('edit-dni').value = found.dni || '';
+        document.getElementById('edit-celular').value = found.celular || '';
+        document.getElementById('edit-institucion').value = found.institucion || '';
+
+        modalEdit.style.display = 'flex';
+      }
+
+      function closeEditModal() {
+        modalEdit.style.display = 'none';
+      }
+
+      if (document.getElementById('btn-close-edit')) {
+        document.getElementById('btn-close-edit').addEventListener('click', closeEditModal);
+      }
+      if (document.getElementById('btn-cancel-edit')) {
+        document.getElementById('btn-cancel-edit').addEventListener('click', closeEditModal);
+      }
+
+      if (formEdit) {
+        formEdit.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var code = document.getElementById('edit-codigo').value;
+          var nombres = document.getElementById('edit-nombres').value.trim().toUpperCase();
+          var dni = document.getElementById('edit-dni').value.trim();
+          var celular = document.getElementById('edit-celular').value.trim();
+          var institucion = document.getElementById('edit-institucion').value.trim().toUpperCase();
+
+          var records = getRecords();
+          var idx = records.findIndex(function (x) { return x.codigo === code; });
+          if (idx !== -1) {
+            records[idx].nombres = nombres;
+            records[idx].dni = dni;
+            records[idx].celular = celular;
+            records[idx].institucion = institucion;
+
+            saveRecords(records);
+            renderTable(document.getElementById('search-input').value);
+            closeEditModal();
+
+            safeFetchApi('editar', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                codigo: code,
+                nombres: nombres,
+                dni: dni,
+                celular: celular,
+                institucion: institucion
+              })
+            });
+          }
         });
       }
 

@@ -4072,16 +4072,24 @@ Juan Carlos Pérez, 10293847, 984654321, I.E. San Jerónimo"></textarea>
             ? '<span class="badge-apto">Apto (2/2)</span>'
             : '<span class="badge-incompleto">' + (att1 || att2 ? 'Incompleto (1/2)' : 'Incompleto (0/2)') + '</span>';
 
+          var phoneClean = (r.celular || '').replace(/\D/g, '');
+          var waBtn = phoneClean
+            ? '<a href="https://wa.me/51' + phoneClean + '?text=Hola%20' + encodeURIComponent(r.nombres || '') + ',%20te%20escribimos%20de%20la%20C%C3%A1tedra%20San%20Jer%C3%B3nimo%202026." target="_blank" rel="noopener noreferrer" title="Escribir por WhatsApp a ' + (r.nombres || '') + '" style="display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; background:#25D366; color:#FFF; border-radius:50%; text-decoration:none; font-size:0.75rem; margin-left:0.4rem; box-shadow:0 2px 6px rgba(37,211,102,0.35);">💬</a>'
+            : '';
+
           html += '<tr>' +
             '<td>' + (index + 1) + '</td>' +
             '<td><strong>' + (r.codigo || '—') + '</strong></td>' +
-            '<td>' + (r.nombres || '—') + '</td>' +
+            '<td><div style="display:flex; align-items:center;"><span>' + (r.nombres || '—') + '</span>' + waBtn + '</div></td>' +
             '<td>' + (r.dni || '—') + '</td>' +
-            '<td>' + (r.institucion || '—') + '</td>' +
+            '<td style="font-weight:500;">' + (r.institucion || '—') + '</td>' +
             '<td style="text-align:center;"><input type="checkbox" class="attendance-check check-att1" data-codigo="' + r.codigo + '" ' + (att1 ? 'checked' : '') + '></td>' +
             '<td style="text-align:center;"><input type="checkbox" class="attendance-check check-att2" data-codigo="' + r.codigo + '" ' + (att2 ? 'checked' : '') + '></td>' +
             '<td style="text-align:center;">' + badgeCert + '</td>' +
-            '<td style="text-align:center;"><button class="btn-delete-row" data-codigo="' + r.codigo + '">Eliminar</button></td>' +
+            '<td style="text-align:center; white-space:nowrap;">' +
+              '<button class="btn-edit-row" data-codigo="' + r.codigo + '" style="padding:0.25rem 0.55rem; background:#3484A5; color:#FFF; border:none; border-radius:4px; font-size:0.75rem; cursor:pointer; margin-right:4px;">✏️ Editar</button>' +
+              '<button class="btn-delete-row" data-codigo="' + r.codigo + '" style="padding:0.25rem 0.55rem; background:rgba(220,38,38,0.1); color:#D93838; border:1px solid rgba(220,38,38,0.2); border-radius:4px; font-size:0.75rem; cursor:pointer;">✕</button>' +
+            '</td>' +
             '</tr>';
         });
         tbody.innerHTML = html;
@@ -4098,6 +4106,45 @@ Juan Carlos Pérez, 10293847, 984654321, I.E. San Jerónimo"></textarea>
           });
         });
 
+        // Edit row click handlers
+        tbody.querySelectorAll('.btn-edit-row').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var codeToEdit = btn.getAttribute('data-codigo');
+            var records = JSON.parse(localStorage.getItem('inscripciones-catedra-sj') || '[]');
+            var record = records.find(function (r) { return r.codigo === codeToEdit; });
+            if (!record) return;
+
+            var newNombres = prompt('Editar Nombres y Apellidos:', record.nombres || '');
+            if (newNombres === null) return;
+            var newDni = prompt('Editar DNI:', record.dni || '');
+            if (newDni === null) return;
+            var newCelular = prompt('Editar Celular:', record.celular || '');
+            if (newCelular === null) return;
+            var newInst = prompt('Editar Institución / Centro:', record.institucion || '');
+            if (newInst === null) return;
+
+            record.nombres = newNombres.trim().toUpperCase();
+            record.dni = newDni.trim();
+            record.celular = newCelular.trim();
+            record.institucion = newInst.trim().toUpperCase();
+
+            localStorage.setItem('inscripciones-catedra-sj', JSON.stringify(records));
+            renderAdminTable(document.getElementById('admin-search') ? document.getElementById('admin-search').value : '');
+
+            fetch('api.php?endpoint=editar', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                codigo: codeToEdit,
+                nombres: record.nombres,
+                dni: record.dni,
+                celular: record.celular,
+                institucion: record.institucion
+              })
+            }).catch(function() {});
+          });
+        });
+
         // Delete row click handlers
         tbody.querySelectorAll('.btn-delete-row').forEach(function (btn) {
           btn.addEventListener('click', function () {
@@ -4105,7 +4152,7 @@ Juan Carlos Pérez, 10293847, 984654321, I.E. San Jerónimo"></textarea>
             if (confirm('¿Estás seguro de eliminar la inscripción ' + codeToDelete + '?')) {
               var actualizados = lista.filter(function (item) { return item.codigo !== codeToDelete; });
               localStorage.setItem('inscripciones-catedra-sj', JSON.stringify(actualizados));
-              renderAdminTable(document.getElementById('admin-search').value);
+              renderAdminTable(document.getElementById('admin-search') ? document.getElementById('admin-search').value : '');
             }
           });
         });
