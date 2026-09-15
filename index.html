@@ -228,13 +228,14 @@
     }
 
     .hero-date-badge span:first-child {
-      font-family: var(--font-body);
-      font-size: 0.98rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
+      font-family: var(--font-signature), 'Great Vibes', cursive;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 600;
+      letter-spacing: 0.02em;
       color: #F0C84F;
-      text-transform: uppercase;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+      text-transform: none;
+      line-height: 1.1;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
     }
 
     .hero-date-sub {
@@ -2380,11 +2381,11 @@
         </div>
       </div>
 
-      <!-- Fecha e Información debajo del Contador -->
-      <a href="#evento" class="hero-date-badge reveal">
+      <!-- Fecha e Información debajo del Contador (Texto Estático Sin Redirección) -->
+      <div class="hero-date-badge reveal">
         <span>21 y 22 de setiembre</span>
         <span class="hero-date-sub">Auditorio Municipal de San Jerónimo</span>
-      </a>
+      </div>
     </div>
 
     <div class="hero-image-wrapper">
