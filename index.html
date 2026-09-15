@@ -464,86 +464,86 @@
       }
     }
 
-    /* ─── PURE FLOATING ULTRA-MINIMALIST COUNTDOWN ─── */
+    /* ─── ULTRA MINIMALIST COUNTDOWN STRIP ─── */
     .countdown-strip {
       background: transparent;
       border: none;
-      padding: 1.4rem 0 0.4rem;
-      margin-top: 0.5rem;
+      padding: 0.5rem 0 0.2rem;
+      margin-top: 0.4rem;
+      color: #fff;
     }
 
     .countdown-inner {
       max-width: 1200px;
       margin: 0 auto;
+      padding: 0 clamp(1.5rem, 4vw, 3rem);
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: clamp(1.5rem, 4vw, 4rem);
+      flex-wrap: wrap;
+    }
+
+    .cd-label {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--c-gold);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .cd-label::before {
+      content: '';
+      width: 18px;
+      height: 2px;
+      background: var(--c-gold);
     }
 
     .cd-units {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: clamp(1rem, 3.5vw, 3rem);
+      gap: clamp(1rem, 3vw, 2.5rem);
     }
 
     .cd-unit {
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding: 0 0.8rem;
       position: relative;
     }
 
     .cd-unit:not(:last-child)::after {
       content: ':';
       position: absolute;
-      right: clamp(-0.7rem, -2vw, -1.7rem);
-      top: 0.15rem;
-      font-size: clamp(2.2rem, 5vw, 3.8rem);
-      color: rgba(255, 255, 255, 0.45);
-      font-weight: 400;
-      line-height: 1;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+      right: -0.9rem;
+      top: 0.1rem;
+      font-size: 1.8rem;
+      color: var(--c-gold);
+      font-weight: 300;
+      opacity: 0.7;
     }
 
-    .flip-card-box {
-      background: transparent !important;
-      border: none !important;
-      box-shadow: none !important;
-      backdrop-filter: none !important;
-      padding: 0 !important;
-      margin: 0 !important;
-      min-width: auto !important;
-      height: auto !important;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .flip-card-box b {
-      font-family: 'Outfit', 'Inter', sans-serif;
-      font-size: clamp(2.8rem, 6.5vw, 4.5rem);
-      font-weight: 900;
+    .cd-unit b {
+      font-family: var(--font-cultural), 'Cinzel', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
       color: #FFFFFF;
       line-height: 1;
-      letter-spacing: -0.02em;
-      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+      font-weight: 700;
+      letter-spacing: 0.04em;
     }
 
     .cd-unit span {
-      display: inline-block;
-      background: #F0C84F;
-      color: #0E2938;
-      font-family: var(--font-body), 'Inter', sans-serif;
-      font-size: clamp(0.65rem, 1.4vw, 0.76rem);
-      font-weight: 900;
+      font-size: 0.68rem;
+      font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
-      padding: 0.35rem 1rem;
-      border-radius: 3px;
-      margin-top: 0.75rem;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-      text-shadow: none;
+      color: var(--c-gold);
+      letter-spacing: 0.18em;
+      margin-top: 0.35rem;
     }
 
     /* ─── FULL-BLEED & FRAMED IMAGE SECTIONS ─── */
@@ -2343,37 +2343,14 @@
         Cátedra <span style="white-space: nowrap;">San Jerónimo</span>
       </h1>
 
-      <!-- ═══ VIBRANT MINIMALIST COUNTDOWN ═══ -->
+      <!-- ═══ COUNTDOWN (Directly below Title) ═══ -->
       <div class="countdown-strip" id="cuenta">
         <div class="countdown-inner">
           <div class="cd-units">
-            <div class="cd-unit">
-              <div class="flip-card-box">
-                <b id="cd-dias">00</b>
-              </div>
-              <span>Días</span>
-            </div>
-
-            <div class="cd-unit">
-              <div class="flip-card-box">
-                <b id="cd-horas">00</b>
-              </div>
-              <span>Horas</span>
-            </div>
-
-            <div class="cd-unit">
-              <div class="flip-card-box">
-                <b id="cd-min">00</b>
-              </div>
-              <span>Minutos</span>
-            </div>
-
-            <div class="cd-unit">
-              <div class="flip-card-box">
-                <b id="cd-seg">00</b>
-              </div>
-              <span>Segundos</span>
-            </div>
+            <div class="cd-unit"><b id="cd-dias">–</b><span>Días</span></div>
+            <div class="cd-unit"><b id="cd-horas">–</b><span>Horas</span></div>
+            <div class="cd-unit"><b id="cd-min">–</b><span>Min</span></div>
+            <div class="cd-unit"><b id="cd-seg">–</b><span>Seg</span></div>
           </div>
         </div>
       </div>
@@ -3165,15 +3142,9 @@ Juan Carlos Pérez, 10293847, 984654321, I.E. San Jerónimo"></textarea>
         a.addEventListener('click', function () { navMenu.classList.remove('open'); btnMobile.setAttribute('aria-expanded', 'false'); });
       });
 
-      /* ─── Countdown (Flip-Clock Style) ─── */
+      /* ─── Countdown ─── */
       var target = new Date('2026-09-21T15:00:00-05:00').getTime();
-      function setVal(id, v) {
-        var el = document.getElementById(id);
-        if (el) {
-          var valStr = String(Math.max(0, v)).padStart(2, '0');
-          if (el.textContent !== valStr) el.textContent = valStr;
-        }
-      }
+      function setVal(id, v) { document.getElementById(id).textContent = v; }
       function updateCountdown() {
         var d = target - Date.now();
         if (d <= 0) {
