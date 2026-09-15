@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 52" width="240" height="52">
+  <defs>
+    <!-- Paleta Gris Minimalista Elegante -->
+    <linearGradient id="grayLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E2E7EC"/>
+      <stop offset="100%" stop-color="#A6B0BC"/>
+    </linearGradient>
+
+    <linearGradient id="grayMid" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8893A2"/>
+      <stop offset="100%" stop-color="#555F6E"/>
+    </linearGradient>
+
+    <linearGradient id="grayDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3A424F"/>
+      <stop offset="100%" stop-color="#242932"/>
+    </linearGradient>
+
+    <!-- Patrón de Dientes de Sierra (Sawtooth Triangles) -->
+    <pattern id="sawtoothTop" width="8" height="5" patternUnits="userSpaceOnUse">
+      <polygon points="0,5 4,0 8,5" fill="url(#grayMid)"/>
+    </pattern>
+  </defs>
+
+  <!-- Fondo Gris Carbón Minimalista -->
+  <rect width="240" height="52" fill="#14171D"/>
+
+  <!-- ════════ 1. FRANJA SUPERIOR: ZIGZAG KENKO Y TRIÁNGULOS ════════ -->
+  <!-- Fila de Pequeños Triángulos Dientes de Sierra Superior -->
+  <rect x="0" y="1" width="240" height="4" fill="url(#sawtoothTop)" opacity="0.85"/>
+
+  <!-- Línea Gruesa Kenko (Zigzag Andino) -->
+  <path d="M 0 6 L 15 6 L 25 13 L 45 13 L 55 6 L 75 6 L 85 13 L 105 13 L 115 6 L 135 6 L 145 13 L 165 13 L 175 6 L 195 6 L 205 13 L 225 13 L 235 6 L 240 6" 
+        fill="none" stroke="url(#grayLight)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <path d="M 0 8 L 14 8 L 24 15 L 46 15 L 56 8 L 74 8 L 84 15 L 106 15 L 116 8 L 134 8 L 144 15 L 166 15 L 176 8 L 194 8 L 204 15 L 226 15 L 236 8 L 240 8" 
+        fill="none" stroke="url(#grayMid)" stroke-width="1" stroke-linejoin="round"/>
+
+  <!-- Fila de Triángulos Inferior bajo Kenko -->
+  <rect x="0" y="14" width="240" height="3" fill="url(#sawtoothTop)" opacity="0.6"/>
+
+  <!-- Línea de Separación entre Franja e Iconos Tokapu -->
+  <line x1="0" y1="18" x2="240" y2="18" stroke="url(#grayLight)" stroke-width="1.2"/>
+  <line x1="0" y1="51" x2="240" y2="51" stroke="url(#grayLight)" stroke-width="1"/>
+
+  <!-- ════════ 2. MATRIZ DE CUADROS TOKAPU (48px ancho cada panel) ════════ -->
+
+  <!-- === PANEL TOKAPU 1 (0px - 48px): MARCO AJEDREZADO Y CUADRO CONCÉNTRICO === -->
+  <g transform="translate(0, 19)">
+    <rect x="1" y="1" width="46" height="30" fill="none" stroke="url(#grayMid)" stroke-width="0.8"/>
+    
+    <!-- Borde Ajedrezado (Checkered border) -->
+    <path d="M 3 3 H 45 V 7 H 3 Z M 3 25 H 45 V 29 H 3 Z" fill="none" stroke="url(#grayMid)" stroke-dasharray="3,3" stroke-width="2"/>
+    <path d="M 3 3 V 29 H 7 V 3 Z M 41 3 V 29 H 45 V 3 Z" fill="none" stroke="url(#grayMid)" stroke-dasharray="3,3" stroke-width="2"/>
+
+    <!-- Rectángulo Concéntrico Interior con Puntos -->
+    <rect x="12" y="9" width="24" height="14" fill="none" stroke="url(#grayLight)" stroke-width="1.5"/>
+    <rect x="16" y="11" width="16" height="10" fill="url(#grayDark)" stroke="url(#grayMid)" stroke-width="0.8"/>
+    <circle cx="20" cy="16" r="1.5" fill="url(#grayLight)"/>
+    <circle cx="28" cy="16" r="1.5" fill="url(#grayLight)"/>
+  </g>
+
+  <!-- Divisor Vertical entre Paneles -->
+  <line x1="48" y1="19" x2="48" y2="50" stroke="url(#grayMid)" stroke-width="1" stroke-dasharray="2,2"/>
+
+  <!-- === PANEL TOKAPU 2 (48px - 96px): TRIÁNGULOS VERTICALES Y COLUMNA SERRADA === -->
+  <g transform="translate(48, 19)">
+    <rect x="1" y="1" width="46" height="30" fill="none" stroke="url(#grayMid)" stroke-width="0.8"/>
+
+    <!-- Columna 1: Triángulos apilados -->
+    <polygon points="6,6 16,11 6,16" fill="url(#grayLight)"/>
+    <polygon points="6,16 16,21 6,26" fill="url(#grayLight)"/>
+    
+    <!-- Columna 2: Barras serradas -->
+    <path d="M 22 5 V 27 M 26 5 V 27" stroke="url(#grayLight)" stroke-width="1.2"/>
+    <polygon points="22,8 26,11 22,14" fill="url(#grayLight)"/>
+    <polygon points="22,18 26,21 22,24" fill="url(#grayLight)"/>
+
+    <!-- Columna 3: Triángulos invertidos -->
+    <polygon points="42,6 32,11 42,16" fill="url(#grayMid)"/>
+    <polygon points="42,16 32,21 42,26" fill="url(#grayMid)"/>
+  </g>
+
+  <line x1="96" y1="19" x2="96" y2="50" stroke="url(#grayMid)" stroke-width="1" stroke-dasharray="2,2"/>
+
+  <!-- === PANEL TOKAPU 3 (96px - 144px): EMBLEMA CHAKANA EN "X" CON GANCHOS === -->
+  <g transform="translate(96, 19)">
+    <rect x="1" y="1" width="46" height="30" fill="none" stroke="url(#grayMid)" stroke-width="0.8"/>
+
+    <!-- Motivo X Complejo con ganchos y ojos -->
+    <path d="M 8 6 L 24 16 L 8 26 M 40 6 L 24 16 L 40 26" fill="none" stroke="url(#grayLight)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 8 6 H 14 M 8 26 H 14 M 40 6 H 34 M 40 26 H 34" stroke="url(#grayLight)" stroke-width="2" stroke-linecap="round"/>
+    
+    <!-- Ojos/Puntos internos en el emblema X -->
+    <circle cx="24" cy="9" r="2" fill="url(#grayLight)"/>
+    <circle cx="24" cy="23" r="2" fill="url(#grayLight)"/>
+    <circle cx="14" cy="16" r="1.5" fill="url(#grayMid)"/>
+    <circle cx="34" cy="16" r="1.5" fill="url(#grayMid)"/>
+  </g>
+
+  <line x1="144" y1="19" x2="144" y2="50" stroke="url(#grayMid)" stroke-width="1" stroke-dasharray="2,2"/>
+
+  <!-- === PANEL TOKAPU 4 (144px - 192px): MALLA DE DOBLE ROMBO (RHOMBUS MESH) === -->
+  <g transform="translate(144, 19)">
+    <rect x="1" y="1" width="46" height="30" fill="none" stroke="url(#grayMid)" stroke-width="0.8"/>
+
+    <!-- Rombos 1 y 2 -->
+    <polygon points="13,5 23,16 13,27 3,16" fill="none" stroke="url(#grayLight)" stroke-width="1.5"/>
+    <polygon points="13,9 18,16 13,23 8,16" fill="url(#grayDark)" stroke="url(#grayMid)" stroke-width="0.8"/>
+    <circle cx="13" cy="16" r="1.5" fill="url(#grayLight)"/>
+
+    <polygon points="35,5 45,16 35,27 25,16" fill="none" stroke="url(#grayLight)" stroke-width="1.5"/>
+    <polygon points="35,9 40,16 35,23 30,16" fill="url(#grayDark)" stroke="url(#grayMid)" stroke-width="0.8"/>
+    <circle cx="35" cy="16" r="1.5" fill="url(#grayLight)"/>
+  </g>
+
+  <line x1="192" y1="19" x2="192" y2="50" stroke="url(#grayMid)" stroke-width="1" stroke-dasharray="2,2"/>
+
+  <!-- === PANEL TOKAPU 5 (192px - 240px): ANDENES Y ESCALONES "T" === -->
+  <g transform="translate(192, 19)">
+    <rect x="1" y="1" width="46" height="30" fill="none" stroke="url(#grayMid)" stroke-width="0.8"/>
+
+    <!-- Forma T / Escalones Andinos apilados -->
+    <path d="M 8 6 H 18 V 11 H 13 V 21 H 18 V 26 H 8 Z" fill="url(#grayLight)"/>
+    <path d="M 38 6 H 28 V 11 H 33 V 21 H 28 V 26 H 38 Z" fill="url(#grayLight)"/>
+    
+    <!-- Centro con rombo central -->
+    <polygon points="23,11 27,16 23,21 19,16" fill="url(#grayMid)"/>
+    <circle cx="23" cy="16" r="1" fill="#FFFFFF"/>
+  </g>
+
+</svg>

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 40" width="320" height="40">
+  <defs>
+    <!-- Paleta Andina Institucional -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F7D070"/>
+      <stop offset="50%" stop-color="#F0C84F"/>
+      <stop offset="100%" stop-color="#D49E1E"/>
+    </linearGradient>
+
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E53935"/>
+      <stop offset="100%" stop-color="#B71C1C"/>
+    </linearGradient>
+
+    <linearGradient id="tealGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2CA792"/>
+      <stop offset="100%" stop-color="#1B6B5D"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Fondo base del Listón -->
+  <rect width="320" height="40" fill="#0E1013"/>
+
+  <!-- Bordes superior e inferior dorados -->
+  <rect x="0" y="0" width="320" height="3" fill="url(#goldGrad)"/>
+  <rect x="0" y="37" width="320" height="3" fill="url(#goldGrad)"/>
+
+  <!-- ════════ BLOQUE REPETITIVO DE TOKAPUS Y CHAKANA (Ancho: 160px x 2 = 320px) ════════ -->
+  
+  <!-- === TÓKAPU MÓDULO 1 (0px - 160px) === -->
+  <g id="tokapu-module-1">
+    <!-- Chakana Central Principal -->
+    <g transform="translate(40, 20)">
+      <!-- Sombra/Borde Chakana -->
+      <path d="M -6 -18 H 6 V -6 H 18 V 6 H 6 V 18 H -6 V 6 H -18 V -6 H -6 Z" fill="url(#redGrad)"/>
+      <path d="M -4 -14 H 4 V -4 H 14 V 4 H 4 V 14 H -4 V 4 H -14 V -4 H -4 Z" fill="url(#goldGrad)"/>
+      <!-- Centro Inti (Sol) -->
+      <polygon points="0,-3 3,0 0,3 -3,0" fill="#0E1013"/>
+    </g>
+
+    <!-- Andenes y Kenko (Zigzag Mayu - Ríos) a los lados -->
+    <!-- Izquierda -->
+    <path d="M 0 10 L 10 10 L 10 20 L 20 20 L 20 30 L 10 30 L 10 20 L 0 20 Z" fill="url(#tealGrad)" opacity="0.85"/>
+    <polygon points="5,5 15,5 10,12" fill="url(#goldGrad)"/>
+    <polygon points="5,35 15,35 10,28" fill="url(#goldGrad)"/>
+
+    <!-- Derecha (Simetría) -->
+    <path d="M 80 10 L 70 10 L 70 20 L 60 20 L 60 30 L 70 30 L 70 20 L 80 20 Z" fill="url(#tealGrad)" opacity="0.85"/>
+    <polygon points="75,5 65,5 70,12" fill="url(#goldGrad)"/>
+    <polygon points="75,35 65,35 70,28" fill="url(#goldGrad)"/>
+
+    <!-- Rombo Tokapu Intermedio -->
+    <g transform="translate(100, 20)">
+      <polygon points="0,-12 12,0 0,12 -12,0" fill="none" stroke="url(#goldGrad)" stroke-width="2"/>
+      <polygon points="0,-7 7,0 0,7 -7,0" fill="url(#redGrad)"/>
+      <circle cx="0" cy="0" r="2" fill="#FFFFFF"/>
+    </g>
+
+    <!-- Trenzado escalonado Inca (Tinkuy) -->
+    <path d="M 120 8 L 130 8 L 130 16 L 140 16 L 140 24 L 130 24 L 130 32 L 120 32 L 120 24 L 130 24 L 130 16 L 120 16 Z" fill="url(#goldGrad)" opacity="0.9"/>
+  </g>
+
+  <!-- === TÓKAPU MÓDULO 2 (160px - 320px REPETICIÓN EXACTA PARA EMALGAMADO PERFECTO) === -->
+  <use href="#tokapu-module-1" x="160" y="0"/>
+
+</svg>

@@ -1508,26 +1508,10 @@
       filter: brightness(1.06) contrast(1.14);
     }
 
-    /* Runway Navigation Buttons (Glassmorphism Arrows) */
+    /* Runway Navigation Buttons (Ocultados) */
     .runway-nav-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 12;
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      background: rgba(14, 41, 56, 0.85);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1.5px solid rgba(240, 200, 79, 0.5);
-      color: #F0C84F;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
-      transition: all 0.3s ease;
+      display: none !important;
+    }
     }
 
     .runway-nav-btn:hover {
@@ -1765,11 +1749,137 @@
       margin-top: 1rem;
     }
 
+    /* ─── SECCIÓN ORGANIZAN ─── */
+    .section-organizan {
+      background: #3484A5;
+      color: #ffffff;
+      padding: clamp(3.5rem, 6vw, 5.5rem) 0;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      position: relative;
+    }
+
+    .organizan-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .organizan-tag {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.75);
+      margin: 0;
+    }
+
+    .organizan-main-logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    .organizan-main-logo img {
+      max-width: 290px;
+      width: 75%;
+      height: auto;
+      filter: brightness(1) contrast(1.05);
+      transition: transform 0.3s ease;
+    }
+
+    .organizan-main-logo img:hover {
+      transform: scale(1.02);
+    }
+
+    .organizan-divider-line {
+      border: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.18);
+      width: 100%;
+      max-width: 900px;
+      margin: 0.8rem 0;
+    }
+
+    .organizan-grid {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(2rem, 4vw, 3.5rem);
+      flex-wrap: wrap;
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    .organizan-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 1rem;
+    }
+
+    .organizan-item img {
+      max-height: 105px;
+      max-width: 330px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: brightness(1);
+      transition: filter 0.3s ease, transform 0.3s ease;
+    }
+
+    .organizan-item img.logo-invert-white {
+      filter: brightness(0) invert(1);
+    }
+
+    .organizan-item img:hover {
+      filter: brightness(1.15);
+      transform: translateY(-2px);
+    }
+
+    .organizan-item img:hover.logo-invert-white {
+      filter: brightness(0) invert(1) drop-shadow(0 2px 8px rgba(255, 255, 255, 0.4));
+      transform: translateY(-2px);
+    }
+
+    .organizan-v-divider {
+      width: 1px;
+      height: 70px;
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    @media (max-width: 768px) {
+      .organizan-v-divider {
+        display: none;
+      }
+      .organizan-grid {
+        gap: 2rem;
+      }
+    }
+
+    /* ─── FRANJA LISTÓN DECORATIVA ─── */
+    .franja-liston-divider {
+      width: 100%;
+      height: clamp(22px, 2.5vw, 28px);
+      background: url('imagenes/franja/franja_liston_hd.svg') repeat-x center center;
+      background-size: auto 100%;
+      display: block;
+      margin: 0;
+      padding: 0;
+      border: none;
+      position: relative;
+      z-index: 5;
+    }
+
     /* ─── FOOTER ─── */
     .site-footer {
-      background: var(--c-primary-darkest);
+      background: #16191e;
       color: rgba(255, 255, 255, 0.7);
-      padding: clamp(3rem, 5vw, 5rem) 0 2rem;
+      padding: clamp(3rem, 5vw, 4rem) 0 2rem;
     }
 
     .footer-grid {
@@ -2728,12 +2838,6 @@
 
     <!-- Pasarela Horizontal Lenta (Bucle Infinito Continuo) -->
     <div class="runway-wrapper reveal">
-      <button id="runway-prev" class="runway-nav-btn runway-prev" aria-label="Anterior foto">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-      </button>
-      <button id="runway-next" class="runway-nav-btn runway-next" aria-label="Siguiente foto">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-      </button>
       <div class="runway-track-container" id="runway-container">
         <div class="runway-track">
 
@@ -2896,73 +3000,90 @@
     </div>
   </section>
 
+  <!-- ═══ SECCIÓN ORGANIZAN ═══ -->
+  <section class="section-organizan" id="organizan">
+    <div class="wrapper">
+      <div class="organizan-container">
+        
+        <h3 class="organizan-tag">ORGANIZAN</h3>
+
+        <!-- Entidad Principal y Gerencia -->
+        <div style="display:flex; flex-direction:column; align-items:center; gap:0.6rem;">
+          <div class="organizan-main-logo">
+            <img src="imagenes/Organizadores/MDSJ BLANCO.png" alt="Municipalidad Distrital de San Jerónimo" />
+          </div>
+
+          <div style="text-align:center; max-width:720px;">
+            <h4 style="font-size:1.08rem; font-weight:800; color:#FFFFFF; letter-spacing:0.04em; margin:0 0 0.25rem 0; text-transform:uppercase;">
+              GERENCIA DE DESARROLLO SOCIAL
+            </h4>
+            <p style="font-size:0.9rem; color:rgba(255,255,255,0.92); font-weight:600; margin:0;">
+              Subgerencia de Educación, Cultura y Deporte
+            </p>
+          </div>
+        </div>
+
+        <hr class="organizan-divider-line" />
+
+        <!-- Co-Organizadores y Aliados -->
+        <div class="organizan-grid">
+          <div class="organizan-item" style="flex-direction:column; gap:0.6rem;">
+            <img src="imagenes/Organizadores/summit-universidad-continental.png" alt="Universidad Continental" class="logo-invert-white" />
+            <span style="font-size:0.78rem; font-weight:800; color:#FFFFFF; letter-spacing:0.1em; text-transform:uppercase;">UNIVERSIDAD CONTINENTAL</span>
+          </div>
+
+          <div class="organizan-v-divider"></div>
+
+          <div class="organizan-item" style="flex-direction:column; gap:0.6rem;">
+            <img src="imagenes/Organizadores/logo protalento.png" alt="Proyecto Cultural" class="logo-invert-white" />
+            <span style="font-size:0.78rem; font-weight:800; color:#FFFFFF; letter-spacing:0.1em; text-transform:uppercase;">PROYECTO CULTURAL</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FRANJA LISTÓN DECORATIVA ═══ -->
+  <div class="franja-liston-divider" role="separator" aria-hidden="true"></div>
+
   <!-- ═══ FOOTER ═══ -->
   <footer class="site-footer">
     <div class="wrapper">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <img src="imagenes/Logos/MDSJ BLANCO.png" alt="Municipalidad Distrital de San Jerónimo" />
-          <h4 style="font-size:0.96rem; color:#FFFFFF; margin-bottom:0.6rem; font-weight:700; line-height:1.4;">
-            Primer Encuentro de Identidad Cultural — Cátedra <span style="white-space: nowrap;">San Jerónimo</span>
+      <div class="footer-minimal-container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1.5rem; padding-bottom:1.8rem; border-bottom:1px solid rgba(255,255,255,0.12);">
+        
+        <!-- Nombre del Evento y Ubicación -->
+        <div>
+          <h4 style="font-size:0.95rem; color:#FFFFFF; margin:0; font-weight:700; line-height:1.3;">
+            Primer Encuentro de Identidad Cultural — Cátedra San Jerónimo
           </h4>
-          
-          <div class="footer-org-roles" style="display:flex; flex-direction:column; gap:0.45rem; font-size:0.83rem; line-height:1.4; color:rgba(255,255,255,0.85);">
-            <p style="margin:0;">
-              <strong style="color:#F0C84F;">Organización:</strong> Subgerencia de Educación, Cultura y Deporte – Gerencia de Desarrollo Social (MDSJ), Proyecto de Cultura y Deporte y ADAFOSAJ.
-            </p>
-            <p style="margin:0;">
-              <strong style="color:#79F2DC;">Coordinación:</strong> Subgerencia de Educación, Cultura y Deporte.
-            </p>
-            <p style="margin:0;">
-              <strong style="color:#79F2DC;">Conducción y Transmisión:</strong> Oficina de Relaciones Públicas MDSJ.
-            </p>
-          </div>
+          <p style="font-size:0.8rem; color:rgba(255,255,255,0.65); margin-top:2px;">
+            Auditorio Municipal de San Jerónimo, Cusco
+          </p>
         </div>
 
-        <div>
-          <h4>Enlaces</h4>
-          <ul>
-            <li><a href="#evento">El encuentro</a></li>
-            <li><a href="#programa">Programa oficial</a></li>
-            <li><a href="#ponentes">Ponentes</a></li>
-            <li><a href="#galeria">Galería</a></li>
-            <li><a href="#inscripcion">Inscripción</a></li>
-          </ul>
+        <!-- Redes Sociales -->
+        <div style="display:flex; gap:0.65rem; align-items:center;">
+          <!-- Facebook -->
+          <a href="https://www.facebook.com/Municipalidaddesanjeronimo/?locale=es_LA" target="_blank" rel="noopener noreferrer" title="Facebook Municipalidad Distrital de San Jerónimo" aria-label="Facebook" style="display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.1); color:#FFFFFF; transition:all 0.25s ease;" onmouseover="this.style.background='#1877F2'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='none';">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/sanjeronimocusco/" target="_blank" rel="noopener noreferrer" title="Instagram San Jerónimo Cusco" aria-label="Instagram" style="display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.1); color:#FFFFFF; transition:all 0.25s ease;" onmouseover="this.style.background='linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='none';">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <!-- TikTok -->
+          <a href="https://www.tiktok.com/@sanjeronimocusco" target="_blank" rel="noopener noreferrer" title="TikTok San Jerónimo Cusco" aria-label="TikTok" style="display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.1); color:#FFFFFF; transition:all 0.25s ease;" onmouseover="this.style.background='#000000'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='none';">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.98-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.82.57-1.31 1.56-1.28 2.56.02.83.42 1.63 1.07 2.15.77.62 1.8.84 2.76.62.94-.2 1.76-.84 2.14-1.71.31-.69.44-1.47.42-2.23-.01-4.08-.01-8.16-.01-12.24z"/></svg>
+          </a>
         </div>
 
-        <div>
-          <h4>Contacto y Redes</h4>
-          <ul style="margin-bottom:1rem;">
-            <li>Auditorio de la Municipalidad Distrital de San Jerónimo, Cusco</li>
-            <li>Soporte / WhatsApp: <a href="https://api.whatsapp.com/send?phone=51994372968" target="_blank" rel="noopener noreferrer" style="color:#79F2DC; text-decoration:underline;">+51 994 372 968</a></li>
-            <li>Atención: lunes a viernes, 8:00 a. m. – 5:00 p. m.</li>
-          </ul>
-
-          <div style="display:flex; gap:0.65rem; align-items:center; margin-top:0.6rem;">
-            <!-- Facebook -->
-            <a href="https://www.facebook.com/Municipalidaddesanjeronimo/?locale=es_LA" target="_blank" rel="noopener noreferrer" title="Facebook Municipalidad Distrital de San Jerónimo" aria-label="Facebook" style="display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.1); color:#FFFFFF; transition:all 0.25s ease;" onmouseover="this.style.background='#1877F2'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='none';">
-              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-            </a>
-            <!-- Instagram -->
-            <a href="https://www.instagram.com/sanjeronimocusco/" target="_blank" rel="noopener noreferrer" title="Instagram San Jerónimo Cusco" aria-label="Instagram" style="display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.1); color:#FFFFFF; transition:all 0.25s ease;" onmouseover="this.style.background='linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='none';">
-              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            </a>
-            <!-- TikTok -->
-            <a href="https://www.tiktok.com/@sanjeronimocusco" target="_blank" rel="noopener noreferrer" title="TikTok San Jerónimo Cusco" aria-label="TikTok" style="display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.1); color:#FFFFFF; transition:all 0.25s ease;" onmouseover="this.style.background='#000000'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='none';">
-              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.98-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.82.57-1.31 1.56-1.28 2.56.02.83.42 1.63 1.07 2.15.77.62 1.8.84 2.76.62.94-.2 1.76-.84 2.14-1.71.31-.69.44-1.47.42-2.23-.01-4.08-.01-8.16-.01-12.24z"/></svg>
-            </a>
-          </div>
-        </div>
       </div>
 
-      <div class="footer-bottom">
+      <div class="footer-bottom" style="border-top:none; padding-top:1.2rem;">
         <div>&copy; <span id="anio"></span> Municipalidad Distrital de San Jerónimo — Cusco, Perú.</div>
         <div style="font-style:italic; color:#F0C84F;">"Memoria, fe e identidad"</div>
-        <div style="color:rgba(255,255,255,0.92); font-weight:600; display:flex; align-items:center; gap:0.4rem;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2CA792" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="16 18 22 12 16 6"></polyline>
-            <polyline points="8 6 2 12 8 18"></polyline>
-          </svg>
+        <div style="color:rgba(255,255,255,0.92); font-weight:600;">
           Desarrollado por OTI — MDSJ
         </div>
       </div>
