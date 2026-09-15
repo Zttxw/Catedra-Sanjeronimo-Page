@@ -207,45 +207,43 @@
       margin-top: 2px;
     }
 
-    /* Date Badge below Hero Countdown */
+    /* Date Text below Hero Countdown (Clean Floating Text) */
     .hero-date-badge {
       display: inline-flex;
       flex-direction: column;
       align-items: center;
-      margin-top: 1.2rem;
-      padding: 0.55rem 1.5rem;
-      background: rgba(14, 41, 56, 0.7);
-      border: 1px solid rgba(52, 132, 165, 0.4);
-      border-radius: 999px;
+      margin-top: 1.1rem;
+      padding: 0;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      backdrop-filter: none !important;
       color: #FFFFFF;
       text-decoration: none;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
-      transition: all 0.25s ease;
+      transition: transform 0.25s ease;
     }
 
     .hero-date-badge:hover {
-      background: rgba(44, 167, 146, 0.85);
-      border-color: #2CA792;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 28px rgba(44, 167, 146, 0.4);
+      transform: translateY(-1px);
     }
 
     .hero-date-badge span:first-child {
       font-family: var(--font-body);
-      font-size: 0.95rem;
+      font-size: 0.98rem;
       font-weight: 800;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       color: #F0C84F;
       text-transform: uppercase;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
     }
 
     .hero-date-sub {
-      font-size: 0.74rem;
+      font-size: 0.76rem;
       font-weight: 600;
-      color: rgba(255, 255, 255, 0.9);
+      color: rgba(255, 255, 255, 0.85);
       letter-spacing: 0.05em;
-      margin-top: 2px;
+      margin-top: 3px;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
     }
 
     .header-center {
