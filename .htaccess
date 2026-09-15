@@ -8,8 +8,14 @@
 
 # Permisos y tipos MIME
 AddDefaultCharset UTF-8
-<Files "inscripciones.json">
-  <IfModule mod_headers.c>
-    Header set Access-Control-Allow-Origin "*"
-  </IfModule>
-</Files>
+
+# ─── ANTI-CACHE CONTROL GLOBALES (Evita la necesidad de Ctrl + Shift + R) ───
+<IfModule mod_headers.c>
+  Header set Access-Control-Allow-Origin "*"
+  
+  <FilesMatch "\.(html|htm|php|json)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0, s-maxage=0"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+</IfModule>

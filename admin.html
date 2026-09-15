@@ -4,6 +4,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <title>Administración — Cátedra San Jerónimo</title>
   <link rel="icon" href="imagenes/Logos/ESCUDO COLOR.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -888,13 +891,17 @@ Juan Carlos Pérez, 10293847, 984654321, Municipalidad San Jerónimo"></textarea
       function safeFetchApi(path, options) {
         options = options || {};
         var cleanPath = path.replace(/^\/api\//, '').replace(/^\//, '');
-        return fetch('api/' + cleanPath, options).then(function(res) {
+        var method = (options.method || 'GET').toUpperCase();
+        var cacheBust = method === 'GET' ? (cleanPath.indexOf('?') !== -1 ? '&' : '?') + '_t=' + Date.now() : '';
+        return fetch('api/' + cleanPath + cacheBust, options).then(function(res) {
           if (!res.ok && res.status === 404) {
-            return fetch('api.php?endpoint=' + cleanPath, options);
+            var phpClean = cleanPath.indexOf('?') !== -1 ? cleanPath.replace('?', '&') : cleanPath;
+            return fetch('api.php?endpoint=' + phpClean + (method === 'GET' ? '&_t=' + Date.now() : ''), options);
           }
           return res;
         }).catch(function() {
-          return fetch('api.php?endpoint=' + cleanPath, options);
+          var phpClean = cleanPath.indexOf('?') !== -1 ? cleanPath.replace('?', '&') : cleanPath;
+          return fetch('api.php?endpoint=' + phpClean + (method === 'GET' ? '&_t=' + Date.now() : ''), options);
         });
       }
 
