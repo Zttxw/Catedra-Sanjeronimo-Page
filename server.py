@@ -56,9 +56,10 @@ class CentralizedHandler(SimpleHTTPRequestHandler):
 
     def do_GET(self):
         parsed = urlparse(self.path)
-        path = parsed.path
+        path = parsed.path.lower()
+        query = parse_qs(parsed.query)
 
-        if path == '/api/inscripciones':
+        if 'inscripciones' in path or query.get('endpoint', [''])[0] == 'inscripciones':
             records = load_db()
             self.send_json(records)
             return
@@ -68,7 +69,9 @@ class CentralizedHandler(SimpleHTTPRequestHandler):
 
     def do_POST(self):
         parsed = urlparse(self.path)
-        path = parsed.path
+        path = parsed.path.lower()
+        query = parse_qs(parsed.query)
+        endpoint = query.get('endpoint', [''])[0]
         length = int(self.headers.get('Content-Length', 0))
         body_bytes = self.rfile.read(length) if length > 0 else b''
 
@@ -80,7 +83,7 @@ class CentralizedHandler(SimpleHTTPRequestHandler):
         db = load_db()
 
         # 1. Nueva Inscripción
-        if path == '/api/inscripciones':
+        if 'inscripciones' in path or endpoint == 'inscripciones':
             nombres = str(body_json.get('nombres', '')).strip().upper()
             dni = str(body_json.get('dni', '')).strip()
             celular = str(body_json.get('celular', '')).strip()
@@ -120,7 +123,7 @@ class CentralizedHandler(SimpleHTTPRequestHandler):
             return
 
         # 2. Actualizar Asistencia
-        elif path == '/api/asistencia':
+        elif 'asistencia' in path or endpoint == 'asistencia':
             codigo = str(body_json.get('codigo', '')).strip()
             field = str(body_json.get('field', '')).strip()
             val = body_json.get('val', None)
@@ -141,7 +144,7 @@ class CentralizedHandler(SimpleHTTPRequestHandler):
             return
 
         # 3. Importación Masiva
-        elif path == '/api/importar':
+        elif 'importar' in path or endpoint == 'importar':
             items = body_json.get('items', [])
             count = 0
             for item in items:
@@ -167,7 +170,7 @@ class CentralizedHandler(SimpleHTTPRequestHandler):
             return
 
         # 4. Eliminar Registro
-        elif path == '/api/eliminar':
+        elif 'eliminar' in path or endpoint == 'eliminar':
             codigo = str(body_json.get('codigo', '')).strip()
             db = [r for r in db if str(r.get('codigo', '')).strip() != codigo]
             save_db(db)

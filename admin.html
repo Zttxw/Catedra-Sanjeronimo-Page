@@ -885,8 +885,21 @@ Juan Carlos Pérez, 10293847, 984654321, Municipalidad San Jerónimo"></textarea
         return centralRecords;
       }
 
+      function safeFetchApi(path, options) {
+        options = options || {};
+        var cleanPath = path.replace(/^\/api\//, '').replace(/^\//, '');
+        return fetch('api/' + cleanPath, options).then(function(res) {
+          if (!res.ok && res.status === 404) {
+            return fetch('api.php?endpoint=' + cleanPath, options);
+          }
+          return res;
+        }).catch(function() {
+          return fetch('api.php?endpoint=' + cleanPath, options);
+        });
+      }
+
       function fetchCentralRecords(callback) {
-        fetch('/api/inscripciones')
+        safeFetchApi('inscripciones')
           .then(function (res) { return res.json(); })
           .then(function (data) {
             if (Array.isArray(data)) {
@@ -917,7 +930,7 @@ Juan Carlos Pérez, 10293847, 984654321, Municipalidad San Jerónimo"></textarea
           renderTable(document.getElementById('search-input').value);
           renderDoor(code);
 
-          fetch('/api/asistencia', {
+          safeFetchApi('asistencia', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ codigo: code, field: field, val: newVal })
@@ -1005,7 +1018,7 @@ Juan Carlos Pérez, 10293847, 984654321, Municipalidad San Jerónimo"></textarea
               saveRecords(update);
               renderTable(document.getElementById('search-input').value);
 
-              fetch('/api/eliminar', {
+              safeFetchApi('eliminar', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ codigo: code })
@@ -1167,7 +1180,7 @@ Juan Carlos Pérez, 10293847, 984654321, Municipalidad San Jerónimo"></textarea
           var dayName = activeScanDay === 'attDay1' ? 'LUNES 21' : 'MARTES 22';
           showScanAlert('✓ ASISTENCIA REGISTRADA (' + dayName + '): ' + found.nombres + ' (' + found.dni + ')', true);
 
-          fetch('/api/asistencia', {
+          safeFetchApi('asistencia', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ codigo: found.codigo, field: activeScanDay, val: true })
@@ -1333,7 +1346,7 @@ Juan Carlos Pérez, 10293847, 984654321, Municipalidad San Jerónimo"></textarea
           }
         });
 
-        fetch('/api/importar', {
+        safeFetchApi('importar', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ items: itemsToImport })
@@ -1357,7 +1370,7 @@ Juan Carlos Pérez, 10293847, 984654321, Municipalidad San Jerónimo"></textarea
           institucion: document.getElementById('indiv-institucion').value.trim().toUpperCase()
         };
 
-        fetch('/api/inscripciones', {
+        safeFetchApi('inscripciones', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(item)

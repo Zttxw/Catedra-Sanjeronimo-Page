@@ -3230,12 +3230,24 @@ Juan Carlos Pérez, 10293847, 984654321, I.E. San Jerónimo"></textarea>
         updateHeroExpand();
       }
 
-      /* ─── Form input filters & live clear ─── */
-      // Background Sync with Centralized Backend Server
+      /* ─── API Helper & Centralized Sync ─── */
+      function safeFetchApi(path, options) {
+        options = options || {};
+        var cleanPath = path.replace(/^\/api\//, '').replace(/^\//, '');
+        return fetch('api/' + cleanPath, options).then(function(res) {
+          if (!res.ok && res.status === 404) {
+            return fetch('api.php?endpoint=' + cleanPath, options);
+          }
+          return res;
+        }).catch(function() {
+          return fetch('api.php?endpoint=' + cleanPath, options);
+        });
+      }
+
       var cacheInscripciones = [];
 
       function syncCentralInscripciones() {
-        fetch('/api/inscripciones')
+        safeFetchApi('inscripciones')
           .then(function (res) { return res.json(); })
           .then(function (data) {
             if (Array.isArray(data)) {
@@ -3380,7 +3392,7 @@ Juan Carlos Pérez, 10293847, 984654321, I.E. San Jerónimo"></textarea>
           institucion: institucionEl.value.trim().toUpperCase()
         };
 
-        fetch('/api/inscripciones', {
+        safeFetchApi('inscripciones', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
