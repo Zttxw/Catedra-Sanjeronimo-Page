@@ -464,12 +464,12 @@
       }
     }
 
-    /* ─── ULTRA MINIMALIST WHITE CARD COUNTDOWN ─── */
+    /* ─── PURE FLOATING ULTRA-MINIMALIST COUNTDOWN ─── */
     .countdown-strip {
       background: transparent;
       border: none;
-      padding: 1.2rem 0 0.4rem;
-      margin-top: 0.6rem;
+      padding: 1.4rem 0 0.4rem;
+      margin-top: 0.5rem;
     }
 
     .countdown-inner {
@@ -484,7 +484,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: clamp(0.9rem, 3vw, 2.4rem);
+      gap: clamp(1rem, 3.5vw, 3rem);
     }
 
     .cd-unit {
@@ -497,53 +497,53 @@
     .cd-unit:not(:last-child)::after {
       content: ':';
       position: absolute;
-      right: clamp(-0.65rem, -1.8vw, -1.4rem);
-      top: 0.1rem;
-      font-size: clamp(2rem, 4vw, 2.8rem);
-      color: #F0C84F;
-      font-weight: 700;
+      right: clamp(-0.7rem, -2vw, -1.7rem);
+      top: 0.15rem;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      color: rgba(255, 255, 255, 0.45);
+      font-weight: 400;
       line-height: 1;
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
     }
 
     .flip-card-box {
-      position: relative;
-      min-width: clamp(60px, 13vw, 84px);
-      height: clamp(64px, 14vw, 88px);
-      padding: 0.3rem 0.6rem;
-      background: #FFFFFF;
-      border: 1px solid rgba(255, 255, 255, 0.9);
-      border-radius: 14px;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      backdrop-filter: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      min-width: auto !important;
+      height: auto !important;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35), 0 2px 6px rgba(0, 0, 0, 0.15);
-      transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease;
-    }
-
-    .flip-card-box:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
     }
 
     .flip-card-box b {
-      font-family: 'Outfit', 'Cinzel', sans-serif;
-      font-size: clamp(2.3rem, 5vw, 3.5rem);
-      font-weight: 800;
-      color: #0E2938;
+      font-family: 'Outfit', 'Inter', sans-serif;
+      font-size: clamp(2.8rem, 6.5vw, 4.5rem);
+      font-weight: 900;
+      color: #FFFFFF;
       line-height: 1;
-      letter-spacing: -0.01em;
-      text-shadow: none;
+      letter-spacing: -0.02em;
+      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
     }
 
     .cd-unit span {
-      font-size: 0.7rem;
-      font-weight: 800;
+      display: inline-block;
+      background: #F0C84F;
+      color: #0E2938;
+      font-family: var(--font-body), 'Inter', sans-serif;
+      font-size: clamp(0.65rem, 1.4vw, 0.76rem);
+      font-weight: 900;
       text-transform: uppercase;
-      color: #F0C84F;
-      letter-spacing: 0.2em;
-      margin-top: 0.6rem;
-      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+      letter-spacing: 0.14em;
+      padding: 0.35rem 1rem;
+      border-radius: 3px;
+      margin-top: 0.75rem;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+      text-shadow: none;
     }
 
     /* ─── FULL-BLEED & FRAMED IMAGE SECTIONS ─── */
