@@ -173,19 +173,19 @@
 
     .header-pill-btn {
       display: inline-flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 0.34rem 0.95rem;
+      padding: 0.5rem 1.35rem;
       border: 1px solid rgba(255, 255, 255, 0.4);
       background: linear-gradient(135deg, #2CA792 0%, #1F806F 100%);
       color: #FFFFFF;
       border-radius: 999px;
-      font-size: 0.76rem;
+      font-size: 0.85rem;
       font-weight: 800;
-      line-height: 1.12;
+      line-height: 1;
       text-align: center;
       letter-spacing: 0.03em;
+      white-space: nowrap;
       text-decoration: none;
       transition: all 0.25s;
       box-shadow: 0 4px 16px rgba(44, 167, 146, 0.45);
@@ -207,20 +207,45 @@
       margin-top: 2px;
     }
 
-    .header-link-text {
-      color: #5A7585;
-      font-size: 0.78rem;
-      font-weight: 500;
-      display: flex;
+    /* Date Badge below Hero Countdown */
+    .hero-date-badge {
+      display: inline-flex;
+      flex-direction: column;
       align-items: center;
-      gap: 0.35rem;
-      opacity: 0.85;
-      transition: all 0.25s;
+      margin-top: 1.2rem;
+      padding: 0.55rem 1.5rem;
+      background: rgba(14, 41, 56, 0.7);
+      border: 1px solid rgba(52, 132, 165, 0.4);
+      border-radius: 999px;
+      color: #FFFFFF;
+      text-decoration: none;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+      transition: all 0.25s ease;
     }
 
-    .header-link-text:hover {
-      color: #3484A5;
-      opacity: 1;
+    .hero-date-badge:hover {
+      background: rgba(44, 167, 146, 0.85);
+      border-color: #2CA792;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(44, 167, 146, 0.4);
+    }
+
+    .hero-date-badge span:first-child {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: #F0C84F;
+      text-transform: uppercase;
+    }
+
+    .hero-date-sub {
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.9);
+      letter-spacing: 0.05em;
+      margin-top: 2px;
     }
 
     .header-center {
@@ -2188,12 +2213,13 @@
       }
 
       .header-pill-btn {
-        padding: 0.2rem 0.5rem;
-        font-size: 0.58rem;
-        font-weight: 700;
-        line-height: 1.1;
+        padding: 0.35rem 0.75rem;
+        font-size: 0.68rem;
+        font-weight: 800;
+        line-height: 1;
         text-align: center;
         border-radius: 999px;
+        white-space: nowrap;
       }
 
       .subtext-free {
@@ -2307,10 +2333,9 @@
     <div class="header-inner">
       <div class="header-left">
         <div class="header-cta-group">
-          <a href="#inscripcion" class="header-pill-btn">Inscríbete<br>aquí</a>
+          <a href="#inscripcion" class="header-pill-btn">Inscríbete aquí</a>
           <span class="subtext-free">Entrada libre</span>
         </div>
-        <a href="#evento" class="header-link-text">21 y 22 de setiembre <span>→</span></a>
       </div>
       <div class="header-center">
         <a href="#inicio">
@@ -2356,6 +2381,12 @@
           </div>
         </div>
       </div>
+
+      <!-- Fecha e Información debajo del Contador -->
+      <a href="#evento" class="hero-date-badge reveal">
+        <span>21 y 22 de setiembre</span>
+        <span class="hero-date-sub">Auditorio Municipal de San Jerónimo</span>
+      </a>
     </div>
 
     <div class="hero-image-wrapper">
