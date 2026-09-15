@@ -2889,7 +2889,7 @@
         <div class="field" id="field-admin-pass" style="margin-bottom:1rem;">
           <input type="password" id="admin-password" required placeholder="Contraseña de admin"
             style="text-align:center;">
-          <span class="error-msg" id="err-admin-pass">Contraseña incorrecta (prueba: admin2026).</span>
+          <span class="error-msg" id="err-admin-pass">Contraseña de administración incorrecta.</span>
         </div>
         <button type="submit" class="btn btn-solid" style="width:100%;">Ingresar al Panel</button>
       </form>
@@ -3669,7 +3669,7 @@ Juan Carlos Pérez, 10293847, 984654321, I.E. San Jerónimo"></textarea>
         formAdminLogin.addEventListener('submit', function (e) {
           e.preventDefault();
           var pass = document.getElementById('admin-password').value;
-          if (pass === 'admin2026' || pass === 'admin123' || pass === 'admin') {
+          if (pass === '+Muni2026*') {
             document.getElementById('field-admin-pass').classList.remove('invalid');
             closeAdminModals();
             if (modalAdminDash) modalAdminDash.classList.add('open');
