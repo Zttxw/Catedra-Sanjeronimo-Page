@@ -464,12 +464,12 @@
       }
     }
 
-    /* ─── INSTITUTIONAL TEAL FLIP-CLOCK COUNTDOWN STYLING ─── */
+    /* ─── VIBRANT MINIMALIST FLIP-CLOCK COUNTDOWN ─── */
     .countdown-strip {
       background: transparent;
       border: none;
-      padding: 1.2rem 0 0.4rem;
-      margin-top: 0.5rem;
+      padding: 1.1rem 0 0.3rem;
+      margin-top: 0.4rem;
     }
 
     .countdown-inner {
@@ -484,7 +484,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: clamp(0.7rem, 2.5vw, 1.5rem);
+      gap: clamp(0.7rem, 2.8vw, 1.6rem);
     }
 
     .cd-unit {
@@ -496,58 +496,37 @@
 
     .flip-card-box {
       position: relative;
-      width: clamp(62px, 14vw, 88px);
-      height: clamp(66px, 15vw, 92px);
-      background: linear-gradient(180deg, #2CA792 0%, #208776 100%);
-      border-radius: 14px;
+      width: clamp(62px, 14vw, 86px);
+      height: clamp(66px, 15vw, 90px);
+      background: linear-gradient(145deg, rgba(44, 167, 146, 0.95), rgba(24, 102, 89, 0.98));
+      border: 1px solid rgba(121, 242, 220, 0.35);
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+      box-shadow: 0 10px 28px rgba(44, 167, 146, 0.28), 0 4px 14px rgba(0, 0, 0, 0.35);
       overflow: hidden;
+      backdrop-filter: blur(8px);
+      transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease;
     }
 
-    /* Slit Line Crease in middle */
+    .flip-card-box:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 34px rgba(44, 167, 146, 0.4), 0 6px 18px rgba(0, 0, 0, 0.45);
+    }
+
+    /* Subtle Hairline Slit Crease in middle */
     .flip-card-box::before {
       content: '';
       position: absolute;
       top: 50%;
       left: 0;
       right: 0;
-      height: 2px;
+      height: 1px;
       background: rgba(14, 41, 56, 0.45);
       box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
       z-index: 4;
       transform: translateY(-50%);
-    }
-
-    /* Left Side Notch */
-    .flip-card-box::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 0;
-      width: 4px;
-      height: 8px;
-      background: #0E2938;
-      border-radius: 0 4px 4px 0;
-      transform: translateY(-50%);
-      z-index: 5;
-      box-shadow: inset 1px 0 2px rgba(0,0,0,0.5);
-    }
-
-    /* Right Side Notch */
-    .flip-card-notch-right {
-      position: absolute;
-      top: 50%;
-      right: 0;
-      width: 4px;
-      height: 8px;
-      background: #0E2938;
-      border-radius: 4px 0 0 4px;
-      transform: translateY(-50%);
-      z-index: 5;
-      box-shadow: inset -1px 0 2px rgba(0,0,0,0.5);
     }
 
     .flip-card-box b {
@@ -557,7 +536,7 @@
       color: #FFFFFF;
       line-height: 1;
       letter-spacing: -0.02em;
-      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
       position: relative;
       z-index: 2;
     }
@@ -566,10 +545,10 @@
       font-size: 0.68rem;
       font-weight: 800;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.75);
-      letter-spacing: 0.16em;
-      margin-top: 0.6rem;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+      color: #F0C84F;
+      letter-spacing: 0.18em;
+      margin-top: 0.55rem;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
     }
 
     /* ─── FULL-BLEED & FRAMED IMAGE SECTIONS ─── */
@@ -2369,13 +2348,12 @@
         Cátedra <span style="white-space: nowrap;">San Jerónimo</span>
       </h1>
 
-      <!-- ═══ FLIP-CLOCK COUNTDOWN (Directly below Title) ═══ -->
+      <!-- ═══ VIBRANT MINIMALIST COUNTDOWN ═══ -->
       <div class="countdown-strip" id="cuenta">
         <div class="countdown-inner">
           <div class="cd-units">
             <div class="cd-unit">
               <div class="flip-card-box">
-                <div class="flip-card-notch-right"></div>
                 <b id="cd-dias">00</b>
               </div>
               <span>Días</span>
@@ -2383,7 +2361,6 @@
 
             <div class="cd-unit">
               <div class="flip-card-box">
-                <div class="flip-card-notch-right"></div>
                 <b id="cd-horas">00</b>
               </div>
               <span>Horas</span>
@@ -2391,7 +2368,6 @@
 
             <div class="cd-unit">
               <div class="flip-card-box">
-                <div class="flip-card-notch-right"></div>
                 <b id="cd-min">00</b>
               </div>
               <span>Minutos</span>
@@ -2399,7 +2375,6 @@
 
             <div class="cd-unit">
               <div class="flip-card-box">
-                <div class="flip-card-notch-right"></div>
                 <b id="cd-seg">00</b>
               </div>
               <span>Segundos</span>
