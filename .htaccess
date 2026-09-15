@@ -1,0 +1,15 @@
+# ─── HTACCESS CONFIGURATION FOR CPANEL APACHE ───
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^api/(.*)$ api.php?endpoint=$1 [QSA,L]
+</IfModule>
+
+# Permisos y tipos MIME
+AddDefaultCharset UTF-8
+<Files "inscripciones.json">
+  <IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+  </IfModule>
+</Files>
