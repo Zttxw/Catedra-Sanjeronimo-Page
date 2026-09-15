@@ -464,86 +464,112 @@
       }
     }
 
-    /* ─── ULTRA MINIMALIST COUNTDOWN STRIP ─── */
+    /* ─── INSTITUTIONAL TEAL FLIP-CLOCK COUNTDOWN STYLING ─── */
     .countdown-strip {
       background: transparent;
       border: none;
-      padding: 0.5rem 0 0.2rem;
-      margin-top: 0.4rem;
-      color: #fff;
+      padding: 1.2rem 0 0.4rem;
+      margin-top: 0.5rem;
     }
 
     .countdown-inner {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 clamp(1.5rem, 4vw, 3rem);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: clamp(1.5rem, 4vw, 4rem);
-      flex-wrap: wrap;
-    }
-
-    .cd-label {
-      font-family: var(--font-body);
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--c-gold);
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .cd-label::before {
-      content: '';
-      width: 18px;
-      height: 2px;
-      background: var(--c-gold);
     }
 
     .cd-units {
       display: flex;
       align-items: center;
-      gap: clamp(1rem, 3vw, 2.5rem);
+      justify-content: center;
+      gap: clamp(0.7rem, 2.5vw, 1.5rem);
     }
 
     .cd-unit {
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 0 0.8rem;
       position: relative;
     }
 
-    .cd-unit:not(:last-child)::after {
-      content: ':';
-      position: absolute;
-      right: -0.9rem;
-      top: 0.1rem;
-      font-size: 1.8rem;
-      color: var(--c-gold);
-      font-weight: 300;
-      opacity: 0.7;
+    .flip-card-box {
+      position: relative;
+      width: clamp(62px, 14vw, 88px);
+      height: clamp(66px, 15vw, 92px);
+      background: linear-gradient(180deg, #2CA792 0%, #208776 100%);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+      overflow: hidden;
     }
 
-    .cd-unit b {
-      font-family: var(--font-cultural), 'Cinzel', serif;
-      font-size: clamp(2rem, 4vw, 3.2rem);
+    /* Slit Line Crease in middle */
+    .flip-card-box::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: rgba(14, 41, 56, 0.45);
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+      z-index: 4;
+      transform: translateY(-50%);
+    }
+
+    /* Left Side Notch */
+    .flip-card-box::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 4px;
+      height: 8px;
+      background: #0E2938;
+      border-radius: 0 4px 4px 0;
+      transform: translateY(-50%);
+      z-index: 5;
+      box-shadow: inset 1px 0 2px rgba(0,0,0,0.5);
+    }
+
+    /* Right Side Notch */
+    .flip-card-notch-right {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      width: 4px;
+      height: 8px;
+      background: #0E2938;
+      border-radius: 4px 0 0 4px;
+      transform: translateY(-50%);
+      z-index: 5;
+      box-shadow: inset -1px 0 2px rgba(0,0,0,0.5);
+    }
+
+    .flip-card-box b {
+      font-family: var(--font-body), 'Inter', sans-serif;
+      font-size: clamp(2.1rem, 4.8vw, 3.4rem);
+      font-weight: 800;
       color: #FFFFFF;
       line-height: 1;
-      font-weight: 700;
-      letter-spacing: 0.04em;
+      letter-spacing: -0.02em;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+      position: relative;
+      z-index: 2;
     }
 
     .cd-unit span {
       font-size: 0.68rem;
-      font-weight: 600;
+      font-weight: 800;
       text-transform: uppercase;
-      color: var(--c-gold);
-      letter-spacing: 0.18em;
-      margin-top: 0.35rem;
+      color: rgba(255, 255, 255, 0.75);
+      letter-spacing: 0.16em;
+      margin-top: 0.6rem;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
     }
 
     /* ─── FULL-BLEED & FRAMED IMAGE SECTIONS ─── */
@@ -2343,14 +2369,41 @@
         Cátedra <span style="white-space: nowrap;">San Jerónimo</span>
       </h1>
 
-      <!-- ═══ COUNTDOWN (Directly below Title) ═══ -->
+      <!-- ═══ FLIP-CLOCK COUNTDOWN (Directly below Title) ═══ -->
       <div class="countdown-strip" id="cuenta">
         <div class="countdown-inner">
           <div class="cd-units">
-            <div class="cd-unit"><b id="cd-dias">–</b><span>Días</span></div>
-            <div class="cd-unit"><b id="cd-horas">–</b><span>Horas</span></div>
-            <div class="cd-unit"><b id="cd-min">–</b><span>Min</span></div>
-            <div class="cd-unit"><b id="cd-seg">–</b><span>Seg</span></div>
+            <div class="cd-unit">
+              <div class="flip-card-box">
+                <div class="flip-card-notch-right"></div>
+                <b id="cd-dias">00</b>
+              </div>
+              <span>Días</span>
+            </div>
+
+            <div class="cd-unit">
+              <div class="flip-card-box">
+                <div class="flip-card-notch-right"></div>
+                <b id="cd-horas">00</b>
+              </div>
+              <span>Horas</span>
+            </div>
+
+            <div class="cd-unit">
+              <div class="flip-card-box">
+                <div class="flip-card-notch-right"></div>
+                <b id="cd-min">00</b>
+              </div>
+              <span>Minutos</span>
+            </div>
+
+            <div class="cd-unit">
+              <div class="flip-card-box">
+                <div class="flip-card-notch-right"></div>
+                <b id="cd-seg">00</b>
+              </div>
+              <span>Segundos</span>
+            </div>
           </div>
         </div>
       </div>
@@ -3142,9 +3195,15 @@ Juan Carlos Pérez, 10293847, 984654321, I.E. San Jerónimo"></textarea>
         a.addEventListener('click', function () { navMenu.classList.remove('open'); btnMobile.setAttribute('aria-expanded', 'false'); });
       });
 
-      /* ─── Countdown ─── */
+      /* ─── Countdown (Flip-Clock Style) ─── */
       var target = new Date('2026-09-21T15:00:00-05:00').getTime();
-      function setVal(id, v) { document.getElementById(id).textContent = v; }
+      function setVal(id, v) {
+        var el = document.getElementById(id);
+        if (el) {
+          var valStr = String(Math.max(0, v)).padStart(2, '0');
+          if (el.textContent !== valStr) el.textContent = valStr;
+        }
+      }
       function updateCountdown() {
         var d = target - Date.now();
         if (d <= 0) {
