@@ -4,6 +4,9 @@ Thumbs.db
 *.tmp
 *.log
 
+# Python
+__pycache__/
+
 # IDE & Editors
 .vscode/
 .idea/

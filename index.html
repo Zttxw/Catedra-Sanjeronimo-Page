@@ -7,11 +7,11 @@
   <title>Cátedra San Jerónimo — Primer Encuentro de Identidad Cultural</title>
   <meta name="description" content="Primer Encuentro de Identidad Cultural " Cátedra San Jerónimo". 21 y 22 de setiembre
     de 2026. Auditorio Municipal de San Jerónimo, Cusco. Entrada libre." />
-  <link rel="icon" href="imagenes/ESCUDO COLOR.png" type="image/png" />
+  <link rel="icon" href="imagenes/Logos/ESCUDO COLOR.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Alex+Brush&family=Dancing+Script:wght@600;700&family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600&family=Inter:wght@300;400;500;600;700&display=block"
     rel="stylesheet" />
   <script type="application/ld+json">
   {
@@ -36,28 +36,37 @@
   </script>
   <style>
     /* ═══════════════════════════════════════════
-       DESIGN SYSTEM — Nordiska-inspired Museum Theme
-       Dominant: #3484A5 (Deep Cultural Blue)
+       PALETA INSTITUCIONAL OFICIAL
+       - Azul:     #3484A5 (RGB 52, 132, 165 | Pantone 6797 C)
+       - Turquesa: #2CA792 (RGB 44, 167, 146 | Pantone 7473 C)
+       - Dorado:   #F0C84F (RGB 240, 200, 79 | Pantone 141 C)
+       - Blanco:   #FFFFFF
     ═══════════════════════════════════════════ */
     :root {
-      --c-primary: #3484A5;
-      --c-primary-deep: #1a5a78;
-      --c-primary-darker: #0e3a50;
-      --c-primary-darkest: #091f2d;
-      --c-primary-light: #4a9fc4;
-      --c-primary-surface: #e8f3f8;
-
+      --c-blue: #3484A5;
       --c-teal: #2CA792;
-      --c-teal-deep: #1e7e6d;
       --c-gold: #F0C84F;
-      --c-gold-warm: #e6b530;
+      --c-white: #FFFFFF;
+      --c-dark-blue: #0F3830;
 
-      --c-cream: #f7f4ef;
-      --c-warm-white: #faf8f5;
-      --c-text: #1a2832;
-      --c-text-muted: #5a7080;
-      --c-border: #d0dfe8;
+      --c-primary: var(--c-blue);
+      --c-primary-deep: var(--c-blue);
+      --c-primary-darker: var(--c-blue);
+      --c-primary-darkest: var(--c-blue);
+      --c-primary-light: var(--c-teal);
+      --c-primary-surface: rgba(52, 132, 165, 0.05);
 
+      --c-teal-deep: var(--c-teal);
+      --c-gold-warm: var(--c-gold);
+
+      --c-cream: #FFFFFF;
+      --c-warm-white: #FFFFFF;
+      --c-text: var(--c-blue);
+      --c-text-muted: rgba(52, 132, 165, 0.82);
+      --c-border: rgba(52, 132, 165, 0.22);
+
+      --font-signature: 'Great Vibes', 'Alex Brush', 'Dancing Script', cursive;
+      --font-cultural: 'Cinzel', 'Playfair Display', Georgia, serif;
       --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
       --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 
@@ -93,6 +102,7 @@
       max-width: 100%;
       height: auto;
       display: block;
+      border-radius: 0 !important;
     }
 
     a {
@@ -123,314 +133,220 @@
       transform: none;
     }
 
-    /* ─── HEADER (MDSJ Logo Minimal Header) ─── */
+    /* ─── NORDISKA MOLDE HEADER & HERO ─── */
     .site-header {
-      position: fixed;
+      background: #FFFFFF;
+      padding: 0.9rem clamp(1rem, 3vw, 2.5rem);
+      position: sticky;
       top: 0;
-      left: 0;
-      right: 0;
       z-index: 100;
-      padding: 0 clamp(1rem, 3vw, 2.5rem);
-      transition: background 0.4s, backdrop-filter 0.4s;
-      background: linear-gradient(180deg, rgba(9, 31, 45, 0.95) 0%, rgba(9, 31, 45, 0) 100%);
+      border-bottom: 1px solid rgba(52, 132, 165, 0.15);
+      box-shadow: 0 4px 24px rgba(52, 132, 165, 0.08);
     }
-    .site-header.scrolled {
-      background: rgba(9, 31, 45, 0.96);
-      backdrop-filter: blur(16px);
-      box-shadow: 0 4px 30px rgba(0,0,0,0.4);
-    }
+
     .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
       max-width: 1400px;
       margin: 0 auto;
-      height: 76px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
     }
-    .header-brand-left {
+
+    .header-left {
       display: flex;
       align-items: center;
-      gap: 0.85rem;
-      color: #fff;
+      gap: 1.2rem;
     }
-    .header-brand-left img {
-      height: 40px;
-      width: auto;
+
+    .header-cta-group {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
     }
-    .header-brand-divider {
-      color: rgba(255,255,255,0.3);
-      font-weight: 300;
-      font-size: 1.2rem;
+
+    .header-pill-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.42rem 1.3rem;
+      border: 1.5px solid var(--c-blue);
+      background: var(--c-blue);
+      color: #FFFFFF;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      transition: all 0.25s;
+      box-shadow: 0 4px 14px rgba(52, 132, 165, 0.25);
     }
-    .header-brand-title {
-      font-family: var(--font-display);
-      font-size: 0.92rem;
+
+    .header-pill-btn:hover {
+      background: var(--c-teal);
+      border-color: var(--c-teal);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(44, 167, 146, 0.3);
+    }
+
+    .subtext-free {
+      font-size: 0.65rem;
       font-weight: 800;
-      letter-spacing: 0.08em;
+      color: #D4A017;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--c-gold);
+      margin-top: 1px;
     }
+
+    .header-link-text {
+      color: var(--c-blue);
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: color 0.25s;
+    }
+
+    .header-link-text:hover {
+      color: var(--c-teal);
+    }
+
+    .header-center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header-logo-center {
+      height: 68px;
+      width: auto;
+      display: block;
+      transition: transform 0.3s;
+    }
+
+    .header-logo-center:hover {
+      transform: scale(1.04);
+    }
+
     .header-right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 1.2rem;
+      color: var(--c-blue);
+    }
+
+    .header-icon-btn {
+      background: none;
+      border: none;
+      color: var(--c-blue);
+      cursor: pointer;
+      padding: 0.4rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .header-icon-btn:hover {
+      background: rgba(52, 132, 165, 0.08);
+      color: var(--c-teal);
+    }
+
+    .header-nav {
       display: flex;
       align-items: center;
       gap: 1.5rem;
     }
-    .header-nav { display: flex; align-items: center; gap: 1.8rem; }
+
     .header-nav a {
-      font-size: 0.86rem;
-      font-weight: 500;
-      color: rgba(255,255,255,0.85);
-      letter-spacing: 0.03em;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--c-blue);
       transition: color 0.25s;
     }
-    .header-nav a:hover { color: var(--c-gold); }
-    .nav-cta {
-      padding: 0.45rem 1.2rem;
-      border: 1.5px solid var(--c-gold);
-      border-radius: 999px;
-      color: var(--c-gold) !important;
-      font-weight: 600;
-      transition: all 0.3s !important;
-    }
-    .nav-cta:hover {
-      background: var(--c-gold) !important;
-      color: var(--c-primary-darkest) !important;
+
+    .header-nav a:hover {
+      color: var(--c-teal);
     }
 
-    #btn-mobile-menu {
-      display: none;
+    /* NORDISKA HERO BANNER */
+    .hero-nordiska-container {
+      background: var(--c-primary);
+      color: #fff;
+      padding-top: clamp(2rem, 4vw, 3.5rem);
+      padding-bottom: clamp(2.5rem, 5vw, 4rem);
+      text-align: center;
+    }
+
+    .hero-nordiska-banner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 4vw, 3rem) 0.6rem;
+    }
+
+    .hero-title-tag {
+      display: block;
+      font-family: var(--font-signature);
+      font-size: clamp(1.6rem, 3.8vw, 3.2rem);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      line-height: 1.15;
+      text-transform: none;
+      color: var(--c-gold);
+      margin-bottom: 0.2rem;
+      padding: 0;
       background: none;
       border: none;
-      color: #fff;
-      cursor: pointer;
-      padding: 0.3rem;
+      box-shadow: none;
+      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
     }
 
-    /* ─── HERO — 50/50 Split Layout ─── */
-    .hero-split-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 100vh;
-      background: var(--c-primary-darkest);
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* LEFT 50% — Full Height Image with Overlaid Text */
-    .hero-split-left {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      overflow: hidden;
-    }
-    .hero-split-left img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      transition: transform 10s ease-out;
-    }
-    .hero-split-left:hover img {
-      transform: scale(1.05);
-    }
-    .hero-split-left::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        180deg,
-        rgba(9, 31, 45, 0.2) 0%,
-        rgba(9, 31, 45, 0.4) 40%,
-        rgba(9, 31, 45, 0.95) 88%,
-        var(--c-primary-darkest) 100%
-      );
-    }
-
-    .hero-left-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 2;
-      padding: clamp(2rem, 5vw, 4.5rem);
-    }
-    .hero-left-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.35rem 0.9rem;
-      border-radius: 999px;
-      background: rgba(240, 200, 79, 0.15);
-      border: 1px solid var(--c-gold);
-      color: var(--c-gold);
-      font-size: 0.72rem;
+    .hero-giant-title {
+      font-family: var(--font-cultural);
+      font-size: clamp(2.2rem, 5.8vw, 4.8rem);
       font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-    .hero-left-title {
-      font-family: var(--font-display);
-      font-weight: 900;
-      font-size: clamp(2.4rem, 4.5vw, 4.5rem);
-      line-height: 0.95;
-      color: #fff;
-      text-transform: uppercase;
-      letter-spacing: -0.01em;
-      text-shadow: 0 4px 20px rgba(0,0,0,0.7);
-      margin-bottom: 0.8rem;
-    }
-    .hero-left-title span {
-      display: block;
-      color: var(--c-gold);
-      font-style: italic;
-      font-weight: 700;
-    }
-    .hero-left-subtitle {
-      font-size: 0.92rem;
-      color: rgba(255,255,255,0.8);
-      font-weight: 400;
-      letter-spacing: 0.05em;
-    }
-
-    /* RIGHT 50% — Information & MDSJ Logo */
-    .hero-split-right {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: clamp(2rem, 5vw, 5rem);
-      padding-top: 100px;
-      background: #091F2D;
-      z-index: 2;
-      border-left: 1px solid rgba(255,255,255,0.06);
-    }
-    .hero-right-content {
-      max-width: 540px;
-      width: 100%;
-    }
-
-    .hero-mdsj-logo-wrap {
-      margin-bottom: 2rem;
-    }
-    .hero-mdsj-logo-wrap img {
-      height: 48px;
-      width: auto;
-      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
-    }
-
-    .hero-right-overline {
-      font-size: 0.76rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--c-gold);
-      margin-bottom: 0.6rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-    .hero-right-overline::before {
-      content: '';
-      width: 24px;
-      height: 1.5px;
-      background: var(--c-gold);
-    }
-
-    .hero-right-heading {
-      font-family: var(--font-display);
-      font-size: clamp(1.8rem, 3.2vw, 2.8rem);
-      font-weight: 800;
-      color: #fff;
+      letter-spacing: 0.03em;
       line-height: 1.1;
-      margin-bottom: 1.2rem;
-    }
-    .hero-right-lead {
-      font-size: 1.02rem;
-      color: rgba(255,255,255,0.75);
-      line-height: 1.7;
-      font-weight: 300;
-      margin-bottom: 2rem;
+      color: #FFFFFF;
+      margin: 0 auto;
+      text-align: center;
+      text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
     }
 
-    .hero-info-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.9rem;
-      margin-bottom: 2.2rem;
-    }
-    .hero-info-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 10px;
-      padding: 0.9rem 1.1rem;
-      transition: background 0.3s, border-color 0.3s;
-    }
-    .hero-info-card:hover {
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(240, 200, 79, 0.3);
-    }
-    .hero-info-card-label {
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--c-gold);
-      margin-bottom: 0.3rem;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-    .hero-info-card-label svg {
-      color: var(--c-gold);
-    }
-    .hero-info-card-val {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: #fff;
+    .hero-image-wrapper {
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 0;
+      overflow: hidden;
+      perspective: 1200px;
     }
 
-    .hero-right-actions {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
+    .hero-image-wrapper img {
+      width: 100%;
+      height: 90vh;
+      max-height: 90vh;
+      object-fit: cover;
+      object-position: center 25%;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+      transform: scale(0.84) translateY(0);
+      clip-path: inset(7% 5.5% 7% 5.5% round 24px);
+      filter: brightness(0.85) contrast(1.08) saturate(1.05);
+      transition: transform 0.05s linear, clip-path 0.05s linear, filter 0.05s linear;
+      will-change: transform, clip-path, filter;
     }
 
-    @media (max-width: 960px) {
-      .hero-split-container {
-        grid-template-columns: 1fr;
-      }
-      .hero-split-left {
-        height: 55vh;
-      }
-      .hero-split-right {
-        padding-top: 3rem;
-        padding-bottom: 4rem;
-      }
-    }
-
-    /* BOTTOM CAPTION */
-    .hero-bottom-caption {
-      animation: heroFadeIn 1s 0.6s var(--ease-out) forwards;
-    }
-    .hero-bottom-title {
-      font-family: var(--font-display);
-      font-size: clamp(1.1rem, 2.4vw, 1.7rem);
-      font-weight: 700;
-      text-transform: uppercase;
-      color: #FF6B4A;
-      letter-spacing: 0.1em;
-      line-height: 1.2;
-      text-shadow: 0 3px 12px rgba(0,0,0,0.9);
-      margin-bottom: 0.3rem;
-    }
     .hero-bottom-sub {
       font-size: 0.78rem;
       font-weight: 600;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.8);
-      text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+      color: rgba(255, 255, 255, 0.8);
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
     }
 
     @keyframes heroFadeIn {
@@ -533,63 +449,89 @@
       }
     }
 
-    /* ─── COUNTDOWN STRIP ─── */
+    /* ─── ULTRA MINIMALIST COUNTDOWN STRIP ─── */
     .countdown-strip {
-      background: var(--c-primary-darkest);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 1.2rem 0;
+      background: transparent;
+      border: none;
+      padding: 0.5rem 0 0.2rem;
+      margin-top: 0.4rem;
+      color: #fff;
     }
 
     .countdown-inner {
-      max-width: 1400px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 clamp(1.5rem, 4vw, 3rem);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 2rem;
+      gap: clamp(1.5rem, 4vw, 4rem);
       flex-wrap: wrap;
     }
 
     .cd-label {
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--c-gold);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .cd-label::before {
+      content: '';
+      width: 18px;
+      height: 2px;
+      background: var(--c-gold);
     }
 
     .cd-units {
       display: flex;
-      gap: 0.6rem;
+      align-items: center;
+      gap: clamp(1rem, 3vw, 2.5rem);
     }
 
     .cd-unit {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 8px;
-      min-width: 64px;
-      padding: 0.5rem 0.6rem;
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 0.8rem;
+      position: relative;
+    }
+
+    .cd-unit:not(:last-child)::after {
+      content: ':';
+      position: absolute;
+      right: -0.9rem;
+      top: 0.1rem;
+      font-size: 1.8rem;
+      color: var(--c-gold);
+      font-weight: 300;
+      opacity: 0.7;
     }
 
     .cd-unit b {
-      font-family: var(--font-display);
-      font-size: 1.4rem;
-      color: #fff;
-      display: block;
-      line-height: 1.1;
+      font-family: var(--font-cultural), 'Cinzel', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      color: #FFFFFF;
+      line-height: 1;
       font-weight: 700;
+      letter-spacing: 0.04em;
     }
 
     .cd-unit span {
-      font-size: 0.62rem;
+      font-size: 0.68rem;
+      font-weight: 600;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.6);
-      letter-spacing: 0.06em;
+      color: var(--c-gold);
+      letter-spacing: 0.18em;
+      margin-top: 0.35rem;
     }
 
-    /* ─── FULL-BLEED IMAGE SECTION ─── */
+    /* ─── FULL-BLEED & FRAMED IMAGE SECTIONS ─── */
     .fullbleed-img {
       position: relative;
       width: 100%;
@@ -612,9 +554,50 @@
       left: 0;
       right: 0;
       padding: 3rem clamp(1.5rem, 4vw, 3rem) 1.5rem;
-      background: linear-gradient(transparent, rgba(9, 31, 45, 0.85));
+      background: linear-gradient(transparent, rgba(52, 132, 165, 0.85));
       color: rgba(255, 255, 255, 0.7);
       font-size: 0.82rem;
+    }
+
+    .framed-banner-container {
+      max-width: 1300px;
+      margin: 2.5rem auto;
+      padding: 0 clamp(1.5rem, 4vw, 3rem);
+    }
+
+    .framed-banner-img {
+      position: relative;
+      border-radius: 0;
+      overflow: hidden;
+      box-shadow: 0 16px 44px rgba(52, 132, 165, 0.18);
+      border: 1px solid rgba(52, 132, 165, 0.15);
+    }
+
+    .framed-banner-img img {
+      width: 100%;
+      height: 460px;
+      max-height: 52vh;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+      transition: transform 0.6s var(--ease-out);
+    }
+
+    .framed-banner-img:hover img {
+      transform: scale(1.03);
+    }
+
+    .framed-banner-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2.5rem 2rem 1.2rem;
+      background: linear-gradient(transparent, rgba(15, 56, 48, 0.88));
+      color: rgba(255, 255, 255, 0.95);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
     }
 
     /* ─── WRAPPER ─── */
@@ -736,20 +719,23 @@
       color: #fff;
     }
 
-    /* ─── PULL QUOTE (Nordiska-style) ─── */
+    /* ─── PULL QUOTE (Nordiska Clean Typographic Style) ─── */
     .pullquote {
-      padding: clamp(3rem, 6vw, 6rem) 0;
+      background-color: #3484A5;
+      padding: clamp(3rem, 5vw, 4.5rem) 0;
       text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     }
 
     .pullquote blockquote {
-      font-family: var(--font-display);
-      font-size: clamp(1.6rem, 3.2vw, 2.6rem);
-      font-weight: 400;
+      font-family: var(--font-cultural);
+      font-size: clamp(1.12rem, 2.1vw, 1.65rem);
+      font-weight: 600;
       font-style: italic;
-      line-height: 1.35;
-      color: var(--c-primary-deep);
-      max-width: 860px;
+      line-height: 1.45;
+      color: var(--c-blue);
+      max-width: 820px;
       margin: 0 auto;
       padding: 0 clamp(1.5rem, 4vw, 3rem);
     }
@@ -758,26 +744,52 @@
       display: block;
       font-style: normal;
       font-family: var(--font-body);
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--c-text-muted);
-      margin-top: 1.5rem;
-      letter-spacing: 0.04em;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #C89617;
+      margin-top: 1.1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
-    .section-dark .pullquote blockquote {
-      color: rgba(255, 255, 255, 0.9);
+    /* Distinctive Institutional Color Variants */
+    .pullquote.pq-blue blockquote {
+      color: var(--c-blue);
     }
 
-    .section-dark .pullquote cite {
-      color: var(--c-gold);
+    .pullquote.pq-blue cite {
+      color: #C89617;
+    }
+
+    .pullquote.pq-teal blockquote {
+      color: var(--c-teal);
+    }
+
+    .pullquote.pq-teal cite {
+      color: var(--c-blue);
+    }
+
+    .pullquote.pq-gold blockquote {
+      color: #C89617;
+    }
+
+    .pullquote.pq-gold cite {
+      color: var(--c-teal);
+    }
+
+    .pullquote.pq-dark blockquote {
+      color: #0F3830;
+    }
+
+    .pullquote.pq-dark cite {
+      color: #C89617;
     }
 
     /* ─── ABOUT / 2-COLUMN EDITORIAL ─── */
     .editorial-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(2rem, 5vw, 5rem);
+      grid-template-columns: 1fr 1.25fr;
+      gap: clamp(1.5rem, 4vw, 3.5rem);
       align-items: center;
     }
 
@@ -791,13 +803,14 @@
 
     .editorial-media {
       position: relative;
-      border-radius: var(--radius);
+      border-radius: 0;
       overflow: hidden;
+      box-shadow: 0 16px 40px rgba(52, 132, 165, 0.15);
     }
 
     .editorial-media img {
       width: 100%;
-      aspect-ratio: 4/5;
+      aspect-ratio: 4/3;
       object-fit: cover;
       transition: transform 0.7s var(--ease-out);
     }
@@ -818,355 +831,642 @@
       font-weight: 600;
     }
 
-    /* Stats strip */
-    .stats-row {
+    /* ─── IMPACT STATS GRID ─── */
+    /* ─── IMPACT STATS GRID (High-Contrast Luxury Box) ─── */
+    .stats-container {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
-      margin-top: 2.5rem;
+      gap: 1.25rem;
+      margin-top: 3.5rem;
+      padding: 2.2rem 2rem;
+      background: linear-gradient(135deg, #0F3830 0%, #1D5B72 50%, #3484A5 100%);
+      border: 1.5px solid var(--c-gold);
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(15, 56, 48, 0.35);
+      position: relative;
+      overflow: hidden;
     }
 
-    .stat-item {
-      border-left: 2px solid var(--c-primary);
-      padding-left: 1rem;
+    .stats-container::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(240, 200, 79, 0.12) 0%, transparent 65%);
+      pointer-events: none;
     }
 
-    .stat-item:nth-child(2) {
-      border-color: var(--c-teal);
-    }
-
-    .stat-item:nth-child(3) {
-      border-color: var(--c-gold);
-    }
-
-    .stat-item:nth-child(4) {
-      border-color: var(--c-primary-light);
-    }
-
-    .stat-num {
-      font-family: var(--font-display);
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--c-primary);
-      line-height: 1;
-    }
-
-    .stat-item:nth-child(2) .stat-num {
-      color: var(--c-teal);
-    }
-
-    .stat-item:nth-child(3) .stat-num {
-      color: var(--c-gold-warm);
-    }
-
-    .stat-item:nth-child(4) .stat-num {
-      color: var(--c-primary-light);
-    }
-
-    .stat-label {
-      font-size: 0.82rem;
-      color: var(--c-text-muted);
-      font-weight: 500;
-      margin-top: 0.3rem;
-    }
-
-    /* ─── PROGRAM (Tabs + Timeline) ─── */
-    .tabs-row {
+    .stat-card {
+      position: relative;
+      z-index: 1;
       display: flex;
-      gap: 0.6rem;
-      justify-content: center;
-      margin-bottom: 3rem;
+      align-items: center;
+      gap: 1.1rem;
+      padding: 1.2rem 1.4rem;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(240, 200, 79, 0.28);
+      border-radius: 14px;
+      transition: all 0.35s var(--ease-out);
     }
 
-    .tab-btn {
-      padding: 0.7rem 1.5rem;
-      border-radius: 999px;
-      border: 1.5px solid var(--c-border);
-      background: #fff;
-      color: var(--c-text-muted);
-      font-weight: 600;
-      cursor: pointer;
-      font-family: inherit;
-      font-size: 0.9rem;
-      transition: all 0.25s;
+    .stat-card:hover {
+      transform: translateY(-4px);
+      background: rgba(255, 255, 255, 0.16);
+      border-color: var(--c-gold);
+      box-shadow: 0 14px 32px rgba(240, 200, 79, 0.25);
+    }
+
+    .stat-card-icon {
+      width: 52px;
+      height: 52px;
+      min-width: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s;
+    }
+
+    .stat-card:hover .stat-card-icon {
+      transform: scale(1.1);
+    }
+
+    .stat-card-icon.icon-blue {
+      background: rgba(255, 255, 255, 0.15);
+      color: #FFFFFF;
+    }
+
+    .stat-card-icon.icon-teal {
+      background: rgba(44, 167, 146, 0.35);
+      color: #79F2DC;
+    }
+
+    .stat-card-icon.icon-gold {
+      background: rgba(240, 200, 79, 0.35);
+      color: #F0C84F;
+    }
+
+    .stat-card-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-val {
+      font-family: var(--font-cultural);
+      font-size: 2.3rem;
+      font-weight: 800;
+      line-height: 1.05;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+    }
+
+    .stat-val.val-text {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+    }
+
+    .stat-val.val-blue {
+      color: #FFFFFF;
+    }
+
+    .stat-val.val-teal {
+      color: #79F2DC;
+    }
+
+    .stat-val.val-gold {
+      color: #F0C84F;
+    }
+
+    .stat-desc {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.9);
+      margin-top: 3px;
+    }
+
+    /* ─── ULTRA MINIMALIST CENTERED CIRCLE TIMELINE ─── */
+    .timeline-header-ultra {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .ultra-kicker {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--c-teal);
+      margin-bottom: 0.8rem;
+    }
+
+    /* ─── HIGH UX TAB CONTROL FOR JORNADAS ─── */
+    .ultra-tabs-wrapper {
+      max-width: 720px;
+      margin: 1.8rem auto 0;
+      text-align: center;
+    }
+
+    .tab-instruction-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--c-teal);
+      margin-bottom: 0.8rem;
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.45rem;
     }
 
-    .tab-btn.active {
-      background: var(--c-primary);
-      border-color: var(--c-primary);
-      color: #fff;
-      box-shadow: 0 4px 16px rgba(52, 132, 165, 0.25);
+    /* ─── PROGRAMA COMPACTO EN FONDO BLANCO PURO ─── */
+    .section-dark-programa {
+      background-color: #FFFFFF !important;
+      background-image: none !important;
+      color: #0E2938;
+      padding: clamp(3.5rem, 5vw, 4.8rem) 0;
+      border-top: 1px solid rgba(52, 132, 165, 0.12);
+      border-bottom: 1px solid rgba(52, 132, 165, 0.12);
     }
 
+    .schedule-header-compact {
+      text-align: center;
+      margin-bottom: 2.2rem;
+    }
+
+    .schedule-kicker {
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #3484A5;
+      display: inline-block;
+      margin-bottom: 0.4rem;
+    }
+
+    .schedule-title {
+      color: #0E2938 !important;
+      margin-bottom: 0.4rem;
+      font-family: var(--font-cultural);
+    }
+
+    .schedule-subtitle {
+      color: #526B78;
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Pestañas de Jornada en Fondo Blanco */
+    .schedule-tabs {
+      display: inline-flex;
+      background: #F2F7F9;
+      padding: 4px;
+      border-radius: 40px;
+      border: 1px solid rgba(52, 132, 165, 0.2);
+      gap: 6px;
+    }
+
+    .schedule-tab-btn {
+      background: transparent;
+      border: none;
+      color: #526B78;
+      padding: 0.6rem 1.6rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-family: var(--font-body);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: all 0.2s;
+    }
+
+    .schedule-tab-btn .tab-day-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .schedule-tab-btn .tab-date-label {
+      font-size: 0.86rem;
+      font-weight: 700;
+    }
+
+    .schedule-tab-btn.active {
+      background: #3484A5;
+      color: #FFFFFF;
+      font-weight: 800;
+      box-shadow: 0 4px 14px rgba(52, 132, 165, 0.25);
+    }
+
+    /* TAB PANELS SIN ANIMACIONES DE MOVIMIENTO */
     .panel {
-      display: none;
+      display: none !important;
     }
 
     .panel.active {
+      display: block !important;
+    }
+
+    /* Schedule List Container - EJE VERTICAL Y NODOS CIRCULARES SOBRE BLANCO */
+    .compact-schedule {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* Línea de Eje Vertical sobre Blanco */
+    .compact-schedule::before {
+      content: "";
+      position: absolute;
+      top: 2.8rem;
+      bottom: 0.8rem;
+      left: 105px;
+      width: 2px;
+      background: rgba(52, 132, 165, 0.25);
+      z-index: 1;
+    }
+
+    /* Títulos de Bloque / Subsecciones sobre Blanco (Sin corte de línea) */
+    .schedule-block-label {
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #0E2938;
+      margin: 2.2rem 0 1rem 0;
+      padding: 0.5rem 1.1rem;
+      background: #F2F7F9;
+      border-left: 4px solid #3484A5;
+      border-radius: 4px;
+      position: relative;
+      z-index: 5;
       display: block;
-      animation: fadeSlide 0.4s var(--ease-out);
+      box-shadow: 0 2px 8px rgba(52, 132, 165, 0.08);
     }
 
-    @keyframes fadeSlide {
-      from {
-        opacity: 0;
-        transform: translateY(12px);
-      }
-
-      to {
-        opacity: 1;
-        transform: none;
-      }
-    }
-
-    .block-label {
-      font-family: var(--font-display);
-      color: var(--c-primary-deep);
-      margin: 2rem 0 1.2rem;
-      font-size: 1.15rem;
-      font-weight: 700;
+    .schedule-row {
+      position: relative;
       display: flex;
       align-items: center;
-      gap: 0.65rem;
+      background: transparent !important;
+      border: none !important;
+      border-bottom: 1px solid rgba(52, 132, 165, 0.12) !important;
+      border-radius: 0 !important;
+      padding: 0.9rem 0.2rem;
+      gap: 1.8rem;
+      box-shadow: none !important;
+      z-index: 2;
     }
 
-    .block-label:first-child {
-      margin-top: 0;
+    .schedule-row:last-child {
+      border-bottom: none !important;
     }
 
-    .block-label::after {
-      content: '';
+    /* Nodos Circulares sobre Blanco con Colores Institucionales */
+    .schedule-row::after {
+      content: "";
+      position: absolute;
+      left: 100px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #3484A5;
+      border: 3px solid #FFFFFF;
+      box-shadow: 0 0 0 2px rgba(52, 132, 165, 0.35);
+      z-index: 3;
+    }
+
+    .schedule-row.featured::after,
+    .schedule-row.featured-book::after {
+      background: #F0C84F;
+      border: 3px solid #FFFFFF;
+      width: 15px;
+      height: 15px;
+      left: 98px;
+      box-shadow: 0 0 0 3px rgba(240, 200, 79, 0.45);
+    }
+
+    .schedule-row.featured-teal::after {
+      background: #2CA792;
+      border: 3px solid #FFFFFF;
+      width: 15px;
+      height: 15px;
+      left: 98px;
+      box-shadow: 0 0 0 4px rgba(44, 167, 146, 0.35);
+    }
+
+    .schedule-row.featured-teal {
+      background: rgba(44, 167, 146, 0.04) !important;
+      border-radius: 8px !important;
+      padding-left: 0.5rem !important;
+      padding-right: 0.5rem !important;
+    }
+
+    /* Hora con alta visibilidad en Azul Institucional */
+    .schedule-time {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #3484A5;
+      background: transparent !important;
+      padding: 0 !important;
+      border-radius: 0;
+      width: 90px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .schedule-details {
       flex: 1;
-      height: 1px;
-      background: linear-gradient(90deg, var(--c-border), transparent);
+      padding-left: 0.8rem;
     }
 
-    .timeline {
-      display: grid;
-      gap: 0.7rem;
-    }
-
-    .tl-card {
-      display: grid;
-      grid-template-columns: 140px 1fr;
-      gap: 1.2rem;
-      background: #fff;
-      border: 1px solid var(--c-border);
-      border-radius: var(--radius);
-      padding: 1.1rem 1.3rem;
-      align-items: start;
-      transition: all 0.25s;
-    }
-
-    .tl-card:hover {
-      border-color: var(--c-primary);
-      box-shadow: 0 4px 16px rgba(52, 132, 165, 0.1);
-    }
-
-    .tl-card.ponencia {
-      border-left: 4px solid var(--c-primary);
-    }
-
-    .tl-card.clausura {
-      border-left: 4px solid var(--c-teal);
-    }
-
-    .tl-time {
-      font-weight: 600;
-      color: var(--c-primary);
-      font-size: 0.88rem;
-      font-variant-numeric: tabular-nums;
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-    }
-
-    .tl-card.clausura .tl-time {
-      color: var(--c-teal);
-    }
-
-    .tl-card h4 {
-      font-size: 1rem;
-      color: var(--c-text);
-      font-weight: 600;
-      margin-bottom: 0.2rem;
+    /* Título del Item sobre Blanco */
+    .schedule-item-title {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #0E2938;
+      margin: 0 0 0.2rem 0;
       line-height: 1.4;
     }
 
-    .tl-speaker {
-      font-size: 0.88rem;
-      color: var(--c-text-muted);
+    /* Ponente / Encargado */
+    .schedule-item-who {
+      font-size: 0.86rem;
+      color: #526B78;
+      margin: 0;
+      font-weight: 400;
     }
 
-    .badge-book {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
+    /* Insignias / Tags Institucionales */
+    .schedule-tag {
       font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      background: rgba(44, 167, 146, 0.1);
-      color: var(--c-teal-deep);
-      border-radius: 6px;
-      padding: 0.25rem 0.6rem;
-      margin-top: 0.4rem;
-      border: 1px solid rgba(44, 167, 146, 0.25);
-    }
-
-    /* ─── SPEAKERS ─── */
-    .speakers-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.2rem;
-    }
-
-    .speaker-card {
-      background: #fff;
-      border: 1px solid var(--c-border);
-      border-radius: var(--radius);
-      padding: 1.6rem;
-      transition: all 0.3s var(--ease-out);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .speaker-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--c-primary), var(--c-teal));
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.4s var(--ease-out);
-    }
-
-    .speaker-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .speaker-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(52, 132, 165, 0.12);
-    }
-
-    .speaker-avatar {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
       font-weight: 800;
-      font-family: var(--font-display);
-      color: #fff;
-      background: linear-gradient(135deg, var(--c-primary), var(--c-primary-deep));
-      margin-bottom: 1rem;
-      font-size: 1rem;
-    }
-
-    .speaker-card h4 {
-      font-size: 1.02rem;
-      font-weight: 600;
-      color: var(--c-text);
-    }
-
-    .speaker-role {
-      color: var(--c-primary);
-      font-weight: 600;
-      font-size: 0.78rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 0.5rem;
+      padding: 0.32rem 0.85rem;
+      border-radius: 20px;
+      flex-shrink: 0;
     }
 
-    .speaker-topic {
-      font-size: 0.9rem;
-      color: var(--c-text-muted);
-      line-height: 1.5;
+    .schedule-tag.tag-blue {
+      background: rgba(52, 132, 165, 0.12);
+      color: #3484A5;
+      border: 1px solid rgba(52, 132, 165, 0.35);
     }
 
-    /* ─── GALLERY (museum exhibition grid) ─── */
-    .gallery-grid {
+    .schedule-tag.tag-gold {
+      background: #F0C84F;
+      color: #0E2938;
+      border: 1px solid #C89617;
+      box-shadow: 0 2px 8px rgba(240, 200, 79, 0.3);
+    }
+
+    .schedule-tag.tag-teal {
+      background: #2CA792;
+      color: #FFFFFF;
+      border: 1px solid #238776;
+      box-shadow: 0 3px 10px rgba(44, 167, 146, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .compact-schedule::before {
+        left: 14px;
+      }
+
+      .schedule-row::after {
+        left: 8px;
+        width: 14px;
+        height: 14px;
+      }
+
+      .schedule-row.featured::after,
+      .schedule-row.featured-book::after,
+      .schedule-row.featured-teal::after {
+        left: 7px;
+        width: 16px;
+        height: 16px;
+      }
+
+      .schedule-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.35rem;
+        padding: 0.9rem 0 0.9rem 36px !important;
+      }
+
+      .schedule-row.featured-teal {
+        padding-left: 36px !important;
+        padding-right: 0.5rem !important;
+        border-radius: 8px !important;
+      }
+
+      .schedule-time {
+        width: auto !important;
+        text-align: left !important;
+        font-size: 0.9rem;
+      }
+
+      .schedule-details {
+        padding-left: 0 !important;
+        width: 100%;
+      }
+
+      .schedule-tag {
+        margin-top: 0.2rem;
+        font-size: 0.68rem;
+        padding: 0.25rem 0.75rem;
+        align-self: flex-start;
+      }
+    }
+
+    /* ─── PONENTES CENTRADOS ULTRA MINIMALISTAS (3 - 1 - 3) ─── */
+    .speakers-symmetric-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    .speakers-row-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: auto auto;
-      gap: 0.5rem;
-    }
-
-    .gallery-grid .g-item:nth-child(1) {
-      grid-column: 1 / 3;
-      grid-row: 1;
-    }
-
-    .gallery-grid .g-item:nth-child(2) {
-      grid-column: 3;
-      grid-row: 1;
-    }
-
-    .gallery-grid .g-item:nth-child(3) {
-      grid-column: 1;
-      grid-row: 2;
-    }
-
-    .gallery-grid .g-item:nth-child(4) {
-      grid-column: 2 / 4;
-      grid-row: 2;
-    }
-
-    .g-item {
-      position: relative;
-      overflow: hidden;
-      border-radius: 4px;
-      background: var(--c-primary-darkest);
-    }
-
-    .g-item img {
+      gap: 1.2rem;
       width: 100%;
+    }
+
+    .speakers-row-center {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .speaker-card-minimal {
+      background: #F2F7F9;
+      border: 1px solid rgba(52, 132, 165, 0.22);
+      border-radius: 14px;
+      padding: 1.5rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 0.35rem;
+      box-shadow: 0 4px 14px rgba(52, 132, 165, 0.07);
+      transition: background 0.25s, border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+
+    .speakers-row-center .speaker-card-minimal {
+      max-width: 480px;
+      width: 100%;
+    }
+
+    .speaker-card-minimal:hover {
+      background: #EAF3F6;
+      border-color: #3484A5;
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(52, 132, 165, 0.14);
+    }
+
+    .speaker-role-tag-centered {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: #3484A5;
+    }
+
+    .speaker-name-centered {
+      font-family: var(--font-signature);
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: #C89617;
+      margin: 0.05rem 0 0;
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+    }
+
+    .speaker-topic-text-centered {
+      font-size: 0.84rem;
+      color: #2D4A58;
+      margin: 0;
+      line-height: 1.38;
+      font-style: italic;
+    }
+
+    .badge-book-pill {
+      margin-top: 0.35rem;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #0E3B32;
+      background: #F0C84F;
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+    }
+
+    /* ─── PASARELA HORIZONTAL LENTA (SLOW HORIZONTAL RUNWAY 0% CROPPING) ─── */
+    #galeria {
+      background-color: #000000 !important;
+      background-image: radial-gradient(circle at 50% 25%, rgba(240, 200, 79, 0.09) 0%, transparent 65%) !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      color: #FFFFFF;
+      padding: clamp(3.5rem, 6vw, 6rem) 0;
+      overflow: hidden;
+    }
+
+    .runway-wrapper {
+      position: relative;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .runway-track-container {
+      width: 100%;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding: 1.5rem 0;
+      cursor: grab;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .runway-track-container.is-dragging {
+      cursor: grabbing !important;
+      scroll-behavior: auto !important;
+    }
+
+    .runway-track-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .runway-track {
+      display: flex;
+      flex-direction: row;
+      gap: 2.5rem;
+      align-items: center;
+      width: max-content;
+      padding: 0 max(2rem, calc((100vw - 1200px) / 2));
+    }
+
+    /* Individual Photo Card in Runway - NO BORDER */
+    .runway-photo-card {
+      position: relative;
+      flex-shrink: 0;
+      height: clamp(420px, 68vh, 620px);
+      background: #000000;
+      border: none !important;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.95);
+      overflow: hidden;
+      border-radius: 0 !important;
+      transition: transform 0.5s var(--ease-out), box-shadow 0.4s;
+    }
+
+    .runway-photo-card img {
       height: 100%;
-      object-fit: cover;
-      aspect-ratio: 16/9;
-      transition: transform 0.7s var(--ease-out), opacity 0.4s;
-      opacity: 0.9;
+      width: auto;
+      /* ZERO CROPPING - 100% NATIVE ASPECT RATIO PRESERVED */
+      max-width: 88vw;
+      display: block;
+      filter: brightness(0.96) contrast(1.08);
+      transition: transform 0.7s var(--ease-out), filter 0.7s var(--ease-out);
+      user-select: none;
+      -webkit-user-drag: none;
+      pointer-events: none;
     }
 
-    .g-item:hover img {
-      transform: scale(1.06);
-      opacity: 1;
-    }
-
-    .g-caption {
+    .runway-photo-card::after {
+      content: "";
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 2.5rem 1.2rem 1rem;
-      background: linear-gradient(transparent, rgba(9, 31, 45, 0.88));
-      color: #fff;
-      font-size: 0.88rem;
-      font-weight: 500;
-      opacity: 0;
-      transform: translateY(8px);
-      transition: all 0.4s var(--ease-out);
+      inset: 0;
+      background: radial-gradient(circle at center, transparent 60%, rgba(0, 0, 0, 0.3) 100%);
+      pointer-events: none;
     }
 
-    .g-item:hover .g-caption {
-      opacity: 1;
-      transform: none;
+    .runway-photo-card:hover {
+      transform: translateY(-6px) scale(1.015);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.98);
     }
 
-    /* Additional gallery row */
-    .gallery-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.5rem;
-      margin-top: 0.5rem;
+    .runway-photo-card:hover img {
+      filter: brightness(1.06) contrast(1.14);
     }
+
+
 
     /* ─── FORM SECTION ─── */
     .form-section {
@@ -1194,6 +1494,63 @@
       margin: 0 auto;
       border: 1px solid var(--c-border);
       box-shadow: 0 16px 48px rgba(52, 132, 165, 0.08);
+    }
+
+    /* ─── SOPORTE OTI WHATSAPP BOX ─── */
+    .oti-support-box {
+      margin-top: 1.8rem;
+      padding: 1.25rem 1.4rem;
+      background: linear-gradient(135deg, rgba(52, 132, 165, 0.05) 0%, rgba(44, 167, 146, 0.08) 100%);
+      border: 1px solid rgba(44, 167, 146, 0.3);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      text-align: left;
+      box-shadow: 0 4px 16px rgba(52, 132, 165, 0.05);
+    }
+
+    .btn-whatsapp-oti {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      background: #25D366;
+      color: #FFFFFF !important;
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 0.7rem 1.35rem;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .btn-whatsapp-oti:hover {
+      background: #20BA5A;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45) !important;
+      color: #FFFFFF !important;
+    }
+
+    @media (max-width: 600px) {
+      .oti-support-box {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+      }
+      .oti-support-box > div {
+        text-align: center !important;
+      }
+      .oti-support-box > div > div {
+        justify-content: center !important;
+      }
+      .btn-whatsapp-oti {
+        width: 100%;
+      }
     }
 
     .form-grid {
@@ -1244,6 +1601,33 @@
       gap: 0.55rem;
       flex-wrap: wrap;
       margin-top: 0.2rem;
+    }
+
+    .certificate-notice-box {
+      background: rgba(52, 132, 165, 0.05);
+      border-left: 3px solid #3484A5;
+      border-radius: 4px;
+      padding: 0.75rem 1rem;
+      font-size: 0.84rem;
+      color: #2D4A58;
+      line-height: 1.45;
+    }
+
+    .field .error-msg {
+      display: none;
+      font-size: 0.76rem;
+      color: #D93838;
+      margin-top: 0.25rem;
+      font-weight: 600;
+    }
+
+    .field.invalid input {
+      border-color: #D93838 !important;
+      box-shadow: 0 0 0 3px rgba(217, 56, 56, 0.12) !important;
+    }
+
+    .field.invalid .error-msg {
+      display: block;
     }
 
     .radio-group input {
@@ -1348,14 +1732,15 @@
     }
 
     .footer-bottom {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
       padding-top: 1.5rem;
       display: flex;
       justify-content: space-between;
+      align-items: center;
       flex-wrap: wrap;
-      gap: 0.75rem;
-      font-size: 0.82rem;
-      opacity: 0.7;
+      gap: 0.85rem;
+      font-size: 0.83rem;
+      opacity: 0.95;
     }
 
     /* ─── MODAL ─── */
@@ -1364,7 +1749,7 @@
       inset: 0;
       display: none;
       place-items: center;
-      background: rgba(9, 31, 45, 0.8);
+      background: rgba(52, 132, 165, 0.8);
       backdrop-filter: blur(8px);
       z-index: 200;
       padding: 1rem;
@@ -1445,6 +1830,198 @@
       margin-top: 1.3rem;
     }
 
+    /* ─── ADMIN PANEL STYLES ─── */
+    .modal-box-admin {
+      max-width: 980px !important;
+      width: 95% !important;
+      text-align: left !important;
+      padding: 2rem !important;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .admin-header-strip {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border-bottom: 1.5px solid rgba(52, 132, 165, 0.18);
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .admin-title-group h3 {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      color: #0E2938;
+      margin-bottom: 0.2rem;
+    }
+
+    .admin-count-badge {
+      display: inline-block;
+      background: #3484A5;
+      color: #FFFFFF;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.35rem 0.8rem;
+      border-radius: 20px;
+    }
+
+    .admin-nav-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid rgba(52, 132, 165, 0.15);
+      padding-bottom: 0.5rem;
+    }
+
+    .admin-tab-btn {
+      padding: 0.5rem 1rem;
+      border: 1px solid rgba(52, 132, 165, 0.25);
+      border-radius: 8px;
+      background: #F2F7F9;
+      color: #3484A5;
+      font-weight: 600;
+      font-size: 0.84rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .admin-tab-btn.active {
+      background: #3484A5;
+      color: #FFFFFF;
+      border-color: #3484A5;
+    }
+
+    .admin-search-input {
+      width: 100%;
+      padding: 0.65rem 1rem;
+      border: 1.5px solid rgba(52, 132, 165, 0.22);
+      border-radius: 8px;
+      font-size: 0.88rem;
+      margin-bottom: 1rem;
+    }
+
+    .admin-table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      border: 1px solid rgba(52, 132, 165, 0.18);
+      border-radius: 10px;
+      max-height: 380px;
+      overflow-y: auto;
+    }
+
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      text-align: left;
+    }
+
+    .admin-table th {
+      position: sticky;
+      top: 0;
+      background: #3484A5;
+      color: #FFFFFF;
+      padding: 0.75rem 0.85rem;
+      font-weight: 700;
+      z-index: 2;
+    }
+
+    .admin-table td {
+      padding: 0.7rem 0.85rem;
+      border-bottom: 1px solid rgba(52, 132, 165, 0.12);
+      color: #2D4A58;
+    }
+
+    .admin-table tr:hover {
+      background: rgba(52, 132, 165, 0.05);
+    }
+
+    .btn-delete-row {
+      background: #D93838;
+      color: #FFFFFF;
+      border: none;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-delete-row:hover {
+      background: #B52B2B;
+    }
+
+    .mass-import-box {
+      width: 100%;
+      height: 160px;
+      padding: 0.8rem;
+      border: 1.5px solid rgba(52, 132, 165, 0.25);
+      border-radius: 8px;
+      font-family: monospace;
+      font-size: 0.84rem;
+      margin-bottom: 0.8rem;
+    }
+
+    /* ─── ATTENDANCE STYLES ─── */
+    .badge-apto {
+      background: #2CA792;
+      color: #FFFFFF;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 0.2rem 0.55rem;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .badge-incompleto {
+      background: #E8A838;
+      color: #FFFFFF;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 0.2rem 0.55rem;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .attendance-check {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      accent-color: #3484A5;
+    }
+
+    .door-scanner-card {
+      background: #F2F7F9;
+      border: 1.5px solid rgba(52, 132, 165, 0.25);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .btn-toggle-att {
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+
+    .btn-toggle-att.presente {
+      background: #2CA792;
+      color: #FFFFFF;
+    }
+
+    .btn-toggle-att.ausente {
+      background: #EAF3F6;
+      color: #3484A5;
+      border: 1.5px solid rgba(52, 132, 165, 0.3);
+    }
+
     /* ─── RESPONSIVE ─── */
     @media (max-width: 900px) {
       #btn-mobile-menu {
@@ -1458,7 +2035,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(9, 31, 45, 0.97);
+        background: rgba(52, 132, 165, 0.97);
         backdrop-filter: blur(16px);
         flex-direction: column;
         align-items: center;
@@ -1489,24 +2066,46 @@
         order: 2;
       }
 
-      .gallery-grid {
+      .gallery-banner-horizontal,
+      .gallery-banner-horizontal .pure-photo-item,
+      .gallery-banner-horizontal img {
+        height: 220px;
+      }
+
+      .gallery-split-grid {
         grid-template-columns: 1fr;
       }
 
-      .gallery-grid .g-item:nth-child(1),
-      .gallery-grid .g-item:nth-child(2),
-      .gallery-grid .g-item:nth-child(3),
-      .gallery-grid .g-item:nth-child(4) {
-        grid-column: auto;
-        grid-row: auto;
+      .gallery-fogata-vertical,
+      .gallery-fogata-vertical .pure-photo-item,
+      .gallery-fogata-vertical img {
+        height: 440px;
       }
 
-      .gallery-row {
-        grid-template-columns: 1fr;
+      .gallery-right-mosaic {
+        height: auto;
       }
 
-      .stats-row {
+      .mosaic-row-top,
+      .mosaic-row-top .pure-photo-item,
+      .mosaic-row-top img {
+        height: 220px;
+      }
+
+      .mosaic-row-bottom,
+      .mosaic-row-bottom .pure-photo-item,
+      .mosaic-row-bottom img {
+        height: 220px;
+      }
+
+      .speaker-row-top,
+      .speaker-row-bottom {
         grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
       }
 
       .footer-grid {
@@ -1515,23 +2114,105 @@
       }
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
+      .timeline-ultra::before {
+        left: 20px;
+        transform: none;
+      }
+
+      .tl-circle {
+        left: 20px;
+      }
+
+      .tl-content {
+        width: auto !important;
+        margin-left: 48px !important;
+        margin-right: 0 !important;
+        text-align: left !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+
+      .tl-item.left .tl-who::after {
+        content: "";
+      }
+
+      .tl-item.left .tl-who::before {
+        content: "— ";
+        color: var(--c-gold);
+        font-weight: 700;
+      }
+
       .form-grid {
         grid-template-columns: 1fr;
       }
 
-      .tl-card {
+      .stats-container {
         grid-template-columns: 1fr;
-        gap: 0.3rem;
+        gap: 0.8rem;
+        padding: 1.2rem;
       }
 
-      .hero-meta {
+      .header-link-text {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .runway-track {
+        gap: 1.2rem;
+        padding: 0 1rem;
+      }
+
+      .runway-photo-card {
+        height: 320px;
+        border-radius: 8px !important;
+      }
+
+      .runway-photo-card img {
+        height: 320px;
+        width: auto;
+        max-width: 86vw;
+        object-fit: cover;
+      }
+
+      .speakers-row-3 {
+        grid-template-columns: 1fr;
         gap: 1rem;
       }
 
-      .stats-row {
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
+      .speakers-row-center .speaker-card-minimal {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .runway-photo-card {
+        height: 260px;
+      }
+
+      .runway-photo-card img {
+        height: 260px;
+        max-width: 88vw;
+      }
+
+      .modal-box {
+        padding: 1.8rem 1.2rem;
+        max-width: 94%;
+        margin: 0 auto;
+      }
+
+      .modal-actions {
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+
+      .modal-actions .btn {
+        width: 100%;
+      }
+
+      .header-inner {
+        padding: 0.75rem 1rem;
       }
     }
   </style>
@@ -1539,24 +2220,32 @@
 
 <body>
 
-  <!-- ═══ HEADER (MDSJ Logo Minimal Header) ═══ -->
+  <!-- ═══ HEADER (Nordiska-inspired Layout) ═══ -->
   <header class="site-header" id="site-header">
     <div class="header-inner">
-      <a class="header-brand-left" href="#inicio">
-        <img src="imagenes/MDSJ BLANCO.png" alt="Municipalidad Distrital de San Jerónimo" />
-        <span class="header-brand-divider">|</span>
-        <span class="header-brand-title">CÁTEDRA SAN JERÓNIMO</span>
-      </a>
+      <div class="header-left">
+        <div class="header-cta-group">
+          <a href="#inscripcion" class="header-pill-btn">Inscríbete aquí</a>
+          <span class="subtext-free">Entrada libre</span>
+        </div>
+        <a href="#evento" class="header-link-text">21 y 22 de setiembre <span>→</span></a>
+      </div>
+      <div class="header-center">
+        <a href="#inicio">
+          <img src="imagenes/Logos/MDSJ COLOR.png" alt="Municipalidad Distrital de San Jerónimo"
+            class="header-logo-center" />
+        </a>
+      </div>
       <div class="header-right">
         <nav class="header-nav" id="header-nav">
           <a href="#evento">El encuentro</a>
           <a href="#programa">Programa</a>
           <a href="#ponentes">Ponentes</a>
           <a href="#galeria">Galería</a>
-          <a href="#inscripcion" class="nav-cta">Inscribirme</a>
         </nav>
-        <button id="btn-mobile-menu" aria-label="Abrir menú" aria-expanded="false">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <button id="btn-mobile-menu" class="header-icon-btn" aria-label="Abrir menú" aria-expanded="false">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round">
             <line x1="3" y1="6" x2="21" y2="6" />
             <line x1="3" y1="12" x2="21" y2="12" />
             <line x1="3" y1="18" x2="21" y2="18" />
@@ -1566,94 +2255,33 @@
     </div>
   </header>
 
-  <!-- ═══ HERO — 50/50 Split Layout ═══ -->
-  <section class="hero-split-container" id="inicio">
-    <!-- LEFT 50%: FULL BLEED IMAGE WITH OVERLAID BOLD TITLE AT BOTTOM -->
-    <div class="hero-split-left">
-      <img src="imagenes/PatronSanJeronimo.jpg" alt="Festividad del Patrón San Jerónimo" />
-      <div class="hero-left-overlay">
-        <div class="hero-left-badge">PRIMER ENCUENTRO CULTURAL 2026</div>
-        <h1 class="hero-left-title">
-          CÁTEDRA DE
-          <span>SAN JERÓNIMO</span>
-        </h1>
-        <p class="hero-left-subtitle">Municipalidad Distrital de San Jerónimo · Cusco, Perú</p>
+  <!-- ═══ HERO (Nordiska Molde Template) ═══ -->
+  <section class="hero-nordiska-container" id="inicio">
+    <div class="hero-nordiska-banner">
+      <span class="hero-title-tag">Primer Encuentro de Identidad Cultural</span>
+      <h1 class="hero-giant-title">
+        “Cátedra San Jerónimo”
+      </h1>
+
+      <!-- ═══ COUNTDOWN (Directly below Title) ═══ -->
+      <div class="countdown-strip" id="cuenta">
+        <div class="countdown-inner">
+          <div class="cd-units">
+            <div class="cd-unit"><b id="cd-dias">–</b><span>Días</span></div>
+            <div class="cd-unit"><b id="cd-horas">–</b><span>Horas</span></div>
+            <div class="cd-unit"><b id="cd-min">–</b><span>Min</span></div>
+            <div class="cd-unit"><b id="cd-seg">–</b><span>Seg</span></div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- RIGHT 50%: INFO, MDSJ LOGO & ACTIONS -->
-    <div class="hero-split-right">
-      <div class="hero-right-content">
-        <!-- MDSJ BLANCO LOGO -->
-        <div class="hero-mdsj-logo-wrap">
-          <img src="imagenes/MDSJ BLANCO.png" alt="Municipalidad Distrital de San Jerónimo" />
-        </div>
-
-        <span class="hero-right-overline">21 Y 22 DE SETIEMBRE DE 2026</span>
-        <h2 class="hero-right-heading">Primer Encuentro de Identidad Cultural</h2>
-        <p class="hero-right-lead">
-          Un espacio de reflexión, investigación y revaloración sobre nuestra historia, fe y patrimonio cultural vivo en el distrito de San Jerónimo.
-        </p>
-
-        <!-- INFO CHIPS GRID -->
-        <div class="hero-info-grid">
-          <div class="hero-info-card">
-            <span class="hero-info-card-label">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              Fecha
-            </span>
-            <div class="hero-info-card-val">21 y 22 de Setiembre</div>
-          </div>
-          <div class="hero-info-card">
-            <span class="hero-info-card-label">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              Hora
-            </span>
-            <div class="hero-info-card-val">3:00 p. m.</div>
-          </div>
-          <div class="hero-info-card">
-            <span class="hero-info-card-label">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Lugar
-            </span>
-            <div class="hero-info-card-val">Auditorio Municipal</div>
-          </div>
-          <div class="hero-info-card">
-            <span class="hero-info-card-label">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-              Ingreso
-            </span>
-            <div class="hero-info-card-val">Entrada Libre</div>
-          </div>
-        </div>
-
-        <!-- ACTION BUTTONS -->
-        <div class="hero-right-actions">
-          <a href="#inscripcion" class="btn btn-primary">Inscribirme gratis →</a>
-          <a href="#programa" class="btn btn-ghost">Ver programa</a>
-        </div>
-      </div>
+    <div class="hero-image-wrapper">
+      <img src="imagenes/Principal/PatronSanJeronimo.jpg"
+        alt="Festividad del Doctor Patrón San Jerónimo — Cátedra San Jerónimo" />
     </div>
   </section>
 
-  <!-- ═══ COUNTDOWN ═══ -->
-  <div class="countdown-strip" id="cuenta">
-    <div class="countdown-inner">
-      <span class="cd-label">El encuentro inicia en</span>
-      <div class="cd-units">
-        <div class="cd-unit"><b id="cd-dias">–</b><span>Días</span></div>
-        <div class="cd-unit"><b id="cd-horas">–</b><span>Horas</span></div>
-        <div class="cd-unit"><b id="cd-min">–</b><span>Min</span></div>
-        <div class="cd-unit"><b id="cd-seg">–</b><span>Seg</span></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ FULL-BLEED IMAGE ═══ -->
-  <div class="fullbleed-img">
-    <img src="imagenes/Tradicion.jpeg" alt="Tradición y devoción jeronimiana" loading="lazy" />
-    <div class="fullbleed-caption">Tradición y devoción en la festividad del Patrón San Jerónimo</div>
-  </div>
 
   <!-- ═══ ABOUT / EL ENCUENTRO ═══ -->
   <section class="section" id="evento">
@@ -1664,7 +2292,7 @@
           <h2 class="heading-alpha">Un encuentro para reencontrarnos con nuestra historia</h2>
           <p>El <strong>Primer Encuentro de Identidad Cultural "Cátedra San Jerónimo"</strong> nace para revalorar
             nuestra memoria colectiva: de los ayllus y comunidades campesinas al San Jerónimo de hoy, bajo la sombra del
-            apu <strong>Pachatusan</strong> y la fe del <strong>Apóstol San Jerónimo</strong>.</p>
+            apu <strong>Pachatusan</strong> y la fe del <strong>Doctor Patrón San Jerónimo</strong>.</p>
           <p>Historiadores, arqueólogos, antropólogos y comunicadores compartirán ponencias sobre nuestra historia,
             personajes, territorio y expresiones culturales. El cierre incluirá la <strong>entrega de
               certificados</strong> a los asistentes y la <strong>presentación de un libro</strong> sobre el patrimonio
@@ -1672,296 +2300,333 @@
           <p><em>Dirigido a estudiantes, docentes, profesionales, autoridades y público en general.</em></p>
         </div>
         <div class="editorial-media">
-          <img src="imagenes/mujerjeronimiana.jpg" alt="Mujer jeronimiana — identidad cultural" />
+          <img src="imagenes/Principal/comunidades.png"
+            alt="Comunidades campesinas e identidad cultural — Cátedra San Jerónimo" />
         </div>
       </div>
 
-      <div class="stats-row reveal">
-        <div class="stat-item">
-          <div class="stat-num">7</div>
-          <div class="stat-label">Ponentes especialistas</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">2</div>
-          <div class="stat-label">Jornadas académicas</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">S/ 0</div>
-          <div class="stat-label">Entrada libre</div>
-        </div>
-        <div class="stat-item">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--c-primary-light)"
-            stroke-width="2.2">
-            <circle cx="12" cy="8" r="7" />
-            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
-          </svg>
-          <div class="stat-label">Certificado de asistencia</div>
-        </div>
-      </div>
+
     </div>
   </section>
 
-  <!-- ═══ PULLQUOTE ═══ -->
-  <div class="pullquote reveal">
-    <blockquote>
-      "Memoria, fe e identidad: tres pilares que sostienen la historia viva del pueblo jeronimiano."
-      <cite>— Primer Encuentro de Identidad Cultural "Cátedra San Jerónimo"</cite>
+  <!-- ═══ FRASE 2: PATRIMONIO (Fondo #3484A5, Texto Dorado #F0C84F) ═══ -->
+  <div class="pullquote pq-gold reveal">
+    <blockquote style="color:#F0C84F;">
+      "Conocer nuestras raíces es el primer paso para proteger nuestro patrimonio y proyectar con orgullo nuestro
+      futuro."
+      <cite style="color:#FFFFFF;">— Ayllus y Comunidades Campesinas de San Jerónimo</cite>
     </blockquote>
   </div>
 
-  <!-- ═══ FULL-BLEED IMAGE 2 ═══ -->
-  <div class="fullbleed-img">
-    <img src="imagenes/danza.jpg" alt="Danzas tradicionales del distrito de San Jerónimo" loading="lazy" />
-    <div class="fullbleed-caption">Danzas tradicionales durante la festividad patronal de San Jerónimo</div>
-  </div>
-
-  <!-- ═══ PROGRAMA ═══ -->
-  <section class="section section-alt" id="programa">
+  <!-- ═══ PROGRAMA MINIMALISTA COMPACTO (Fondo Negro / Azul Institucional) ═══ -->
+  <section class="section section-dark-programa" id="programa">
     <div class="wrapper">
-      <div class="wrapper-narrow" style="padding:0; margin-bottom:3rem;">
-        <div class="editorial-overline reveal">Programa Oficial</div>
-        <h2 class="heading-alpha reveal">Programa del Encuentro</h2>
-        <p class="text-body reveal">Auditorio de la Municipalidad Distrital de San Jerónimo — Lunes 21 y martes 22 de
-          setiembre — 3:00 p. m.</p>
-      </div>
+      <div class="schedule-header-compact reveal">
+        <span class="schedule-kicker">Programa Oficial</span>
+        <h2 class="heading-alpha schedule-title">Cronograma del Encuentro</h2>
+        <p class="schedule-subtitle">
+          Auditorio de la Municipalidad Distrital de San Jerónimo — <strong>Lunes 21</strong> y <strong>Martes 22 de
+            Septiembre</strong>
+        </p>
 
-      <div class="tabs-row">
-        <button class="tab-btn active" data-panel="dia1">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="3" y="4" width="18" height="18" rx="2" />
-            <line x1="16" y1="2" x2="16" y2="6" />
-            <line x1="8" y1="2" x2="8" y2="6" />
-            <line x1="3" y1="10" x2="21" y2="10" />
-          </svg>
-          Lunes 21
-        </button>
-        <button class="tab-btn" data-panel="dia2">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="3" y="4" width="18" height="18" rx="2" />
-            <line x1="16" y1="2" x2="16" y2="6" />
-            <line x1="8" y1="2" x2="8" y2="6" />
-            <line x1="3" y1="10" x2="21" y2="10" />
-          </svg>
-          Martes 22
-        </button>
+        <!-- Tabs Compactos -->
+        <div class="schedule-tabs" role="tablist" aria-label="Jornadas del programa">
+          <button class="schedule-tab-btn tab-btn active" data-panel="dia1" role="tab" aria-selected="true"
+            aria-controls="dia1">
+            <span class="tab-day-label">Jornada I</span>
+            <span class="tab-date-label">Lunes 21 de Septiembre</span>
+          </button>
+          <button class="schedule-tab-btn tab-btn" data-panel="dia2" role="tab" aria-selected="false"
+            aria-controls="dia2">
+            <span class="tab-day-label">Jornada II</span>
+            <span class="tab-date-label">Martes 22 de Septiembre</span>
+          </button>
+        </div>
       </div>
 
       <!-- Día 1 -->
       <div class="panel active" id="dia1">
-        <h3 class="block-label">Ceremonia de inauguración</h3>
-        <div class="timeline">
-          <article class="tl-card">
-            <span class="tl-time">03:00 – 03:35 p. m.</span>
-            <div>
-              <h4>Recepción e inscripción de participantes</h4>
-              <p class="tl-speaker">Equipo de la Gerencia de Desarrollo Social</p>
-            </div>
-          </article>
-          <article class="tl-card">
-            <span class="tl-time">03:35 p. m.</span>
-            <div>
-              <h4>Palabras de bienvenida</h4>
-              <p class="tl-speaker">Prof. Máximo Rimachi Morales — Alcalde de la Municipalidad Distrital de San Jerónimo
-              </p>
-            </div>
-          </article>
-          <article class="tl-card">
-            <span class="tl-time">03:45 p. m.</span>
-            <div>
-              <h4>Palabras de saludo institucional</h4>
-              <p class="tl-speaker">Prof. Henry Castillo — Presidente de la ADAFOSAJ</p>
-            </div>
-          </article>
-          <article class="tl-card">
-            <span class="tl-time">03:50 p. m.</span>
-            <div>
-              <h4>Palabras de inauguración</h4>
-              <p class="tl-speaker">Lic. Yesica Atayupanqui Ttito — Regidora de la Municipalidad Distrital de San
-                Jerónimo</p>
-            </div>
-          </article>
-        </div>
+        <div class="compact-schedule">
+          <div class="schedule-block-label">Ceremonia de Inauguración</div>
 
-        <h3 class="block-label">Ponencias — Primera jornada</h3>
-        <div class="timeline">
-          <article class="tl-card ponencia">
-            <span class="tl-time">04:00 p. m.</span>
-            <div>
-              <h4>«De ayllus a comunidad campesina: el caso de Picol Orccompucyo y Sucso Auccaylle»</h4>
-              <p class="tl-speaker">Historiador Alex Iván Usca Baca</p>
+          <div class="schedule-row reveal">
+            <div class="schedule-time">03:00 p. m.</div>
+            <div class="schedule-details">
+              <h4 class="schedule-item-title">Acreditación y bienvenida</h4>
+              <p class="schedule-item-who">Equipo de la Gerencia de Desarrollo Social</p>
             </div>
-          </article>
-          <article class="tl-card ponencia">
-            <span class="tl-time">04:30 p. m.</span>
-            <div>
-              <h4>«La importancia del héroe peruano Alejandro Velasco Astete en la realidad actual»</h4>
-              <p class="tl-speaker">Lic. Raúl Asencio Carrasco</p>
+          </div>
+
+          <div class="schedule-row featured-teal reveal">
+            <div class="schedule-time">03:35 p. m.</div>
+            <div class="schedule-details">
+              <h4 class="schedule-item-title">Apertura oficial · Palabras de bienvenida institucional</h4>
+              <p class="schedule-item-who">Prof. Máximo Rimachi Morales — Alcalde de San Jerónimo</p>
             </div>
-          </article>
-          <article class="tl-card ponencia">
-            <span class="tl-time">05:00 p. m.</span>
-            <div>
-              <h4>«El Pachatusan: ideología y religión»</h4>
-              <p class="tl-speaker">Arqueólogo Irwin Antonio Ferrandiz Castro</p>
+            <span class="schedule-tag tag-teal">Palabras del Alcalde</span>
+          </div>
+
+          <div class="schedule-row reveal">
+            <div class="schedule-time">03:45 p. m.</div>
+            <div class="schedule-details">
+              <h4 class="schedule-item-title">Saludo institucional · Mensaje de la Asociación de Danzantes</h4>
+              <p class="schedule-item-who">Prof. Henry Castillo — Presidente de ADAFOSAJ</p>
             </div>
-          </article>
-          <article class="tl-card ponencia">
-            <span class="tl-time">05:30 p. m.</span>
-            <div>
-              <h4>«Rol de las comunicaciones en el desarrollo de San Jerónimo»</h4>
-              <p class="tl-speaker">Lic. Julio Aguilar Cano</p>
+          </div>
+
+          <div class="schedule-row featured-teal reveal">
+            <div class="schedule-time">03:50 p. m.</div>
+            <div class="schedule-details">
+              <h4 class="schedule-item-title">Inauguración oficial del Primer Encuentro Cultural</h4>
+              <p class="schedule-item-who">Lic. Yesica Atayupanqui Ttito — Regidora Municipal</p>
             </div>
-          </article>
+            <span class="schedule-tag tag-teal">Inauguración Oficial</span>
+          </div>
+
+          <div class="schedule-block-label">Primera Jornada de Ponencias</div>
+
+          <div class="schedule-row reveal">
+            <div class="schedule-time">04:00 p. m.</div>
+            <div class="schedule-details">
+              <h4 class="schedule-item-title">Ponencia histórica · «De ayllus a comunidad campesina: Picol Orccompucyo y
+                Sucso Auccaylle»</h4>
+              <p class="schedule-item-who">Historiador Alex Iván Usca Baca</p>
+            </div>
+          </div>
+
+          <div class="schedule-row reveal">
+            <div class="schedule-time">04:30 p. m.</div>
+            <div class="schedule-details">
+              <h4 class="schedule-item-title">Ponencia biográfica · «La importancia del héroe Alejandro Velasco Astete»
+              </h4>
+              <p class="schedule-item-who">Lic. Raúl Asencio Carrasco</p>
+            </div>
+          </div>
+
+          <div class="schedule-row reveal">
+            <div class="schedule-time">05:00 p. m.</div>
+            <div class="schedule-details">
+              <h4 class="schedule-item-title">Ponencia arqueológica · «El Pachatusan: ideología y religión»</h4>
+              <p class="schedule-item-who">Arqueólogo Irwin Antonio Ferrandiz Castro</p>
+            </div>
+          </div>
+
+          <div class="schedule-row reveal">
+            <div class="schedule-time">05:30 p. m.</div>
+            <div class="schedule-details">
+              <h4 class="schedule-item-title">Ponencia comunicacional · «Rol de las comunicaciones en el desarrollo de
+                San Jerónimo»</h4>
+              <p class="schedule-item-who">Lic. Julio Aguilar Cano</p>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- Día 2 -->
       <div class="panel" id="dia2">
-        <h3 class="block-label">Ponencias — Segunda jornada</h3>
-        <div class="timeline">
-          <article class="tl-card ponencia">
-            <span class="tl-time">04:00 p. m.</span>
-            <div>
-              <h4>«Hechos y personajes en la historia de San Jerónimo»</h4>
-              <p class="tl-speaker">Lic. Calixto Coanqui Quispe</p>
-            </div>
-          </article>
-          <article class="tl-card ponencia">
-            <span class="tl-time">04:30 p. m.</span>
-            <div>
-              <h4>«San Jerónimo entre memoria, fe e identidad: historia y patrimonio cultural»</h4>
-              <p class="tl-speaker">Lic. Xavier Daniel Vargas Quispe</p>
-            </div>
-          </article>
-          <article class="tl-card ponencia">
-            <span class="tl-time">05:00 p. m.</span>
-            <div>
-              <h4>«Expresiones culturales y patrimoniales del distrito de San Jerónimo»</h4>
-              <p class="tl-speaker">Antropólogo Donato Saúl Cayó Baca</p>
-              <span class="badge-book">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-                </svg>
-                Presentación de libro
-              </span>
-            </div>
-          </article>
-        </div>
+        <div class="compact-schedule">
+          <div class="schedule-block-label">Segunda Jornada de Ponencias</div>
 
-        <h3 class="block-label">Clausura y entrega de certificados</h3>
-        <div class="timeline">
-          <article class="tl-card clausura">
-            <span class="tl-time">05:30 p. m.</span>
-            <div>
-              <h4>Palabras de saludo institucional</h4>
-              <p class="tl-speaker">Presidente de la ADAFOSAJ</p>
+          <div class="schedule-row reveal">
+            <div class="schedule-time">04:00 p. m.</div>
+            <div class="schedule-details">
+              <h4 class="schedule-item-title">Ponencia histórica · «Hechos y personajes en la historia de San Jerónimo»
+              </h4>
+              <p class="schedule-item-who">Lic. Calixto Coanqui Quispe</p>
             </div>
-          </article>
-          <article class="tl-card clausura">
-            <span class="tl-time">05:35 p. m.</span>
-            <div>
-              <h4>Palabras de clausura</h4>
-              <p class="tl-speaker">Lic. Yesica Atayupanqui Ttito — Regidora &amp; Prof. Máximo Rimachi Morales —
-                Alcalde</p>
+          </div>
+
+          <div class="schedule-row reveal">
+            <div class="schedule-time">04:30 p. m.</div>
+            <div class="schedule-details">
+              <h4 class="schedule-item-title">Ponencia sobre identidad · «San Jerónimo entre memoria, fe e identidad»
+              </h4>
+              <p class="schedule-item-who">Lic. Xavier Daniel Vargas Quispe</p>
             </div>
-          </article>
-          <article class="tl-card clausura">
-            <span class="tl-time">05:45 p. m.</span>
-            <div>
-              <h4>Entrega de certificados a los asistentes</h4>
-              <p class="tl-speaker">Equipo de la Gerencia de Desarrollo Social</p>
+          </div>
+
+          <div class="schedule-row featured-teal reveal">
+            <div class="schedule-time">05:00 p. m.</div>
+            <div class="schedule-details">
+              <h4 class="schedule-item-title">Ponencia antropológica &amp; Presentación Especial · «Expresiones
+                culturales y patrimoniales»</h4>
+              <p class="schedule-item-who">Antropólogo Donato Saúl Cayó Baca</p>
             </div>
-          </article>
+            <span class="schedule-tag tag-teal">Presentación del Libro</span>
+          </div>
+
+          <div class="schedule-block-label">Clausura y Certificación</div>
+
+          <div class="schedule-row reveal">
+            <div class="schedule-time">05:30 p. m.</div>
+            <div class="schedule-details">
+              <h4 class="schedule-item-title">Cierre institucional · Palabras de saludo y balance final</h4>
+              <p class="schedule-item-who">Prof. Henry Castillo — Presidente de ADAFOSAJ</p>
+            </div>
+          </div>
+
+          <div class="schedule-row featured-teal reveal">
+            <div class="schedule-time">05:35 p. m.</div>
+            <div class="schedule-details">
+              <h4 class="schedule-item-title">Palabras finales · Clausura oficial del Encuentro Cultural</h4>
+              <p class="schedule-item-who">Lic. Yesica Atayupanqui Ttito (Regidora) &amp; Prof. Máximo Rimachi Morales
+                (Alcalde)</p>
+            </div>
+            <span class="schedule-tag tag-teal">Clausura Oficial</span>
+          </div>
+
+          <div class="schedule-row reveal">
+            <div class="schedule-time">05:45 p. m.</div>
+            <div class="schedule-details">
+              <h4 class="schedule-item-title">Entrega de certificados a los asistentes</h4>
+              <p class="schedule-item-who">Equipo de la Gerencia de Desarrollo Social</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ PONENTES ═══ -->
+  <!-- ═══ FRASE 3: DEVOCIÓN Y TRADICIÓN (Fondo #3484A5, Texto Turquesa #79F2DC) ═══ -->
+  <div class="pullquote pq-teal reveal">
+    <blockquote style="color:#79F2DC;">
+      "Bajo la mirada del Apu Pachatusan y la fe al Doctor Patrón San Jerónimo, revaloramos la devoción y sabiduría de
+      nuestro pueblo."
+      <cite style="color:#F0C84F;">— Tradición e Identidad Jeronimiana</cite>
+    </blockquote>
+  </div>
+
+  <!-- ═══ PONENTES INVITADOS (Ultra Minimalista Compacto) ═══ -->
   <section class="section" id="ponentes">
     <div class="wrapper">
-      <div class="wrapper-narrow" style="padding:0; margin-bottom:3rem;">
-        <div class="editorial-overline reveal">Nuestros Expositores</div>
+      <div class="wrapper-narrow" style="padding:0; margin-bottom:2.2rem; text-align:center;">
+        <div class="editorial-overline reveal" style="justify-content:center;">Nuestros Expositores</div>
         <h2 class="heading-alpha reveal">Ponentes Invitados</h2>
-        <p class="text-body reveal">Especialistas dedicados al estudio y la difusión de la historia y la cultura de San
-          Jerónimo.</p>
+        <p class="text-body reveal" style="margin:0 auto; max-width: 600px;">
+          Especialistas e investigadores dedicados al estudio, conservación y difusión del patrimonio cultural de San
+          Jerónimo.
+        </p>
       </div>
 
-      <div class="speakers-grid reveal">
-        <article class="speaker-card">
-          <div class="speaker-avatar">AU</div>
-          <h4>Alex Iván Usca Baca</h4>
-          <p class="speaker-role">Historiador</p>
-          <p class="speaker-topic">«De ayllus a comunidad campesina: Picol Orccompucyo y Sucso Auccaylle»</p>
-        </article>
-        <article class="speaker-card">
-          <div class="speaker-avatar">RA</div>
-          <h4>Raúl Asencio Carrasco</h4>
-          <p class="speaker-role">Licenciado</p>
-          <p class="speaker-topic">«La importancia del héroe peruano Alejandro Velasco Astete»</p>
-        </article>
-        <article class="speaker-card">
-          <div class="speaker-avatar">IF</div>
-          <h4>Irwin A. Ferrandiz Castro</h4>
-          <p class="speaker-role">Arqueólogo</p>
-          <p class="speaker-topic">«El Pachatusan: ideología y religión»</p>
-        </article>
-        <article class="speaker-card">
-          <div class="speaker-avatar">JA</div>
-          <h4>Julio Aguilar Cano</h4>
-          <p class="speaker-role">Licenciado</p>
-          <p class="speaker-topic">«Rol de las comunicaciones en el desarrollo de San Jerónimo»</p>
-        </article>
-        <article class="speaker-card">
-          <div class="speaker-avatar">CC</div>
-          <h4>Calixto Coanqui Quispe</h4>
-          <p class="speaker-role">Licenciado</p>
-          <p class="speaker-topic">«Hechos y personajes en la historia de San Jerónimo»</p>
-        </article>
-        <article class="speaker-card">
-          <div class="speaker-avatar">XV</div>
-          <h4>Xavier Daniel Vargas Quispe</h4>
-          <p class="speaker-role">Licenciado</p>
-          <p class="speaker-topic">«San Jerónimo entre memoria, fe e identidad»</p>
-        </article>
-        <article class="speaker-card">
-          <div class="speaker-avatar">DC</div>
-          <h4>Donato Saúl Cayó Baca</h4>
-          <p class="speaker-role">Antropólogo</p>
-          <p class="speaker-topic">«Expresiones culturales y patrimoniales del distrito» + Presentación de libro</p>
-        </article>
+      <div class="speakers-symmetric-container reveal">
+        <!-- Fila Superior (3 Ponentes Centrados) -->
+        <div class="speakers-row-3">
+          <article class="speaker-card-minimal">
+            <span class="speaker-role-tag-centered">Historiador</span>
+            <h3 class="speaker-name-centered">Alex Iván Usca Baca</h3>
+            <p class="speaker-topic-text-centered">«De ayllus a comunidad campesina: Picol Orccompucyo y Sucso
+              Auccaylle»</p>
+          </article>
+
+          <article class="speaker-card-minimal">
+            <span class="speaker-role-tag-centered">Licenciado</span>
+            <h3 class="speaker-name-centered">Raúl Asencio Carrasco</h3>
+            <p class="speaker-topic-text-centered">«La importancia del héroe peruano Alejandro Velasco Astete»</p>
+          </article>
+
+          <article class="speaker-card-minimal">
+            <span class="speaker-role-tag-centered">Arqueólogo</span>
+            <h3 class="speaker-name-centered">Irwin A. Ferrandiz Castro</h3>
+            <p class="speaker-topic-text-centered">«El Pachatusan: ideología y religión»</p>
+          </article>
+        </div>
+
+        <!-- Fila Central Simétrica (1 Ponente Central) -->
+        <div class="speakers-row-center">
+          <article class="speaker-card-minimal">
+            <span class="speaker-role-tag-centered">Antropólogo</span>
+            <h3 class="speaker-name-centered">Donato Saúl Cayó Baca</h3>
+            <p class="speaker-topic-text-centered">«Expresiones culturales y patrimoniales del distrito de San Jerónimo»
+            </p>
+          </article>
+        </div>
+
+        <!-- Fila Inferior (3 Ponentes Centrados) -->
+        <div class="speakers-row-3">
+          <article class="speaker-card-minimal">
+            <span class="speaker-role-tag-centered">Licenciado</span>
+            <h3 class="speaker-name-centered">Julio Aguilar Cano</h3>
+            <p class="speaker-topic-text-centered">«Rol de las comunicaciones en el desarrollo de San Jerónimo»</p>
+          </article>
+
+          <article class="speaker-card-minimal">
+            <span class="speaker-role-tag-centered">Licenciado</span>
+            <h3 class="speaker-name-centered">Calixto Coanqui Quispe</h3>
+            <p class="speaker-topic-text-centered">«Hechos y personajes en la historia de San Jerónimo»</p>
+          </article>
+
+          <article class="speaker-card-minimal">
+            <span class="speaker-role-tag-centered">Licenciado</span>
+            <h3 class="speaker-name-centered">Xavier Daniel Vargas Quispe</h3>
+            <p class="speaker-topic-text-centered">«San Jerónimo entre memoria, fe e identidad»</p>
+          </article>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ GALLERY (Museum-exhibition style) ═══ -->
-  <section class="section section-dark" id="galeria">
+  <!-- ═══ GALLERY (Pasarela Horizontal Lenta — 5 Fotografías Puras 100% Nativas) ═══ -->
+  <!-- ═══ GALERÍA DE FOTOS ═══ -->
+  <section class="section" id="galeria">
     <div class="wrapper">
-      <div class="wrapper-narrow" style="padding:0; margin-bottom:3rem;">
-        <div class="editorial-overline reveal">Nuestra Identidad</div>
-        <h2 class="heading-alpha reveal">San Jerónimo en imágenes</h2>
-        <p class="text-body reveal" style="color:rgba(255,255,255,0.65);">Danzas, fe, tradición y devoción: la
-          festividad del Apóstol San Jerónimo.</p>
+      <div class="wrapper-narrow" style="padding:0; margin-bottom:2.5rem; text-align:center;">
+        <div class="editorial-overline reveal" style="justify-content:center; color:rgba(255, 255, 255, 0.75);">Orgullo
+          y Patrimonio Vivo</div>
+        <h2 class="heading-alpha reveal" style="color:#F0C84F;">¡Esto es San Jerónimo!</h2>
+        <p class="text-body reveal" style="color:rgba(255,255,255,0.92); margin:0 auto;">Nuestra fe, nuestras danzas y
+          nuestras costumbres ancestrales. Muestras vivas de la identidad jeronimiana que custodiamos con orgullo.</p>
       </div>
+    </div>
 
-      <div class="gallery-grid reveal">
-        <div class="g-item">
-          <img src="imagenes/caporales.jpg" alt="Caporales de San Jerónimo" loading="lazy" />
-          <div class="g-caption">Expresión danzarina de Caporales</div>
-        </div>
-        <div class="g-item">
-          <img src="imagenes/fogatafiestrapatronales.jpeg" alt="Fiesta patronal nocturna" loading="lazy" />
-          <div class="g-caption">Noche de fiesta patronal y devoción</div>
-        </div>
-        <div class="g-item">
-          <img src="imagenes/dacaza.jpeg" alt="Costumbres ancestrales" loading="lazy" />
-          <div class="g-caption">Costumbres y expresión ancestral</div>
-        </div>
-        <div class="g-item">
-          <img src="imagenes/fujeros artificiales fiestapatraon de san jerinimo.jpg"
-            alt="Fuegos artificiales en la festividad" loading="lazy" />
-          <div class="g-caption">Fuegos artificiales en la festividad patronal</div>
+    <!-- Pasarela Horizontal Lenta (Bucle Infinito Continuo) -->
+    <div class="runway-wrapper reveal">
+      <div class="runway-track-container" id="runway-container">
+        <div class="runway-track">
+
+          <!-- 2. Fuegos Artificiales -->
+          <div class="runway-photo-card">
+            <img src="imagenes/Galeria/fujeros artificiales fiestapatraon de san jerinimo.jpg"
+              alt="Fuegos artificiales de la Festividad Patronal de San Jerónimo" loading="lazy" />
+          </div>
+
+          <!-- 3. Fogata Patronal -->
+          <div class="runway-photo-card">
+            <img src="imagenes/Galeria/fogatafiestrapatronales.png"
+              alt="Festividad patronal nocturna y fuegos en San Jerónimo" loading="lazy" />
+          </div>
+
+          <!-- 4. Caporales -->
+          <div class="runway-photo-card">
+            <img src="imagenes/Galeria/caporales.jpg" alt="Caporales de San Jerónimo" loading="lazy" />
+          </div>
+
+          <!-- 5. Estatua Doctor Patrón -->
+          <div class="runway-photo-card">
+            <img src="imagenes/Galeria/estatua doctorosanjeronimo.png" alt="Estatua del Doctor Patrón San Jerónimo"
+              loading="lazy" />
+          </div>
+
+          <!-- 6. Cuadrilla de Danzantes -->
+          <div class="runway-photo-card">
+            <img src="imagenes/Galeria/dansss.jpg" alt="Cuadrilla de danzantes jeronimianos" loading="lazy" />
+          </div>
+
+          <!-- 7. Patrimonio e Identidad Cultural -->
+          <div class="runway-photo-card">
+            <img src="imagenes/Galeria/iamgen.png" alt="Patrimonio e Identidad Cultural de San Jerónimo"
+              loading="lazy" />
+          </div>
+
+          <!-- 8. Expresiones Tradicionales -->
+          <div class="runway-photo-card">
+            <img src="imagenes/Galeria/imagen.png" alt="Expresiones culturales y memoria histórica" loading="lazy" />
+          </div>
+
+          <!-- 9. Encuentro e Identidad -->
+          <div class="runway-photo-card">
+            <img src="imagenes/Galeria/Iamgen.png" alt="Cátedra San Jerónimo y comunidades ancestrales"
+              loading="lazy" />
+          </div>
         </div>
       </div>
     </div>
@@ -1980,71 +2645,99 @@
 
       <form class="form-card reveal" id="form-inscripcion" novalidate>
         <div class="form-grid">
-          <div class="field full">
+          <div class="field full" id="field-nombres">
             <label for="nombres">Nombres y apellidos completos *</label>
             <input type="text" id="nombres" name="nombres" required placeholder="Ej.: María Quispe Huamán"
               autocomplete="name">
+            <span class="error-msg" id="err-nombres">Por favor, ingresa tus nombres y apellidos completos.</span>
           </div>
-          <div class="field">
+          <div class="field" id="field-dni">
             <label for="dni">DNI *</label>
-            <input type="text" id="dni" name="dni" required inputmode="numeric" pattern="\d{8}"
-              title="Ingresa 8 dígitos" placeholder="8 dígitos">
+            <input type="text" id="dni" name="dni" required inputmode="numeric" pattern="\d{8}" maxlength="8"
+              placeholder="8 dígitos">
+            <span class="error-msg" id="err-dni">El DNI debe tener exactamente 8 dígitos numéricos.</span>
           </div>
-          <div class="field">
+          <div class="field" id="field-celular">
             <label for="celular">Celular (WhatsApp) *</label>
-            <input type="tel" id="celular" name="celular" required inputmode="numeric" pattern="9\d{8}"
-              title="Ingresa 9 dígitos que inicien con 9" placeholder="9 dígitos">
+            <input type="tel" id="celular" name="celular" required inputmode="numeric" pattern="9\d{8}" maxlength="9"
+              placeholder="9 dígitos (inicia con 9)">
+            <span class="error-msg" id="err-celular">El celular debe tener 9 dígitos e iniciar con el número 9.</span>
           </div>
-          <div class="field">
-            <label for="correo">Correo electrónico *</label>
-            <input type="email" id="correo" name="correo" required placeholder="tucorreo@ejemplo.com"
-              autocomplete="email">
-          </div>
-          <div class="field">
-            <label for="ocupacion">Ocupación *</label>
-            <select id="ocupacion" name="ocupacion" required>
-              <option value="" disabled selected>Seleccione una opción...</option>
-              <option>Estudiante</option>
-              <option>Docente</option>
-              <option>Profesional / técnico</option>
-              <option>Autoridad / funcionario</option>
-              <option>Ciudadano en general</option>
-              <option>Otro</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="institucion">Institución o centro de estudios (opcional)</label>
-            <input type="text" id="institucion" name="institucion" placeholder="Ej.: I.E. San Jerónimo, UNSAAC, etc.">
-          </div>
-          <div class="field">
-            <label for="procedencia">Distrito de procedencia (opcional)</label>
-            <input type="text" id="procedencia" name="procedencia" placeholder="Ej.: San Jerónimo, Cusco">
+          <div class="field full" id="field-institucion">
+            <label for="institucion">Centro de estudios / Institución *</label>
+            <input type="text" id="institucion" name="institucion" required
+              placeholder="Ej.: UNSAAC, I.E. San Jerónimo, etc.">
+            <span class="error-msg" id="err-institucion">Por favor, indica tu centro de estudios o institución.</span>
           </div>
           <div class="field full">
-            <label>Días de asistencia *</label>
-            <div class="radio-group" role="radiogroup" aria-label="Días de asistencia">
-              <input type="radio" id="as-ambos" name="asistencia" value="ambos" required>
-              <label class="pill-label" for="as-ambos">Ambos días (21 y 22)</label>
-              <input type="radio" id="as-lunes" name="asistencia" value="lunes">
-              <label class="pill-label" for="as-lunes">Solo lunes 21</label>
-              <input type="radio" id="as-martes" name="asistencia" value="martes">
-              <label class="pill-label" for="as-martes">Solo martes 22</label>
+            <div class="certificate-notice-box">
+              <span><strong>Certificación oficial:</strong> Se otorgará certificado de asistencia únicamente a quienes
+                participen de <strong>ambas jornadas (21 y 22 de setiembre)</strong>.</span>
             </div>
           </div>
-          <div class="field full">
+          <div class="field full" id="field-acepto">
             <label class="consent-check">
-              <input type="checkbox" name="acepto" required>
-              <span>Acepto participar del encuentro, ser registrado en la lista de asistentes y recibir mi certificado
-                al cierre del evento. Autorizo el registro fotográfico del mismo.</span>
+              <input type="checkbox" id="acepto" name="acepto" required>
+              <span>Acepto participar del encuentro en ambas jornadas (21 y 22 de setiembre) y ser registrado en la
+                lista para la emisión de mi certificado.</span>
             </label>
+            <span class="error-msg" id="err-acepto">Debes aceptar las condiciones para completar tu inscripción.</span>
           </div>
         </div>
+
+        <!-- Dynamic Duplicate DNI Alert -->
+        <div id="form-dup-alert" style="display:none; margin: 1.2rem 0 0.5rem 0; padding:1.1rem 1.3rem; background:rgba(217,56,56,0.06); border:1.5px solid #D93838; border-radius:12px; color:#8A1616; font-size:0.88rem; line-height:1.5; text-align:left;">
+          <div style="display:flex; align-items:center; gap:0.5rem; font-weight:700; font-size:0.96rem; margin-bottom:0.35rem; color:#D93838;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            ¡Este DNI ya se encuentra registrado!
+          </div>
+          <p id="form-dup-alert-text" style="margin:0 0 0.75rem 0; color:#4A1010; font-size:0.86rem;">
+            El DNI ingresado ya cuenta con una inscripción confirmada en el sistema.
+          </p>
+          <a id="form-dup-alert-wapp" href="https://api.whatsapp.com/send?phone=51994372968" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:0.45rem; background:#25D366; color:#FFFFFF !important; font-weight:700; font-size:0.84rem; padding:0.5rem 1.1rem; border-radius:30px; text-decoration:none; box-shadow:0 3px 10px rgba(37,211,102,0.3);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+            Contactar a Soporte OTI por WhatsApp
+          </a>
+        </div>
+
         <div class="form-submit">
           <button type="submit" class="btn btn-solid" style="font-size:1rem; padding:1rem 2.5rem;">Completar
             inscripción</button>
         </div>
-        <p class="form-note">Tus datos se usan únicamente para la organización del evento.<br>También puedes inscribirte
-          en la <strong>mesa de registro</strong> en el Auditorio Municipal.</p>
+        <p class="form-note">Tus datos se usan únicamente para la emisión de tu certificado.<br>También puedes
+          inscribirte en la <strong>mesa de registro</strong> en el Auditorio Municipal.</p>
+
+        <!-- OTI Support Help Box -->
+        <div class="oti-support-box">
+          <div style="flex: 1; min-width: 240px;">
+            <div style="display: flex; align-items: center; gap: 0.5rem; font-weight: 700; color: #0E2938; font-size: 0.95rem; margin-bottom: 0.3rem;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2CA792" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+              ¿Tienes inconvenientes para registrarte?
+            </div>
+            <p style="margin: 0; font-size: 0.85rem; color: #526B78; line-height: 1.45;">
+              Si presentas algún problema técnico o de señal, contacta con <strong>Soporte OTI</strong> vía WhatsApp para realizar tu inscripción de forma manual.
+            </p>
+          </div>
+          <a href="https://api.whatsapp.com/send?phone=51994372968&text=Hola%20Soporte%20OTI%2C%20tengo%20problemas%20para%20registrarme%20en%20el%20Primer%20Encuentro%20Cultural%20C%C3%A1tedra%20San%20Jer%C3%B3nimo.%20Deseo%20apoyo%20con%20mi%20inscripci%C3%B3n%20manual." 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="btn-whatsapp-oti">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+            Contactar a Soporte OTI
+          </a>
+        </div>
       </form>
     </div>
   </section>
@@ -2054,12 +2747,24 @@
     <div class="wrapper">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="imagenes/MDSJ BLANCO.png" alt="Municipalidad Distrital de San Jerónimo" />
-          <p style="font-size:0.9rem; line-height:1.7;">Primer Encuentro de Identidad Cultural "Cátedra San Jerónimo".
-            Organizado por la <strong style="color:rgba(255,255,255,0.9);">Subgerencia de Educación, Cultura y Deporte —
-              Gerencia de Desarrollo Social</strong> de la Municipalidad Distrital de San Jerónimo, con el Proyecto de
-            Cultura y Deporte y la ADAFOSAJ.</p>
+          <img src="imagenes/Logos/MDSJ BLANCO.png" alt="Municipalidad Distrital de San Jerónimo" />
+          <h4 style="font-size:0.96rem; color:#FFFFFF; margin-bottom:0.6rem; font-weight:700; line-height:1.4;">
+            Primer Encuentro de Identidad Cultural "Cátedra San Jerónimo"
+          </h4>
+          
+          <div class="footer-org-roles" style="display:flex; flex-direction:column; gap:0.45rem; font-size:0.83rem; line-height:1.4; color:rgba(255,255,255,0.85);">
+            <p style="margin:0;">
+              <strong style="color:#F0C84F;">Organización:</strong> Subgerencia de Educación, Cultura y Deporte – Gerencia de Desarrollo Social (MDSJ), Proyecto de Cultura y Deporte y ADAFOSAJ.
+            </p>
+            <p style="margin:0;">
+              <strong style="color:#79F2DC;">Coordinación:</strong> Subgerencia de Educación, Cultura y Deporte.
+            </p>
+            <p style="margin:0;">
+              <strong style="color:#79F2DC;">Conducción y Transmisión:</strong> Oficina de Relaciones Públicas MDSJ.
+            </p>
+          </div>
         </div>
+
         <div>
           <h4>Enlaces</h4>
           <ul>
@@ -2070,63 +2775,269 @@
             <li><a href="#inscripcion">Inscripción</a></li>
           </ul>
         </div>
+
         <div>
-          <h4>Contacto</h4>
-          <ul>
+          <h4>Contacto y Redes</h4>
+          <ul style="margin-bottom:1rem;">
             <li>Auditorio de la Municipalidad Distrital de San Jerónimo, Cusco</li>
-            <li>Teléfono: +51 900 000 000</li>
-            <li>Correo: cultura@sanjeronimo.gob.pe</li>
+            <li>Soporte / WhatsApp: <a href="https://api.whatsapp.com/send?phone=51994372968" target="_blank" rel="noopener noreferrer" style="color:#79F2DC; text-decoration:underline;">+51 994 372 968</a></li>
             <li>Atención: lunes a viernes, 8:00 a. m. – 5:00 p. m.</li>
           </ul>
+
+          <div style="display:flex; gap:0.65rem; align-items:center; margin-top:0.6rem;">
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/Municipalidaddesanjeronimo/?locale=es_LA" target="_blank" rel="noopener noreferrer" title="Facebook Municipalidad Distrital de San Jerónimo" aria-label="Facebook" style="display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.1); color:#FFFFFF; transition:all 0.25s ease;" onmouseover="this.style.background='#1877F2'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='none';">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/sanjeronimocusco/" target="_blank" rel="noopener noreferrer" title="Instagram San Jerónimo Cusco" aria-label="Instagram" style="display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.1); color:#FFFFFF; transition:all 0.25s ease;" onmouseover="this.style.background='linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='none';">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <!-- TikTok -->
+            <a href="https://www.tiktok.com/@sanjeronimocusco" target="_blank" rel="noopener noreferrer" title="TikTok San Jerónimo Cusco" aria-label="TikTok" style="display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.1); color:#FFFFFF; transition:all 0.25s ease;" onmouseover="this.style.background='#000000'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='none';">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.98-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.82.57-1.31 1.56-1.28 2.56.02.83.42 1.63 1.07 2.15.77.62 1.8.84 2.76.62.94-.2 1.76-.84 2.14-1.71.31-.69.44-1.47.42-2.23-.01-4.08-.01-8.16-.01-12.24z"/></svg>
+            </a>
+          </div>
         </div>
       </div>
+
       <div class="footer-bottom">
-        <span>&copy; <span id="anio"></span> Municipalidad Distrital de San Jerónimo — Cusco, Perú.</span>
-        <span>"Memoria, fe e identidad"</span>
+        <div>&copy; <span id="anio"></span> Municipalidad Distrital de San Jerónimo — Cusco, Perú.</div>
+        <div style="font-style:italic; color:#F0C84F;">"Memoria, fe e identidad"</div>
+        <div style="color:rgba(255,255,255,0.92); font-weight:600; display:flex; align-items:center; gap:0.4rem;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2CA792" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+          Desarrollado por OTI — MDSJ
+        </div>
       </div>
     </div>
   </footer>
 
-  <!-- ═══ MODAL ═══ -->
+  <!-- ═══ MODAL USER VOUCHER ═══ -->
   <div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
-    <div class="modal-box">
+    <div class="modal-box" style="max-width:520px; padding:2rem;">
       <button class="modal-close" id="btn-cerrar-modal" aria-label="Cerrar">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <line x1="18" y1="6" x2="6" y2="18" />
           <line x1="6" y1="6" x2="18" y2="18" />
         </svg>
       </button>
-      <div class="modal-icon" aria-hidden="true">
-        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-          stroke-linecap="round" stroke-linejoin="round">
+
+      <div class="modal-icon" aria-hidden="true" style="margin-bottom:0.75rem;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2CA792" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="20 6 9 17 4 12" />
         </svg>
       </div>
-      <h3 id="modal-titulo">Inscripción registrada</h3>
-      <p style="font-size:0.88rem; color:var(--c-text-muted); margin-top:0.4rem;">Tu código de inscripción es:</p>
-      <div class="code-display" id="m-codigo">—</div>
-      <p style="font-size:0.95rem;"><strong id="m-nombre">—</strong><br><span
-          style="font-size:0.84rem; color:var(--c-text-muted);">Asistencia: <span id="m-asistencia">—</span></span></p>
-      <p style="font-size:0.82rem; color:var(--c-text-muted); margin-top:0.7rem;">Presenta este código en la mesa de
-        inscripciones.</p>
-      <div class="modal-actions">
-        <button class="btn btn-solid" id="btn-whatsapp">
+
+      <h3 id="modal-titulo" style="font-size:1.3rem; color:#0E2938; margin-bottom:0.25rem;">¡Inscripción Confirmada!</h3>
+      <p style="font-size:0.86rem; color:var(--c-text-muted); margin-bottom:1rem;">Presenta tu DNI para ingresar al evento:</p>
+
+      <!-- Ticket Card Box -->
+      <div style="background: linear-gradient(135deg, #F2F7F9 0%, #EAF3F6 100%); border: 2px dashed #3484A5; border-radius: 12px; padding: 1.25rem 1rem; margin-bottom: 1.2rem; text-align: center;">
+        <div style="font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #3484A5; margin-bottom: 0.2rem;">CÓDIGO DE IDENTIFICACIÓN (DNI)</div>
+        <div class="code-display" id="m-dni-banner" style="font-size: 2.2rem; font-weight: 900; color: #0E2938; letter-spacing: 0.08em; font-family: monospace; margin-bottom: 0.6rem;">00000000</div>
+        
+        <div style="border-top: 1px solid rgba(52,132,165,0.2); padding-top: 0.65rem; display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.9rem;">
+          <div><span style="font-size: 0.78rem; color: #526B78; text-transform: uppercase; font-weight: 600;">Participante:</span> <strong id="m-nombre" style="color: #0E2938; text-transform: uppercase; letter-spacing: 0.02em;">—</strong></div>
+          <div><span style="font-size: 0.78rem; color: #526B78; text-transform: uppercase; font-weight: 600;">DNI:</span> <strong id="m-dni" style="color: #3484A5; font-family: monospace; font-size: 1rem;">—</strong></div>
+          <div><span style="font-size: 0.78rem; color: #526B78; text-transform: uppercase; font-weight: 600;">Código Interno:</span> <strong id="m-codigo" style="color: #647B88; font-family: monospace; font-size: 0.9rem;">CSJ-2026-0000</strong></div>
+          <div><span style="font-size: 0.78rem; color: #526B78; text-transform: uppercase; font-weight: 600;">Asistencia:</span> <span id="m-asistencia" style="font-size: 0.84rem; color: #2D4A58; font-weight: 600;">Ambos días (21 y 22 de setiembre)</span></div>
+        </div>
+      </div>
+
+      <p style="font-size:0.82rem; color:var(--c-text-muted); margin-bottom:1.2rem; line-height:1.4;">
+        Conserva este ticket en tu celular o descárgalo para presentar tu DNI o código al ingresar al Auditorio Municipal.
+      </p>
+
+      <div class="modal-actions" style="gap:0.6rem; flex-wrap:wrap;">
+        <button class="btn btn-solid" id="btn-descargar" style="flex:1; min-width:180px;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path
-              d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
           </svg>
-          WhatsApp
+          Guardar Ticket (PNG)
         </button>
-        <button class="btn btn-outline" id="btn-imprimir">
+        <button class="btn btn-outline" id="btn-imprimir" style="flex:1; min-width:160px;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <polyline points="6 9 6 2 18 2 18 9" />
             <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
             <rect x="6" y="14" width="12" height="8" />
           </svg>
-          Imprimir
+          Imprimir Ticket
         </button>
-        <button class="btn btn-outline" id="btn-nueva">Nueva inscripción</button>
+        <button class="btn btn-outline" id="btn-nueva" style="width:100%;">Nueva inscripción</button>
       </div>
+    </div>
+  </div>
+
+  <!-- ═══ MODAL LOGIN ADMIN ═══ -->
+  <div class="modal-overlay" id="modal-admin-login" role="dialog" aria-modal="true">
+    <div class="modal-box" style="max-width:400px;">
+      <button class="modal-close" id="btn-cerrar-admin-login" aria-label="Cerrar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+      <h3 style="margin-bottom:0.4rem; font-size:1.2rem;">Acceso Administrativo</h3>
+      <p style="font-size:0.84rem; color:var(--c-text-muted); margin-bottom:1rem;">Ingresa la contraseña para acceder al
+        panel de gestión.</p>
+      <form id="form-admin-login">
+        <div class="field" id="field-admin-pass" style="margin-bottom:1rem;">
+          <input type="password" id="admin-password" required placeholder="Contraseña de admin"
+            style="text-align:center;">
+          <span class="error-msg" id="err-admin-pass">Contraseña incorrecta (prueba: admin2026).</span>
+        </div>
+        <button type="submit" class="btn btn-solid" style="width:100%;">Ingresar al Panel</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ═══ MODAL DASHBOARD ADMIN ═══ -->
+  <div class="modal-overlay" id="modal-admin-dashboard" role="dialog" aria-modal="true">
+    <div class="modal-box modal-box-admin">
+      <button class="modal-close" id="btn-cerrar-admin-dash" aria-label="Cerrar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+
+      <div class="admin-header-strip">
+        <div class="admin-title-group">
+          <h3>Gestión de Inscritos — Cátedra San Jerónimo</h3>
+          <span class="admin-count-badge" id="admin-count">Total inscritos: 0</span>
+        </div>
+        <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+          <button class="btn btn-solid" id="btn-exportar-excel" style="font-size:0.85rem; padding:0.5rem 1rem;">
+            📥 Descargar Excel (.csv)
+          </button>
+        </div>
+      </div>
+
+      <div class="admin-nav-tabs">
+        <button class="admin-tab-btn active" data-admin-tab="lista">📋 Lista de Inscritos</button>
+        <button class="admin-tab-btn" data-admin-tab="asistencia">✅ Control de Asistencia (Puerta)</button>
+        <button class="admin-tab-btn" data-admin-tab="masivo">⚡ Inscripción en Masa (Excel)</button>
+        <button class="admin-tab-btn" data-admin-tab="individual">👤 Registro Individual</button>
+      </div>
+
+      <!-- TAB 1: LISTA DE INSCRITOS -->
+      <div class="admin-panel-tab" id="admin-tab-lista">
+        <input type="text" id="admin-search" class="admin-search-input"
+          placeholder="🔍 Buscar por nombre, DNI, institución o código..." />
+        <div class="admin-table-wrapper">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Código</th>
+                <th>Nombres y Apellidos</th>
+                <th>DNI</th>
+                <th>Institución / Centro</th>
+                <th style="text-align:center;">Día 1 (21)</th>
+                <th style="text-align:center;">Día 2 (22)</th>
+                <th style="text-align:center;">Certificado</th>
+                <th style="text-align:center;">Acción</th>
+              </tr>
+            </thead>
+            <tbody id="admin-table-body">
+              <!-- Filas dinámicas -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 2: MARCAR ASISTENCIA EN PUERTA -->
+      <div class="admin-panel-tab" id="admin-tab-asistencia" style="display:none;">
+        <p style="font-size:0.88rem; color:#2D4A58; margin-bottom:0.6rem;">
+          Ingresa o escanea el <strong>DNI</strong> o el <strong>Código de Ticket</strong> del asistente al ingresar al
+          Auditorio.
+        </p>
+        <input type="text" id="door-search-input" class="admin-search-input"
+          placeholder="Ingresa DNI (8 dígitos) o código (ej. CSJ-2026-0001)..." />
+
+        <div id="door-result-container" style="display:none;" class="door-scanner-card">
+          <div
+            style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem; margin-bottom:1rem;">
+            <div>
+              <span
+                style="font-size:0.75rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:#3484A5;"
+                id="door-code-badge">CSJ-2026-0001</span>
+              <h3 style="font-family:var(--font-heading); font-size:1.3rem; color:#0E2938; margin:0.2rem 0;"
+                id="door-name">Nombres</h3>
+              <p style="font-size:0.88rem; color:#526B78; margin:0;">
+                DNI: <strong id="door-dni">—</strong> · Celular: <strong id="door-phone">—</strong> · Inst: <strong
+                  id="door-inst">—</strong>
+              </p>
+            </div>
+            <div id="door-cert-badge-wrapper">
+              <!-- Badge apto/incompleto -->
+            </div>
+          </div>
+
+          <div
+            style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:1.2rem; border-top:1px solid rgba(52,132,165,0.18); padding-top:1.2rem;">
+            <button class="btn-toggle-att" id="btn-door-day1">
+              Día 1 (Lunes 21): <span id="door-day1-state">Marcando...</span>
+            </button>
+            <button class="btn-toggle-att" id="btn-door-day2">
+              Día 2 (Martes 22): <span id="door-day2-state">Marcando...</span>
+            </button>
+          </div>
+        </div>
+
+        <div id="door-empty-msg"
+          style="margin-top:1rem; font-size:0.88rem; color:#888; text-align:center; padding:1.5rem; background:#F9FCFD; border-radius:8px;">
+          Ingresa un DNI o código para buscar y marcar asistencia.
+        </div>
+      </div>
+
+      <!-- TAB 3: INSCRIPCIÓN EN MASA -->
+      <div class="admin-panel-tab" id="admin-tab-masivo" style="display:none;">
+        <p style="font-size:0.88rem; color:#2D4A58; margin-bottom:0.6rem;">
+          Pega aquí la lista copiada desde Excel o Word (un registro por línea).<br>
+          Formato por línea: <code>Nombres Completos, DNI, Celular, Institución</code>
+        </p>
+        <textarea id="mass-import-text" class="mass-import-box" placeholder="Ejemplo:
+María Quispe Huamán, 08273645, 984123456, UNSAAC
+Juan Carlos Pérez, 10293847, 984654321, I.E. San Jerónimo"></textarea>
+        <button class="btn btn-solid" id="btn-procesar-masivo">Procesar Inscripción Masiva</button>
+        <div id="mass-import-result" style="margin-top:0.8rem; font-size:0.85rem; font-weight:600;"></div>
+      </div>
+
+      <!-- TAB 4: REGISTRO INDIVIDUAL -->
+      <div class="admin-panel-tab" id="admin-tab-individual" style="display:none;">
+        <form id="form-admin-individual" style="display:grid; grid-template-columns: 1fr 1fr; gap:0.8rem;">
+          <div style="grid-column: 1 / -1;">
+            <label style="font-weight:600; font-size:0.85rem;">Nombres y apellidos completos *</label>
+            <input type="text" id="adm-nombres" required placeholder="Nombres"
+              style="width:100%; padding:0.6rem; border:1px solid #ccc; border-radius:6px;">
+          </div>
+          <div>
+            <label style="font-weight:600; font-size:0.85rem;">DNI *</label>
+            <input type="text" id="adm-dni" required maxlength="8" placeholder="8 dígitos"
+              style="width:100%; padding:0.6rem; border:1px solid #ccc; border-radius:6px;">
+          </div>
+          <div>
+            <label style="font-weight:600; font-size:0.85rem;">Celular (WhatsApp) *</label>
+            <input type="text" id="adm-celular" required maxlength="9" placeholder="9 dígitos"
+              style="width:100%; padding:0.6rem; border:1px solid #ccc; border-radius:6px;">
+          </div>
+          <div style="grid-column: 1 / -1;">
+            <label style="font-weight:600; font-size:0.85rem;">Institución / Centro de estudios *</label>
+            <input type="text" id="adm-institucion" required placeholder="Institución"
+              style="width:100%; padding:0.6rem; border:1px solid #ccc; border-radius:6px;">
+          </div>
+          <div style="grid-column: 1 / -1; margin-top:0.5rem;">
+            <button type="submit" class="btn btn-solid">Registrar Participante</button>
+          </div>
+        </form>
+      </div>
+
     </div>
   </div>
 
@@ -2172,9 +3083,13 @@
       /* ─── Program tabs ─── */
       document.querySelectorAll('.tab-btn').forEach(function (b) {
         b.addEventListener('click', function () {
-          document.querySelectorAll('.tab-btn').forEach(function (x) { x.classList.remove('active'); });
+          document.querySelectorAll('.tab-btn').forEach(function (x) {
+            x.classList.remove('active');
+            x.setAttribute('aria-selected', 'false');
+          });
           document.querySelectorAll('.panel').forEach(function (p) { p.classList.remove('active'); });
           b.classList.add('active');
+          b.setAttribute('aria-selected', 'true');
           document.getElementById(b.dataset.panel).classList.add('active');
         });
       });
@@ -2206,59 +3121,253 @@
         });
       }
 
-      /* ─── Hero parallax-lite ─── */
-      var heroBg = document.querySelector('.hero-bg img');
-      if (heroBg) {
-        window.addEventListener('scroll', function () {
+      /* ─── Hero Image High-Impact Cinematic Scroll Reveal ─── */
+      var heroImg = document.querySelector('.hero-image-wrapper img');
+      if (heroImg) {
+        function updateHeroExpand() {
           var y = window.scrollY;
-          if (y < window.innerHeight) {
-            heroBg.style.transform = 'scale(1.05) translateY(' + (y * 0.15) + 'px)';
-          }
-        });
+          var maxScroll = 480;
+          var p = Math.min(y / maxScroll, 1);
+          var easeP = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+
+          var scale = 0.84 + (0.22 * easeP);
+          var vCrop = 7 * (1 - easeP);
+          var hCrop = 5.5 * (1 - easeP);
+          var radius = 24 * (1 - easeP);
+          var brightness = 0.85 + (0.20 * easeP);
+
+          heroImg.style.transform = 'scale(' + scale.toFixed(4) + ')';
+          heroImg.style.clipPath = 'inset(' + vCrop.toFixed(2) + '% ' + hCrop.toFixed(2) + '% ' + vCrop.toFixed(2) + '% ' + hCrop.toFixed(2) + '% round ' + radius.toFixed(1) + 'px)';
+          heroImg.style.filter = 'brightness(' + brightness.toFixed(3) + ') contrast(1.08) saturate(1.05)';
+        }
+        window.addEventListener('scroll', function () {
+          requestAnimationFrame(updateHeroExpand);
+        }, { passive: true });
+        updateHeroExpand();
       }
 
-      /* ─── Form input filter ─── */
+      /* ─── Form input filters & live clear ─── */
+      // Background Sync with Centralized Backend Server
+      var cacheInscripciones = [];
+
+      function syncCentralInscripciones() {
+        fetch('/api/inscripciones')
+          .then(function (res) { return res.json(); })
+          .then(function (data) {
+            if (Array.isArray(data)) {
+              cacheInscripciones = data;
+              localStorage.setItem('inscripciones-catedra-sj', JSON.stringify(data));
+            }
+          })
+          .catch(function (err) {
+            try {
+              var parsed = JSON.parse(localStorage.getItem('inscripciones-catedra-sj') || '[]');
+              cacheInscripciones = Array.isArray(parsed) ? parsed : [];
+            } catch(e) {
+              cacheInscripciones = [];
+            }
+          });
+      }
+
+      syncCentralInscripciones();
+      setInterval(syncCentralInscripciones, 8000);
+
       ['dni', 'celular'].forEach(function (id) {
         var el = document.getElementById(id);
-        el.addEventListener('input', function () {
-          el.value = el.value.replace(/\D/g, '').slice(0, id === 'dni' ? 8 : 9);
-        });
+        if (el) {
+          el.addEventListener('input', function () {
+            el.value = el.value.replace(/\D/g, '').slice(0, id === 'dni' ? 8 : 9);
+            var f = document.getElementById('field-' + id);
+            if (f) f.classList.remove('invalid');
+            if (id === 'dni') {
+              var dupBox = document.getElementById('form-dup-alert');
+              if (dupBox) dupBox.style.display = 'none';
+            }
+          });
+        }
       });
+
+      ['nombres', 'institucion'].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) {
+          el.addEventListener('input', function () {
+            var f = document.getElementById('field-' + id);
+            if (f) f.classList.remove('invalid');
+          });
+        }
+      });
+
+      var chkAcepto = document.getElementById('acepto');
+      if (chkAcepto) {
+        chkAcepto.addEventListener('change', function () {
+          var f = document.getElementById('field-acepto');
+          if (f) f.classList.remove('invalid');
+        });
+      }
 
       /* ─── Form registration ─── */
       var registroActual = null;
       var modal = document.getElementById('modal');
 
-      function labelAsistencia(v) {
-        return v === 'ambos' ? 'Ambos días (21 y 22)' : v === 'lunes' ? 'Solo lunes 21' : 'Solo martes 22';
-      }
       function openModal() { modal.classList.add('open'); document.body.style.overflow = 'hidden'; }
       function closeModal() { modal.classList.remove('open'); document.body.style.overflow = ''; }
 
       document.getElementById('form-inscripcion').addEventListener('submit', function (e) {
         e.preventDefault();
-        var form = e.target;
-        if (!form.checkValidity()) { form.reportValidity(); return; }
 
-        var datos = Object.fromEntries(new FormData(form));
-        delete datos.acepto;
+        var nombresEl = document.getElementById('nombres');
+        var dniEl = document.getElementById('dni');
+        var celularEl = document.getElementById('celular');
+        var institucionEl = document.getElementById('institucion');
+        var aceptoEl = document.getElementById('acepto');
+        var dupAlertBox = document.getElementById('form-dup-alert');
+        var dupAlertText = document.getElementById('form-dup-alert-text');
+        var dupAlertWapp = document.getElementById('form-dup-alert-wapp');
+        var errDniEl = document.getElementById('err-dni');
 
-        var lista = JSON.parse(localStorage.getItem('inscripciones-catedra-sj') || '[]');
-        registroActual = {
-          codigo: 'CSJ-2026-' + String(lista.length + 1).padStart(4, '0'),
-          nombres: datos.nombres, dni: datos.dni, celular: datos.celular, correo: datos.correo,
-          ocupacion: datos.ocupacion, institucion: datos.institucion || '', procedencia: datos.procedencia || '',
-          asistencia: datos.asistencia,
-          registradoEl: new Date().toLocaleString('es-PE')
+        if (dupAlertBox) dupAlertBox.style.display = 'none';
+
+        var isValid = true;
+        var firstInvalid = null;
+
+        function setInvalid(fieldId) {
+          var container = document.getElementById(fieldId);
+          if (container) container.classList.add('invalid');
+          isValid = false;
+          if (!firstInvalid && container) {
+            firstInvalid = container.querySelector('input');
+          }
+        }
+
+        // Validate Nombres
+        if (!nombresEl.value.trim() || nombresEl.value.trim().length < 4) {
+          setInvalid('field-nombres');
+        }
+
+        // Validate DNI (exact 8 digits + duplicate check)
+        var dniVal = dniEl.value.trim();
+        if (!/^\d{8}$/.test(dniVal)) {
+          if (errDniEl) errDniEl.textContent = 'El DNI debe tener exactamente 8 dígitos numéricos.';
+          setInvalid('field-dni');
+        } else {
+          // Check local cache for immediate feedback
+          var listaExistente = JSON.parse(localStorage.getItem('inscripciones-catedra-sj') || '[]');
+          var yaRegistrado = listaExistente.find(function (item) {
+            return item.dni && String(item.dni).trim() === dniVal;
+          });
+
+          if (yaRegistrado) {
+            if (errDniEl) {
+              errDniEl.innerHTML = 'Este DNI ya está registrado. <a href="https://api.whatsapp.com/send?phone=51994372968&text=Hola%20Soporte%20OTI%2C%20mi%20DNI%20' + dniVal + '%20ya%20figura%20registrado%20y%20necesito%20asistencia." target="_blank" rel="noopener noreferrer" style="color:#2CA792; text-decoration:underline; font-weight:700;">Habla con Soporte OTI aquí</a>.';
+            }
+            if (dupAlertBox && dupAlertText && dupAlertWapp) {
+              dupAlertText.innerHTML = 'El DNI <strong>' + dniVal + '</strong> ya cuenta con una inscripción confirmada a nombre de <strong>' + yaRegistrado.nombres + '</strong>.<br>No se permiten registros duplicados. Si necesitas ayuda o recuperar tu ticket, habla directamente con soporte.';
+              dupAlertWapp.href = 'https://api.whatsapp.com/send?phone=51994372968&text=Hola%20Soporte%20OTI%2C%20tengo%20un%20problema.%20Mi%20DNI%20' + dniVal + '%20ya%20figura%20registrado%20a%20nombre%20de%20' + encodeURIComponent(yaRegistrado.nombres) + '%20y%20necesito%20asistencia.';
+              dupAlertBox.style.display = 'block';
+            }
+            setInvalid('field-dni');
+          }
+        }
+
+        // Validate Celular
+        if (!/^9\d{8}$/.test(celularEl.value.trim())) {
+          setInvalid('field-celular');
+        }
+
+        // Validate Institucion
+        if (!institucionEl.value.trim() || institucionEl.value.trim().length < 2) {
+          setInvalid('field-institucion');
+        }
+
+        // Validate Checkbox
+        if (!aceptoEl.checked) {
+          setInvalid('field-acepto');
+        }
+
+        if (!isValid) {
+          if (firstInvalid) firstInvalid.focus();
+          return;
+        }
+
+        var payload = {
+          nombres: nombresEl.value.trim().toUpperCase(),
+          dni: dniVal,
+          celular: celularEl.value.trim(),
+          institucion: institucionEl.value.trim().toUpperCase()
         };
-        lista.push(registroActual);
-        localStorage.setItem('inscripciones-catedra-sj', JSON.stringify(lista));
 
-        document.getElementById('m-nombre').textContent = registroActual.nombres;
-        document.getElementById('m-codigo').textContent = registroActual.codigo;
-        document.getElementById('m-asistencia').textContent = labelAsistencia(registroActual.asistencia);
-        openModal();
-        form.reset();
+        fetch('/api/inscripciones', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        })
+        .then(function (res) {
+          if (res.status === 409) {
+            return res.json().then(function(errData) {
+              var yaReg = errData.existente || {};
+              if (errDniEl) {
+                errDniEl.innerHTML = 'Este DNI ya está registrado. <a href="https://api.whatsapp.com/send?phone=51994372968&text=Hola%20Soporte%20OTI%2C%20mi%20DNI%20' + dniVal + '%20ya%20figura%20registrado%20y%20necesito%20asistencia." target="_blank" rel="noopener noreferrer" style="color:#2CA792; text-decoration:underline; font-weight:700;">Habla con Soporte OTI aquí</a>.';
+              }
+              if (dupAlertBox && dupAlertText && dupAlertWapp) {
+                dupAlertText.innerHTML = 'El DNI <strong>' + dniVal + '</strong> ya cuenta con una inscripción confirmada a nombre de <strong>' + (yaReg.nombres || 'Registrado').toUpperCase() + '</strong>.<br>No se permiten registros duplicados. Si necesitas ayuda o recuperar tu ticket, habla directamente con soporte.';
+                dupAlertWapp.href = 'https://api.whatsapp.com/send?phone=51994372968&text=Hola%20Soporte%20OTI%2C%20tengo%20un%20problema.%20Mi%20DNI%20' + dniVal + '%20ya%20figura%20registrado%20a%20nombre%20de%20' + encodeURIComponent((yaReg.nombres || '').toUpperCase()) + '%20y%20necesito%20asistencia.';
+                dupAlertBox.style.display = 'block';
+              }
+              setInvalid('field-dni');
+              if (firstInvalid) firstInvalid.focus();
+              return null;
+            });
+          }
+          return res.json();
+        })
+        .then(function (resData) {
+          if (!resData || !resData.success) return;
+          registroActual = resData.data;
+
+          var lista = JSON.parse(localStorage.getItem('inscripciones-catedra-sj') || '[]');
+          var idx = lista.findIndex(function(x) { return x.codigo === registroActual.codigo; });
+          if (idx === -1) lista.push(registroActual); else lista[idx] = registroActual;
+          localStorage.setItem('inscripciones-catedra-sj', JSON.stringify(lista));
+
+          document.getElementById('m-nombre').textContent = (registroActual.nombres || '').toUpperCase();
+          document.getElementById('m-codigo').textContent = registroActual.codigo;
+          document.getElementById('m-dni').textContent = registroActual.dni;
+          var dniBanner = document.getElementById('m-dni-banner');
+          if (dniBanner) dniBanner.textContent = registroActual.dni;
+          document.getElementById('m-asistencia').textContent = registroActual.asistencia;
+
+          openModal();
+          e.target.reset();
+          if (dupAlertBox) dupAlertBox.style.display = 'none';
+          document.querySelectorAll('.field.invalid').forEach(function (el) { el.classList.remove('invalid'); });
+        })
+        .catch(function () {
+          // Offline fallback
+          var lista = JSON.parse(localStorage.getItem('inscripciones-catedra-sj') || '[]');
+          registroActual = {
+            codigo: 'CSJ-2026-' + String(lista.length + 1).padStart(4, '0'),
+            nombres: nombresEl.value.trim().toUpperCase(),
+            dni: dniVal,
+            celular: celularEl.value.trim(),
+            institucion: institucionEl.value.trim().toUpperCase(),
+            asistencia: 'Ambos días (21 y 22 de setiembre)',
+            registradoEl: new Date().toLocaleString('es-PE')
+          };
+          lista.push(registroActual);
+          localStorage.setItem('inscripciones-catedra-sj', JSON.stringify(lista));
+
+          document.getElementById('m-nombre').textContent = registroActual.nombres;
+          document.getElementById('m-codigo').textContent = registroActual.codigo;
+          document.getElementById('m-dni').textContent = registroActual.dni;
+          var dniBanner = document.getElementById('m-dni-banner');
+          if (dniBanner) dniBanner.textContent = registroActual.dni;
+          document.getElementById('m-asistencia').textContent = registroActual.asistencia;
+
+          openModal();
+          e.target.reset();
+          if (dupAlertBox) dupAlertBox.style.display = 'none';
+          document.querySelectorAll('.field.invalid').forEach(function (el) { el.classList.remove('invalid'); });
+        });
       });
 
       document.getElementById('btn-cerrar-modal').addEventListener('click', closeModal);
@@ -2266,51 +3375,636 @@
       modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
 
-      /* ─── WhatsApp ─── */
-      document.getElementById('btn-whatsapp').addEventListener('click', function () {
+      /* ─── Descargar Ticket (PNG Image sin Código de Barras) ─── */
+      document.getElementById('btn-descargar').addEventListener('click', function () {
         if (!registroActual) return;
-        var texto = encodeURIComponent(
-          'Hola, soy ' + registroActual.nombres + ' (DNI ' + registroActual.dni + '). ' +
-          'Confirmo mi inscripción al Primer Encuentro de Identidad Cultural "Cátedra San Jerónimo" ' +
-          '(21 y 22 de setiembre de 2026). Código: ' + registroActual.codigo + '. ' +
-          'Asistencia: ' + labelAsistencia(registroActual.asistencia) + '.'
-        );
-        window.open('https://wa.me/51900000000?text=' + texto, '_blank');
+        var r = registroActual;
+
+        var canvas = document.createElement('canvas');
+        canvas.width = 600;
+        canvas.height = 680;
+        var ctx = canvas.getContext('2d');
+
+        // Background
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, 600, 680);
+
+        // Border
+        ctx.strokeStyle = '#3484A5';
+        ctx.lineWidth = 4;
+        ctx.strokeRect(16, 16, 568, 648);
+
+        // Header Bar
+        ctx.fillStyle = '#3484A5';
+        ctx.fillRect(16, 16, 568, 75);
+
+        ctx.fillStyle = '#FFFFFF';
+        ctx.font = 'bold 15px Inter, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('MUNICIPALIDAD DISTRITAL DE SAN JERÓNIMO — CUSCO', 300, 45);
+        ctx.font = '12px Inter, sans-serif';
+        ctx.fillText('Subgerencia de Educación, Cultura y Deporte · Gerencia de Desarrollo Social', 300, 67);
+
+        // Event Titles
+        ctx.fillStyle = '#0E2938';
+        ctx.font = 'bold 18px Inter, sans-serif';
+        ctx.fillText('Primer Encuentro de Identidad Cultural', 300, 130);
+        ctx.fillStyle = '#3484A5';
+        ctx.font = 'bold 23px Inter, sans-serif';
+        ctx.fillText('“Cátedra San Jerónimo”', 300, 165);
+
+        ctx.fillStyle = '#647B88';
+        ctx.font = '13px Inter, sans-serif';
+        ctx.fillText('21 y 22 de setiembre de 2026 · Auditorio Municipal de San Jerónimo', 300, 192);
+
+        // Ticket Primary Code Box (DNI)
+        ctx.fillStyle = '#F2F7F9';
+        ctx.fillRect(50, 215, 500, 70);
+        ctx.strokeStyle = '#3484A5';
+        ctx.lineWidth = 2;
+        ctx.setLineDash([6, 4]);
+        ctx.strokeRect(50, 215, 500, 70);
+        ctx.setLineDash([]);
+
+        ctx.fillStyle = '#3484A5';
+        ctx.font = 'bold 11px Inter, sans-serif';
+        ctx.fillText('CÓDIGO PRINCIPAL DE IDENTIFICACIÓN (DNI)', 300, 235);
+        ctx.fillStyle = '#0E2938';
+        ctx.font = 'bold 28px monospace';
+        ctx.fillText(r.dni || '—', 300, 268);
+
+        // Details Table
+        ctx.textAlign = 'left';
+        var startY = 325;
+        var lineHeight = 44;
+        var details = [
+          { label: 'PARTICIPANTE:', val: (r.nombres || '').toUpperCase() },
+          { label: 'DNI:', val: r.dni || '—' },
+          { label: 'CÓDIGO INTERNO:', val: r.codigo || '—' },
+          { label: 'INSTITUCIÓN:', val: (r.institucion || '—').toUpperCase() },
+          { label: 'ASISTENCIA:', val: 'Ambos días (21 y 22 de setiembre)' }
+        ];
+
+        details.forEach(function (d, idx) {
+          var y = startY + (idx * lineHeight);
+          ctx.fillStyle = '#647B88';
+          ctx.font = 'bold 12px Inter, sans-serif';
+          ctx.fillText(d.label, 60, y);
+
+          ctx.fillStyle = idx === 0 ? '#0E2938' : '#2D4A58';
+          ctx.font = idx === 0 ? 'bold 15px Inter, sans-serif' : '14px Inter, sans-serif';
+          ctx.fillText(d.val, 200, y);
+
+          ctx.strokeStyle = 'rgba(52, 132, 165, 0.15)';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(60, y + 12);
+          ctx.lineTo(540, y + 12);
+          ctx.stroke();
+        });
+
+        // Footer Notice
+        ctx.textAlign = 'center';
+        ctx.fillStyle = '#8899A6';
+        ctx.font = '11px Inter, sans-serif';
+        ctx.fillText('Muestra tu DNI en la puerta de ingreso al Auditorio Municipal.', 300, 600);
+        ctx.fillText('Válido para el registro de asistencia de Lunes 21 y Martes 22 de Setiembre.', 300, 620);
+
+        // Download PNG
+        var link = document.createElement('a');
+        link.download = 'Ticket_Catedra_San_Jeronimo_DNI_' + (r.dni || r.codigo) + '.png';
+        link.href = canvas.toDataURL('image/png');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
       });
 
-      /* ─── Print voucher ─── */
+      /* ─── Imprimir Ticket (sin Código de Barras) ─── */
       document.getElementById('btn-imprimir').addEventListener('click', function () {
         if (!registroActual) return;
         var r = registroActual;
-        var w = window.open('', 'comprobante', 'width=540,height=740');
-        w.document.write(
-          '<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><title>Comprobante ' + r.codigo + '</title><style>' +
-          'body{font-family:Inter,sans-serif;color:#1a2832;padding:30px;font-size:13px;line-height:1.5}' +
+        var win = window.open('', 'comprobante', 'width=540,height=680');
+        win.document.write(
+          '<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><title>Ticket DNI ' + r.dni + '</title><style>' +
+          'body{font-family:Inter,sans-serif;color:#0E2938;padding:30px;font-size:13px;line-height:1.6}' +
           '.cab{border-bottom:3px solid #3484A5;padding-bottom:12px;margin-bottom:16px;display:flex;align-items:center;gap:14px}' +
-          '.cod{font-size:22px;font-weight:bold;color:#3484A5;border:2px dashed #3484A5;padding:12px;text-align:center;border-radius:8px;margin:16px 0;background:#e8f3f8}' +
-          'table{width:100%;border-collapse:collapse}td{padding:8px 4px;border-bottom:1px solid #d0dfe8;vertical-align:top}td:first-child{font-weight:bold;width:38%;color:#5a7080}' +
-          '.pie{margin-top:24px;font-size:11px;color:#5a7080;text-align:center;line-height:1.5}' +
+          '.cod{font-size:26px;font-weight:bold;font-family:monospace;color:#0E2938;border:2px dashed #3484A5;padding:14px;text-align:center;border-radius:8px;margin:16px 0;background:#F2F7F9}' +
+          'table{width:100%;border-collapse:collapse}td{padding:10px 4px;border-bottom:1px solid rgba(52, 132, 165, 0.22);vertical-align:top}td:first-child{font-weight:bold;width:38%;color:#647B88}' +
+          '.pie{margin-top:24px;font-size:11px;color:#647B88;text-align:center;line-height:1.5}' +
           '</style></head><body>' +
-          '<div class="cab"><img src="imagenes/ESCUDO COLOR.png" style="height:52px;width:auto;" /><div><strong>MUNICIPALIDAD DISTRITAL DE SAN JERÓNIMO — CUSCO</strong><br>' +
+          '<div class="cab"><img src="imagenes/Logos/ESCUDO COLOR.png" style="height:52px;width:auto;" /><div><strong>MUNICIPALIDAD DISTRITAL DE SAN JERÓNIMO — CUSCO</strong><br>' +
           '<small>Subgerencia de Educación, Cultura y Deporte · Gerencia de Desarrollo Social</small>' +
           '<h3 style="margin:4px 0 2px;color:#3484A5">Primer Encuentro de Identidad Cultural "Cátedra San Jerónimo"</h3>' +
           '<small>21 y 22 de setiembre de 2026 · Auditorio Municipal de San Jerónimo</small></div></div>' +
-          '<div class="cod">' + r.codigo + '</div>' +
+          '<div class="cod">DNI: ' + r.dni + '</div>' +
           '<table>' +
-          '<tr><td>Participante</td><td>' + r.nombres + '</td></tr>' +
-          '<tr><td>DNI</td><td>' + r.dni + '</td></tr>' +
-          '<tr><td>Correo</td><td>' + r.correo + '</td></tr>' +
-          '<tr><td>Celular</td><td>' + r.celular + '</td></tr>' +
-          '<tr><td>Asistencia</td><td>' + labelAsistencia(r.asistencia) + '</td></tr>' +
-          '<tr><td>Registrado el</td><td>' + r.registradoEl + '</td></tr>' +
+          '<tr><td>PARTICIPANTE</td><td><strong style="text-transform:uppercase;">' + (r.nombres || '').toUpperCase() + '</strong></td></tr>' +
+          '<tr><td>DNI (CÓDIGO PRINCIPAL)</td><td>' + r.dni + '</td></tr>' +
+          '<tr><td>CÓDIGO INTERNO REGISTRO</td><td>' + r.codigo + '</td></tr>' +
+          '<tr><td>CELULAR</td><td>' + r.celular + '</td></tr>' +
+          '<tr><td>INSTITUCIÓN</td><td>' + (r.institucion || '').toUpperCase() + '</td></tr>' +
+          '<tr><td>ASISTENCIA</td><td>Ambos días (21 y 22 de setiembre)</td></tr>' +
+          '<tr><td>REGISTRADO EL</td><td>' + (r.registradoEl || '') + '</td></tr>' +
           '</table>' +
-          '<p class="pie">Presente este comprobante en la mesa de inscripciones del evento.<br>Comprobante generado por la página web de inscripción.</p>' +
+          '<p class="pie">Presente este ticket o su DNI en la puerta de ingreso al Auditorio Municipal.<br>Válido para registrar asistencia de Lunes 21 y Martes 22 de Setiembre.</p>' +
           '</body></html>'
         );
-        w.document.close();
-        w.focus();
-        w.print();
+        win.document.close();
+        win.focus();
+        win.print();
       });
+
+      /* ─── Pasarela Horizontal Lenta con Arrastre de Mouse (Infinite Drag Runway) ─── */
+      (function initRunway() {
+        var container = document.getElementById('runway-container');
+        var track = container ? container.querySelector('.runway-track') : null;
+        var btnPrev = document.getElementById('runway-prev');
+        var btnNext = document.getElementById('runway-next');
+        if (!container || !track) return;
+
+        // Duplicar elementos dentro de track para bucle infinito perfecto y fluido
+        var originalCards = Array.from(track.children);
+        originalCards.forEach(function (card) {
+          track.appendChild(card.cloneNode(true));
+        });
+
+        var isHovered = false;
+        var isDragging = false;
+        var startX = 0;
+        var scrollLeftStart = 0;
+        var pauseTimer = null;
+        var scrollSpeed = 0.8; // Velocidad del movimiento muy lento y suave
+
+        function getOriginalTrackWidth() {
+          return track.scrollWidth / 2;
+        }
+
+        function pauseAutoScroll(duration) {
+          isHovered = true;
+          if (pauseTimer) clearTimeout(pauseTimer);
+          if (duration) {
+            pauseTimer = setTimeout(function () {
+              if (!isDragging) isHovered = false;
+            }, duration);
+          }
+        }
+
+        // 1. Animación automática suave continua (Pasarela lenta)
+        function autoRunway() {
+          if (!isHovered && !isDragging && container) {
+            container.scrollLeft += scrollSpeed;
+            var origWidth = getOriginalTrackWidth();
+            if (origWidth > 0 && container.scrollLeft >= origWidth) {
+              container.scrollLeft -= origWidth; // Reinicio imperceptible
+            }
+          }
+          requestAnimationFrame(autoRunway);
+        }
+        requestAnimationFrame(autoRunway);
+
+        // Hover events
+        container.addEventListener('mouseenter', function () { isHovered = true; });
+        container.addEventListener('mouseleave', function () {
+          if (!isDragging) isHovered = false;
+        });
+
+        // 2. Control total con el MOUSE (Arrastre / Drag to Scroll)
+        container.addEventListener('mousedown', function (e) {
+          isDragging = true;
+          isHovered = true;
+          container.classList.add('is-dragging');
+          startX = e.clientX;
+          scrollLeftStart = container.scrollLeft;
+        });
+
+        window.addEventListener('mousemove', function (e) {
+          if (!isDragging) return;
+          e.preventDefault();
+          var dx = e.clientX - startX;
+          var newScrollLeft = scrollLeftStart - dx;
+          var origWidth = getOriginalTrackWidth();
+          if (origWidth > 0) {
+            if (newScrollLeft >= origWidth) newScrollLeft -= origWidth;
+            if (newScrollLeft < 0) newScrollLeft += origWidth;
+          }
+          container.scrollLeft = newScrollLeft;
+        });
+
+        window.addEventListener('mouseup', function () {
+          if (isDragging) {
+            isDragging = false;
+            container.classList.remove('is-dragging');
+            pauseAutoScroll(2500); // Reanudar avance lento tras 2.5 seg
+          }
+        });
+
+        // 3. Control Tactil (Touch Swipe)
+        container.addEventListener('touchstart', function () { pauseAutoScroll(); }, { passive: true });
+        container.addEventListener('touchend', function () { pauseAutoScroll(2500); }, { passive: true });
+
+        // 4. Control con Rueda del Mouse (Wheel / Trackpad)
+        container.addEventListener('wheel', function () {
+          pauseAutoScroll(2000);
+        }, { passive: true });
+
+        // 5. Botones de Flechas (Desplazamiento suave por tarjeta)
+        function navigate(direction) {
+          pauseAutoScroll(3500);
+          var scrollAmount = container.clientWidth * 0.6;
+          var targetScroll = direction === 'next'
+            ? container.scrollLeft + scrollAmount
+            : container.scrollLeft - scrollAmount;
+
+          container.scrollTo({
+            left: targetScroll,
+            behavior: 'smooth'
+          });
+        }
+
+        if (btnPrev) {
+          btnPrev.addEventListener('click', function (e) {
+            e.preventDefault();
+            navigate('prev');
+          });
+        }
+        if (btnNext) {
+          btnNext.addEventListener('click', function (e) {
+            e.preventDefault();
+            navigate('next');
+          });
+        }
+      })();
+
+      /* ─── Admin Panel Controller ─── */
+      var modalAdminLogin = document.getElementById('modal-admin-login');
+      var modalAdminDash = document.getElementById('modal-admin-dashboard');
+      var btnAbrirAdmin = document.getElementById('btn-abrir-admin-link');
+
+      function openAdminLogin() {
+        if (modalAdminLogin) modalAdminLogin.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeAdminModals() {
+        if (modalAdminLogin) modalAdminLogin.classList.remove('open');
+        if (modalAdminDash) modalAdminDash.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      if (btnAbrirAdmin) {
+        btnAbrirAdmin.addEventListener('click', function (e) {
+          e.preventDefault();
+          openAdminLogin();
+        });
+      }
+
+      var btnCerrarAdminLogin = document.getElementById('btn-cerrar-admin-login');
+      var btnCerrarAdminDash = document.getElementById('btn-cerrar-admin-dash');
+      if (btnCerrarAdminLogin) btnCerrarAdminLogin.addEventListener('click', closeAdminModals);
+      if (btnCerrarAdminDash) btnCerrarAdminDash.addEventListener('click', closeAdminModals);
+
+      // Login form submit
+      var formAdminLogin = document.getElementById('form-admin-login');
+      if (formAdminLogin) {
+        formAdminLogin.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var pass = document.getElementById('admin-password').value;
+          if (pass === 'admin2026' || pass === 'admin123' || pass === 'admin') {
+            document.getElementById('field-admin-pass').classList.remove('invalid');
+            closeAdminModals();
+            if (modalAdminDash) modalAdminDash.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            renderAdminTable();
+          } else {
+            document.getElementById('field-admin-pass').classList.add('invalid');
+          }
+        });
+      }
+
+      // Admin tabs
+      document.querySelectorAll('.admin-tab-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          document.querySelectorAll('.admin-tab-btn').forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          var tabName = btn.getAttribute('data-admin-tab');
+          document.getElementById('admin-tab-lista').style.display = tabName === 'lista' ? 'block' : 'none';
+          document.getElementById('admin-tab-asistencia').style.display = tabName === 'asistencia' ? 'block' : 'none';
+          document.getElementById('admin-tab-masivo').style.display = tabName === 'masivo' ? 'block' : 'none';
+          document.getElementById('admin-tab-individual').style.display = tabName === 'individual' ? 'block' : 'none';
+        });
+      });
+
+      // Helper function to update single participant attendance
+      function toggleAttendance(codigo, field) {
+        var lista = JSON.parse(localStorage.getItem('inscripciones-catedra-sj') || '[]');
+        var foundIndex = -1;
+        for (var i = 0; i < lista.length; i++) {
+          if (lista[i].codigo === codigo) { foundIndex = i; break; }
+        }
+        if (foundIndex !== -1) {
+          lista[foundIndex][field] = !lista[foundIndex][field];
+          localStorage.setItem('inscripciones-catedra-sj', JSON.stringify(lista));
+          renderAdminTable(document.getElementById('admin-search').value);
+          renderDoorResult(codigo);
+        }
+      }
+
+      // Render Admin Table
+      function renderAdminTable(filterQuery) {
+        var tbody = document.getElementById('admin-table-body');
+        var counter = document.getElementById('admin-count');
+        if (!tbody) return;
+
+        var lista = JSON.parse(localStorage.getItem('inscripciones-catedra-sj') || '[]');
+        if (counter) counter.textContent = 'Total inscritos: ' + lista.length;
+
+        var query = (filterQuery || '').toLowerCase().trim();
+        var filtrados = lista.filter(function (r) {
+          if (!query) return true;
+          return (r.nombres || '').toLowerCase().indexOf(query) !== -1 ||
+            (r.dni || '').indexOf(query) !== -1 ||
+            (r.codigo || '').toLowerCase().indexOf(query) !== -1 ||
+            (r.institucion || '').toLowerCase().indexOf(query) !== -1;
+        });
+
+        if (filtrados.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="9" style="text-align:center; padding:1.5rem; color:#888;">No se encontraron registros.</td></tr>';
+          return;
+        }
+
+        var html = '';
+        filtrados.forEach(function (r, index) {
+          var att1 = !!r.attDay1;
+          var att2 = !!r.attDay2;
+          var isApto = att1 && att2;
+
+          var badgeCert = isApto
+            ? '<span class="badge-apto">Apto (2/2)</span>'
+            : '<span class="badge-incompleto">' + (att1 || att2 ? 'Incompleto (1/2)' : 'Incompleto (0/2)') + '</span>';
+
+          html += '<tr>' +
+            '<td>' + (index + 1) + '</td>' +
+            '<td><strong>' + (r.codigo || '—') + '</strong></td>' +
+            '<td>' + (r.nombres || '—') + '</td>' +
+            '<td>' + (r.dni || '—') + '</td>' +
+            '<td>' + (r.institucion || '—') + '</td>' +
+            '<td style="text-align:center;"><input type="checkbox" class="attendance-check check-att1" data-codigo="' + r.codigo + '" ' + (att1 ? 'checked' : '') + '></td>' +
+            '<td style="text-align:center;"><input type="checkbox" class="attendance-check check-att2" data-codigo="' + r.codigo + '" ' + (att2 ? 'checked' : '') + '></td>' +
+            '<td style="text-align:center;">' + badgeCert + '</td>' +
+            '<td style="text-align:center;"><button class="btn-delete-row" data-codigo="' + r.codigo + '">Eliminar</button></td>' +
+            '</tr>';
+        });
+        tbody.innerHTML = html;
+
+        // Attendance checkboxes handlers
+        tbody.querySelectorAll('.check-att1').forEach(function (chk) {
+          chk.addEventListener('change', function () {
+            toggleAttendance(chk.getAttribute('data-codigo'), 'attDay1');
+          });
+        });
+        tbody.querySelectorAll('.check-att2').forEach(function (chk) {
+          chk.addEventListener('change', function () {
+            toggleAttendance(chk.getAttribute('data-codigo'), 'attDay2');
+          });
+        });
+
+        // Delete row click handlers
+        tbody.querySelectorAll('.btn-delete-row').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var codeToDelete = btn.getAttribute('data-codigo');
+            if (confirm('¿Estás seguro de eliminar la inscripción ' + codeToDelete + '?')) {
+              var actualizados = lista.filter(function (item) { return item.codigo !== codeToDelete; });
+              localStorage.setItem('inscripciones-catedra-sj', JSON.stringify(actualizados));
+              renderAdminTable(document.getElementById('admin-search').value);
+            }
+          });
+        });
+      }
+
+      // Door Scanner / Search Controller
+      var currentDoorRecord = null;
+      function renderDoorResult(searchCodeOrDni) {
+        var doorContainer = document.getElementById('door-result-container');
+        var emptyMsg = document.getElementById('door-empty-msg');
+        if (!doorContainer) return;
+
+        var query = (searchCodeOrDni || document.getElementById('door-search-input').value || '').toLowerCase().trim();
+        if (!query) {
+          doorContainer.style.display = 'none';
+          if (emptyMsg) emptyMsg.style.display = 'block';
+          return;
+        }
+
+        var lista = JSON.parse(localStorage.getItem('inscripciones-catedra-sj') || '[]');
+        var found = null;
+        for (var i = 0; i < lista.length; i++) {
+          var item = lista[i];
+          if ((item.dni && item.dni.trim() === query) || (item.codigo && item.codigo.toLowerCase().trim() === query)) {
+            found = item;
+            break;
+          }
+        }
+
+        if (!found) {
+          // Partial search fallback
+          for (var j = 0; j < lista.length; j++) {
+            var it = lista[j];
+            if ((it.nombres || '').toLowerCase().indexOf(query) !== -1 || (it.dni || '').indexOf(query) !== -1) {
+              found = it;
+              break;
+            }
+          }
+        }
+
+        if (!found) {
+          doorContainer.style.display = 'none';
+          if (emptyMsg) {
+            emptyMsg.style.display = 'block';
+            emptyMsg.textContent = 'No se encontró ningún participante registrado con "' + query + '".';
+          }
+          return;
+        }
+
+        currentDoorRecord = found;
+        if (emptyMsg) emptyMsg.style.display = 'none';
+        doorContainer.style.display = 'block';
+
+        document.getElementById('door-code-badge').textContent = found.codigo;
+        document.getElementById('door-name').textContent = found.nombres;
+        document.getElementById('door-dni').textContent = found.dni;
+        document.getElementById('door-phone').textContent = found.celular || '—';
+        document.getElementById('door-inst').textContent = found.institucion || '—';
+
+        var att1 = !!found.attDay1;
+        var att2 = !!found.attDay2;
+        var isApto = att1 && att2;
+
+        var certWrapper = document.getElementById('door-cert-badge-wrapper');
+        if (certWrapper) {
+          certWrapper.innerHTML = isApto
+            ? '<span class="badge-apto" style="font-size:0.85rem; padding:0.4rem 0.9rem;">📜 APTO PARA CERTIFICADO</span>'
+            : '<span class="badge-incompleto" style="font-size:0.85rem; padding:0.4rem 0.9rem;">PENDIENTE (ASISTENCIA INCOMPLETA)</span>';
+        }
+
+        var btnDay1 = document.getElementById('btn-door-day1');
+        var btnDay2 = document.getElementById('btn-door-day2');
+        var state1 = document.getElementById('door-day1-state');
+        var state2 = document.getElementById('door-day2-state');
+
+        if (btnDay1 && state1) {
+          btnDay1.className = 'btn-toggle-att ' + (att1 ? 'presente' : 'ausente');
+          state1.textContent = att1 ? '✔ PRESENTE (Lunes 21)' : 'MARCAR PRESENCIA';
+        }
+        if (btnDay2 && state2) {
+          btnDay2.className = 'btn-toggle-att ' + (att2 ? 'presente' : 'ausente');
+          state2.textContent = att2 ? '✔ PRESENTE (Martes 22)' : 'MARCAR PRESENCIA';
+        }
+      }
+
+      var doorSearchInput = document.getElementById('door-search-input');
+      if (doorSearchInput) {
+        doorSearchInput.addEventListener('input', function () {
+          renderDoorResult(doorSearchInput.value);
+        });
+      }
+
+      var btnDoor1 = document.getElementById('btn-door-day1');
+      var btnDoor2 = document.getElementById('btn-door-day2');
+      if (btnDoor1) {
+        btnDoor1.addEventListener('click', function () {
+          if (currentDoorRecord) toggleAttendance(currentDoorRecord.codigo, 'attDay1');
+        });
+      }
+      if (btnDoor2) {
+        btnDoor2.addEventListener('click', function () {
+          if (currentDoorRecord) toggleAttendance(currentDoorRecord.codigo, 'attDay2');
+        });
+      }
+
+      // Live search filter
+      var inputSearch = document.getElementById('admin-search');
+      if (inputSearch) {
+        inputSearch.addEventListener('input', function () {
+          renderAdminTable(inputSearch.value);
+        });
+      }
+
+      // Export to Excel / CSV with Attendance Data
+      var btnExportar = document.getElementById('btn-exportar-excel');
+      if (btnExportar) {
+        btnExportar.addEventListener('click', function () {
+          var lista = JSON.parse(localStorage.getItem('inscripciones-catedra-sj') || '[]');
+          if (lista.length === 0) {
+            alert('No hay inscripciones registradas para exportar.');
+            return;
+          }
+
+          var csv = '\uFEFF'; // UTF-8 BOM for Excel spanish accents compatibility
+          csv += 'Codigo,Nombres y Apellidos,DNI,Celular,Institucion / Centro,Asistencia Lunes 21,Asistencia Martes 22,Apto Certificado,Fecha Registro\n';
+
+          lista.forEach(function (r) {
+            var att1 = r.attDay1 ? 'SI' : 'NO';
+            var att2 = r.attDay2 ? 'SI' : 'NO';
+            var apto = (r.attDay1 && r.attDay2) ? 'SI (APTO)' : 'NO (INCOMPLETO)';
+
+            var row = [
+              '"' + (r.codigo || '') + '"',
+              '"' + (r.nombres || '').replace(/"/g, '""') + '"',
+              '"' + (r.dni || '') + '"',
+              '"' + (r.celular || '') + '"',
+              '"' + (r.institucion || '').replace(/"/g, '""') + '"',
+              '"' + att1 + '"',
+              '"' + att2 + '"',
+              '"' + apto + '"',
+              '"' + (r.registradoEl || '') + '"'
+            ];
+            csv += row.join(',') + '\n';
+          });
+
+          var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+          var link = document.createElement('a');
+          var url = URL.createObjectURL(blob);
+          link.setAttribute('href', url);
+          link.setAttribute('download', 'Inscritos_Asistencia_Catedra_San_Jeronimo_2026.csv');
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        });
+      }
+
+      // Process Bulk / Mass Import
+      var btnMasivo = document.getElementById('btn-procesar-masivo');
+      if (btnMasivo) {
+        btnMasivo.addEventListener('click', function () {
+          var area = document.getElementById('mass-import-text');
+          var resultDiv = document.getElementById('mass-import-result');
+          if (!area || !area.value.trim()) {
+            if (resultDiv) { resultDiv.style.color = '#D93838'; resultDiv.textContent = 'Ingresa o pega al menos una línea con datos.'; }
+            return;
+          }
+
+          var lines = area.value.trim().split('\n');
+          var lista = JSON.parse(localStorage.getItem('inscripciones-catedra-sj') || '[]');
+          var countExitosos = 0;
+
+          lines.forEach(function (line) {
+            if (!line.trim()) return;
+            // Split by tab or comma
+            var parts = line.indexOf('\t') !== -1 ? line.split('\t') : line.split(',');
+            if (parts.length >= 2) {
+              var nombres = parts[0] ? parts[0].trim() : '';
+              var dni = parts[1] ? parts[1].replace(/\D/g, '').trim() : '';
+              var celular = parts[2] ? parts[2].replace(/\D/g, '').trim() : '900000000';
+              var institucion = parts[3] ? parts[3].trim() : 'San Jerónimo';
+
+              if (nombres && dni) {
+                countExitosos++;
+                var nuevoRegistro = {
+                  codigo: 'CSJ-2026-' + String(lista.length + 1).padStart(4, '0'),
+                  nombres: nombres,
+                  dni: dni,
+                  celular: celular || '900000000',
+                  institucion: institucion || 'General',
+                  asistencia: 'Ambos días (21 y 22 de setiembre)',
+                  registradoEl: new Date().toLocaleString('es-PE')
+                };
+                lista.push(nuevoRegistro);
+              }
+            }
+          });
+
+          localStorage.setItem('inscripciones-catedra-sj', JSON.stringify(lista));
+          area.value = '';
+          if (resultDiv) {
+            resultDiv.style.color = '#2CA792';
+            resultDiv.textContent = '¡Éxito! Se inscribieron masivamente ' + countExitosos + ' personas.';
+          }
+          renderAdminTable();
+        });
+      }
+
+      // Admin Individual Submit
+      var formAdminIndiv = document.getElementById('form-admin-individual');
+      if (formAdminIndiv) {
+        formAdminIndiv.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var lista = JSON.parse(localStorage.getItem('inscripciones-catedra-sj') || '[]');
+          var nuevoRegistro = {
+            codigo: 'CSJ-2026-' + String(lista.length + 1).padStart(4, '0'),
+            nombres: document.getElementById('adm-nombres').value.trim(),
+            dni: document.getElementById('adm-dni').value.trim(),
+            celular: document.getElementById('adm-celular').value.trim(),
+            institucion: document.getElementById('adm-institucion').value.trim(),
+            asistencia: 'Ambos días (21 y 22 de setiembre)',
+            registradoEl: new Date().toLocaleString('es-PE')
+          };
+          lista.push(nuevoRegistro);
+          localStorage.setItem('inscripciones-catedra-sj', JSON.stringify(lista));
+          alert('¡Persona registrada con éxito! Código: ' + nuevoRegistro.codigo);
+          formAdminIndiv.reset();
+          renderAdminTable();
+        });
+      }
 
       /* ─── Year ─── */
       document.getElementById('anio').textContent = new Date().getFullYear();
