@@ -1441,7 +1441,7 @@
     .runway-track-container {
       width: 100%;
       overflow-x: auto;
-      scroll-behavior: smooth;
+      scroll-behavior: auto !important;
       scrollbar-width: none;
       -ms-overflow-style: none;
       padding: 1.5rem 0;
@@ -3712,6 +3712,8 @@ Juan Carlos Pérez, 10293847, 984654321, I.E. San Jerónimo"></textarea>
         var scrollSpeed = 0.8;
         var isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
+        var currentPos = container.scrollLeft;
+
         function getOriginalTrackWidth() {
           return track.scrollWidth / 2;
         }
@@ -3720,18 +3722,24 @@ Juan Carlos Pérez, 10293847, 984654321, I.E. San Jerónimo"></textarea>
           isHovered = true;
           if (pauseTimer) clearTimeout(pauseTimer);
           pauseTimer = setTimeout(function () {
-            if (!isDragging) isHovered = false;
+            if (!isDragging) {
+              isHovered = false;
+              if (container) currentPos = container.scrollLeft;
+            }
           }, duration || 2000);
         }
 
-        // Animación de desplazamiento infinito continuo
+        // Animación de desplazamiento infinito continuo de alta fluidez (60 FPS)
         function autoRunway() {
           if (!isHovered && !isDragging && container) {
-            container.scrollLeft += scrollSpeed;
+            currentPos += scrollSpeed;
             var origWidth = getOriginalTrackWidth();
-            if (origWidth > 0 && container.scrollLeft >= origWidth) {
-              container.scrollLeft -= origWidth;
+            if (origWidth > 0 && currentPos >= origWidth) {
+              currentPos -= origWidth;
             }
+            container.scrollLeft = currentPos;
+          } else if (container) {
+            currentPos = container.scrollLeft;
           }
           requestAnimationFrame(autoRunway);
         }
