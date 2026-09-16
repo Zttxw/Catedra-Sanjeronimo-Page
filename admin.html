@@ -648,13 +648,17 @@
           <button class="tab-btn" data-tab="individual">Nuevo Registro</button>
         </nav>
 
-        <div class="actions-group">
-          <button class="btn-action-minimal" id="btn-export-excel">
-            <span>Descargar CSV</span>
+        <div class="actions-group" style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+          <button class="btn-action-minimal" id="btn-export-pdf" style="background:#0F172A; color:#FFFFFF; border-color:#0F172A; gap:0.4rem; display:inline-flex; align-items:center; font-weight:600;" title="Generar e imprimir reporte oficial en PDF para los organizadores">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            <span>Descargar Reporte PDF</span>
           </button>
           <button class="btn-action-minimal" id="btn-export-backup" style="background:#059669; color:#FFFFFF; border-color:#059669; gap:0.4rem; display:inline-flex; align-items:center;" title="Descargar copia de respaldo en JSON directamente a tu PC">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
             <span>Descargar Respaldo JSON</span>
+          </button>
+          <button class="btn-action-minimal" id="btn-export-excel" title="Descargar reporte en formato Excel/CSV">
+            <span>Descargar CSV</span>
           </button>
         </div>
       </div>
@@ -1452,6 +1456,142 @@ Juan Carlos Pérez, 10293847, 984654321, Municipalidad San Jerónimo"></textarea
         link.click();
         document.body.removeChild(link);
       });
+
+      // Generar e Imprimir Reporte Oficial en PDF para Organizadores
+      var btnPdf = document.getElementById('btn-export-pdf');
+      if (btnPdf) {
+        btnPdf.addEventListener('click', function () {
+          var records = getRecords();
+          if (!records || records.length === 0) {
+            alert('No hay inscripciones registradas para generar el reporte.');
+            return;
+          }
+
+          var total = records.length;
+          var aptos = records.filter(function (r) { return r.attDay1 && r.attDay2; }).length;
+          var att1 = records.filter(function (r) { return r.attDay1; }).length;
+          var att2 = records.filter(function (r) { return r.attDay2; }).length;
+          var now = new Date();
+          var fechaEmision = now.toLocaleDateString('es-PE', { day: '2-digit', month: 'long', year: 'numeric' }) + ' — ' + now.toLocaleTimeString('es-PE', { hour: '2-digit', minute: '2-digit' });
+
+          var rowsHtml = '';
+          records.forEach(function (r, index) {
+            var d1 = r.attDay1 ? '<span style="color:#059669; font-weight:700;">✓ SÍ</span>' : '<span style="color:#DC2626;">✕ NO</span>';
+            var d2 = r.attDay2 ? '<span style="color:#059669; font-weight:700;">✓ SÍ</span>' : '<span style="color:#DC2626;">✕ NO</span>';
+            var estado = (r.attDay1 && r.attDay2) 
+              ? '<span style="background:#ECFDF5; color:#059669; border:1px solid #A7F3D0; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:700;">APTO CERTIFICADO</span>'
+              : '<span style="background:#FFFBEB; color:#D97706; border:1px solid #FDE68A; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:600;">INCOMPLETO</span>';
+
+            rowsHtml += `
+              <tr style="border-bottom:1px solid #E5E7EB; ${index % 2 === 1 ? 'background:#F8FAFC;' : ''}">
+                <td style="padding:6px 8px; text-align:center; font-size:0.78rem;">${index + 1}</td>
+                <td style="padding:6px 8px; font-family:monospace; font-weight:700; font-size:0.8rem; color:#0F172A;">${r.codigo || '—'}</td>
+                <td style="padding:6px 8px; font-weight:600; font-size:0.82rem; color:#0F172A;">${r.nombres || ''}</td>
+                <td style="padding:6px 8px; font-size:0.8rem; font-family:monospace;">${r.dni || ''}</td>
+                <td style="padding:6px 8px; font-size:0.78rem;">${r.celular || ''}</td>
+                <td style="padding:6px 8px; font-size:0.78rem; color:#334155;">${r.institucion || ''}</td>
+                <td style="padding:6px 8px; text-align:center; font-size:0.78rem;">${d1}</td>
+                <td style="padding:6px 8px; text-align:center; font-size:0.78rem;">${d2}</td>
+                <td style="padding:6px 8px; text-align:center;">${estado}</td>
+              </tr>
+            `;
+          });
+
+          var pdfWindow = window.open('', '_blank');
+          pdfWindow.document.write(`
+            <!DOCTYPE html>
+            <html lang="es">
+            <head>
+              <meta charset="UTF-8">
+              <title>Reporte Oficial — Cátedra San Jerónimo 2026</title>
+              <style>
+                @page { size: A4 landscape; margin: 10mm; }
+                body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #0F172A; margin: 0; padding: 10px; background: #FFF; }
+                .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #0F172A; padding-bottom: 10px; margin-bottom: 12px; }
+                .brand-title { font-size: 1.2rem; font-weight: 800; text-transform: uppercase; color: #0F172A; margin: 0; letter-spacing: 0.03em; }
+                .brand-sub { font-size: 0.82rem; color: #475569; margin-top: 2px; font-weight: 600; }
+                .meta-badge { font-size: 0.74rem; text-align: right; color: #64748B; }
+                .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 12px; }
+                .stat-card { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 6px; padding: 6px 10px; text-align: center; }
+                .stat-card .num { font-size: 1.15rem; font-weight: 800; color: #0F172A; }
+                .stat-card .lbl { font-size: 0.65rem; text-transform: uppercase; color: #64748B; font-weight: 700; margin-top: 1px; }
+                table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+                th { background: #0F172A; color: #FFFFFF; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 7px 8px; text-align: left; }
+                .signatures { display: flex; justify-content: space-around; margin-top: 30px; page-break-inside: avoid; }
+                .sig-box { text-align: center; width: 240px; border-top: 1px solid #64748B; padding-top: 6px; font-size: 0.74rem; font-weight: 600; color: #334155; }
+              </style>
+            </head>
+            <body>
+              <div class="header">
+                <div>
+                  <h1 class="brand-title">Municipalidad Distrital de San Jerónimo</h1>
+                  <div class="brand-sub">Primer Encuentro de Identidad Cultural — Cátedra San Jerónimo 2026</div>
+                </div>
+                <div class="meta-badge">
+                  <div><strong>EN COORGANIZACIÓN CON:</strong> UNIVERSIDAD CONTINENTAL</div>
+                  <div>Emisión de Reporte: ${fechaEmision}</div>
+                </div>
+              </div>
+
+              <div class="stats-grid">
+                <div class="stat-card">
+                  <div class="num">${total}</div>
+                  <div class="lbl">Total Registrados</div>
+                </div>
+                <div class="stat-card">
+                  <div class="num" style="color:#059669;">${aptos}</div>
+                  <div class="lbl">Aptos Certificación (2/2)</div>
+                </div>
+                <div class="stat-card">
+                  <div class="num">${att1}</div>
+                  <div class="lbl">Asistencia Día 21</div>
+                </div>
+                <div class="stat-card">
+                  <div class="num">${att2}</div>
+                  <div class="lbl">Asistencia Día 22</div>
+                </div>
+              </div>
+
+              <table>
+                <thead>
+                  <tr>
+                    <th style="text-align:center; width:30px;">#</th>
+                    <th>Código</th>
+                    <th>Nombres y Apellidos</th>
+                    <th>DNI</th>
+                    <th>Celular</th>
+                    <th>Institución / Centro</th>
+                    <th style="text-align:center; width:65px;">Día 21</th>
+                    <th style="text-align:center; width:65px;">Día 22</th>
+                    <th style="text-align:center; width:125px;">Estado Certificado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${rowsHtml}
+                </tbody>
+              </table>
+
+              <div class="signatures">
+                <div class="sig-box">
+                  Gerencia de Desarrollo Social<br>
+                  Subgerencia de Educación, Cultura y Deporte<br>
+                  MDSJ
+                </div>
+                <div class="sig-box">
+                  Coordinación General del Evento<br>
+                  Universidad Continental
+                </div>
+              </div>
+            </body>
+            </html>
+          `);
+          pdfWindow.document.close();
+          pdfWindow.focus();
+          setTimeout(function () {
+            pdfWindow.print();
+          }, 400);
+        });
+      }
 
       // Descargar Respaldo JSON Completo a la PC
       var btnBackup = document.getElementById('btn-export-backup');
