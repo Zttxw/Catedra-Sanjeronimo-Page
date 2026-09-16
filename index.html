@@ -359,6 +359,98 @@
       text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
     }
 
+    /* HERO INSTITUTIONAL CO-BRANDING HEADER */
+    .hero-institution-bar {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(0.6rem, 2vw, 1.8rem);
+      background: rgba(16, 32, 50, 0.45);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: clamp(0.5rem, 1.2vw, 0.75rem) clamp(1rem, 2.5vw, 2rem);
+      border-radius: 60px;
+      margin: 0 auto clamp(1.2rem, 2.5vw, 2rem);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      flex-wrap: wrap;
+    }
+
+    .hero-institution-item {
+      display: flex;
+      align-items: center;
+      gap: clamp(0.4rem, 1vw, 0.75rem);
+    }
+
+    .hero-shield-img {
+      height: clamp(36px, 4.5vw, 48px);
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+    }
+
+    .hero-partner-logo {
+      height: clamp(28px, 3.8vw, 40px);
+      width: auto;
+      object-fit: contain;
+    }
+
+    .hero-inst-text {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      line-height: 1.15;
+    }
+
+    .hero-inst-org {
+      font-size: clamp(0.68rem, 1.1vw, 0.84rem);
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .hero-inst-sub {
+      font-size: clamp(0.56rem, 0.9vw, 0.7rem);
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-institution-badge-divider {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0 0.2rem;
+    }
+
+    .hero-institution-badge-divider span {
+      font-size: clamp(0.58rem, 0.9vw, 0.72rem);
+      font-weight: 800;
+      color: var(--c-gold);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: rgba(240, 200, 79, 0.14);
+      border: 1px solid rgba(240, 200, 79, 0.4);
+      padding: 0.22rem 0.65rem;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 640px) {
+      .hero-institution-bar {
+        border-radius: 24px;
+        padding: 0.6rem 0.9rem;
+        gap: 0.55rem;
+        flex-direction: column;
+      }
+      .hero-institution-badge-divider span {
+        font-size: 0.54rem;
+        padding: 0.15rem 0.5rem;
+      }
+    }
+
+
 
 
     .hero-image-wrapper {
@@ -2523,6 +2615,29 @@
   <!-- ═══ HERO (Nordiska Molde Template) ═══ -->
   <section class="hero-nordiska-container" id="inicio">
     <div class="hero-nordiska-banner">
+
+      <!-- ═══ INSTITUTIONAL CO-BRANDING HEADER ═══ -->
+      <div class="hero-institution-bar reveal">
+        <div class="hero-institution-item">
+          <img src="imagenes/Logos/ESCUDO COLOR.png" alt="Escudo Municipalidad Distrital de San Jerónimo" class="hero-shield-img" />
+          <div class="hero-inst-text">
+            <span class="hero-inst-org">MUNICIPALIDAD DISTRITAL DE SAN JERÓNIMO</span>
+            <span class="hero-inst-sub">GERENCIA DE DESARROLLO SOCIAL</span>
+          </div>
+        </div>
+
+        <div class="hero-institution-badge-divider">
+          <span>EN COORGANIZACIÓN CON</span>
+        </div>
+
+        <div class="hero-institution-item">
+          <img src="imagenes/Organizadores/summit-universidad-continental.png" alt="Universidad Continental" class="hero-partner-logo logo-invert-white" />
+          <div class="hero-inst-text">
+            <span class="hero-inst-org">UNIVERSIDAD CONTINENTAL</span>
+          </div>
+        </div>
+      </div>
+
       <span class="hero-title-tag">Primer Encuentro de Identidad Cultural</span>
       <h1 class="hero-giant-title">
         Cátedra <span style="white-space: nowrap;">San Jerónimo</span>
