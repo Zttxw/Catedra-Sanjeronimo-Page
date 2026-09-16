@@ -652,6 +652,10 @@
           <button class="btn-action-minimal" id="btn-export-excel">
             <span>Descargar CSV</span>
           </button>
+          <button class="btn-action-minimal" id="btn-export-backup" style="background:#059669; color:#FFFFFF; border-color:#059669; gap:0.4rem; display:inline-flex; align-items:center;" title="Descargar copia de respaldo en JSON directamente a tu PC">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <span>Descargar Respaldo JSON</span>
+          </button>
         </div>
       </div>
 
@@ -1448,6 +1452,35 @@ Juan Carlos Pérez, 10293847, 984654321, Municipalidad San Jerónimo"></textarea
         link.click();
         document.body.removeChild(link);
       });
+
+      // Descargar Respaldo JSON Completo a la PC
+      var btnBackup = document.getElementById('btn-export-backup');
+      if (btnBackup) {
+        btnBackup.addEventListener('click', function () {
+          try {
+            window.location.href = 'api.php?endpoint=backup';
+            return;
+          } catch(e) {}
+
+          var records = getRecords();
+          if (!records || records.length === 0) {
+            alert('No hay inscripciones registradas para respaldar.');
+            return;
+          }
+          var now = new Date();
+          var dateStr = now.toISOString().slice(0,10) + '_' + String(now.getHours()).padStart(2,'0') + '-' + String(now.getMinutes()).padStart(2,'0') + '-' + String(now.getSeconds()).padStart(2,'0');
+          var filename = 'respaldo_inscritos_catedra_' + dateStr + '.json';
+
+          var jsonStr = JSON.stringify(records, null, 2);
+          var blob = new Blob([jsonStr], { type: 'application/json;charset=utf-8;' });
+          var link = document.createElement('a');
+          link.href = URL.createObjectURL(blob);
+          link.download = filename;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        });
+      }
 
       // Mass Import
       document.getElementById('btn-process-mass').addEventListener('click', function () {

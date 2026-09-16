@@ -54,6 +54,16 @@ if (!$endpoint) {
 $method = $_SERVER['REQUEST_METHOD'];
 
 if ($method === 'GET') {
+    if ($endpoint === 'backup' || strpos($uri, 'backup') !== false) {
+        $db = load_db($db_file);
+        date_default_timezone_set('America/Lima');
+        $filename = 'respaldo_inscritos_catedra_' . date('Y-m-d_H-i-s') . '.json';
+        header('Content-Type: application/json; charset=utf-8');
+        header('Content-Disposition: attachment; filename="' . $filename . '"');
+        echo json_encode($db, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+        exit;
+    }
+
     echo json_encode(load_db($db_file), JSON_UNESCAPED_UNICODE);
     exit;
 }
