@@ -361,47 +361,56 @@
 
     /* HERO CO-ORGANIZACIÓN ULTRA-MINIMALISTA (Debajo de la Fecha, Sin Fondo) */
     .hero-coorganizan-minimal {
-      margin-top: clamp(0.8rem, 1.8vw, 1.4rem);
+      margin-top: clamp(1.2rem, 2.5vw, 2.2rem);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 0.45rem;
+      gap: clamp(0.5rem, 1vw, 0.8rem);
     }
 
     .hero-coorganizan-label {
-      font-size: clamp(0.58rem, 0.85vw, 0.7rem);
-      font-weight: 700;
-      color: rgba(255, 255, 255, 0.8);
-      letter-spacing: 0.14em;
+      font-size: clamp(0.7rem, 1.1vw, 0.92rem);
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       margin: 0;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
 
     .hero-coorganizan-logos {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: clamp(1rem, 2.5vw, 2.2rem);
+      gap: clamp(1.5rem, 4vw, 3.5rem);
+      padding: 0.4rem 0;
     }
 
     .hero-coorganizan-logos img {
-      height: clamp(26px, 3.8vw, 38px);
+      height: clamp(48px, 6.8vw, 78px);
       width: auto;
+      max-width: clamp(200px, 32vw, 360px);
       object-fit: contain;
-      opacity: 0.95;
-      transition: opacity 0.2s ease, transform 0.2s ease;
+      opacity: 0.98;
+      transition: opacity 0.25s ease, transform 0.25s ease, filter 0.25s ease;
+      filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.3));
+    }
+
+    .hero-coorganizan-logos img.logo-invert-white {
+      filter: brightness(0) invert(1) drop-shadow(0 3px 10px rgba(0, 0, 0, 0.3)) !important;
     }
 
     .hero-coorganizan-logos img:hover {
       opacity: 1;
-      transform: translateY(-2px);
+      transform: translateY(-3px) scale(1.03);
     }
 
     .hero-coorganizan-divider {
-      width: 1px;
-      height: clamp(16px, 2.2vw, 24px);
-      background: rgba(255, 255, 255, 0.35);
+      width: 2px;
+      height: clamp(38px, 5.5vw, 60px);
+      background: rgba(255, 255, 255, 0.45);
+      border-radius: 2px;
     }
 
 
@@ -1878,8 +1887,8 @@
       transition: filter 0.3s ease, transform 0.3s ease;
     }
 
-    .organizan-item img.logo-invert-white {
-      filter: brightness(0) invert(1);
+    .logo-invert-white {
+      filter: brightness(0) invert(1) !important;
     }
 
     .organizan-item img:hover {
@@ -1887,8 +1896,8 @@
       transform: translateY(-2px);
     }
 
-    .organizan-item img:hover.logo-invert-white {
-      filter: brightness(0) invert(1) drop-shadow(0 2px 8px rgba(255, 255, 255, 0.4));
+    .logo-invert-white:hover {
+      filter: brightness(0) invert(1) drop-shadow(0 2px 8px rgba(255, 255, 255, 0.4)) !important;
       transform: translateY(-2px);
     }
 
