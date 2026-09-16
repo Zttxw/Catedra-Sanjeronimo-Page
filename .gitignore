@@ -11,3 +11,7 @@ __pycache__/
 .vscode/
 .idea/
 .gemini/
+
+# Database / Participant records (Never overwrite on git pull)
+inscripciones.json
+*.json.tmp
