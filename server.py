@@ -30,6 +30,16 @@ def save_db(data):
         with open(temp_file, 'w', encoding='utf-8') as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
         os.replace(temp_file, DB_FILE)
+
+        # Respaldos automáticos continuos y diarios
+        backup_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'backups')
+        os.makedirs(backup_dir, exist_ok=True)
+        date_str = datetime.datetime.now().strftime('%Y-%m-%d')
+        with open(os.path.join(backup_dir, 'inscripciones_latest_backup.json'), 'w', encoding='utf-8') as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+        with open(os.path.join(backup_dir, f'inscripciones_{date_str}.json'), 'w', encoding='utf-8') as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+
         return True
     except Exception as e:
         print(f"[ERROR] Error al guardar {DB_FILE}: {e}")

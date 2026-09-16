@@ -27,7 +27,17 @@ function load_db($db_file) {
 
 function save_db($db_file, $data) {
     $json = json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
-    return @file_put_contents($db_file, $json, LOCK_EX) !== false;
+    $res = @file_put_contents($db_file, $json, LOCK_EX) !== false;
+    
+    // Respaldos automáticos continuos y diarios
+    $backup_dir = __DIR__ . '/backups';
+    if (!is_dir($backup_dir)) {
+        @mkdir($backup_dir, 0755, true);
+    }
+    @file_put_contents($backup_dir . '/inscripciones_latest_backup.json', $json, LOCK_EX);
+    @file_put_contents($backup_dir . '/inscripciones_' . date('Y-m-d') . '.json', $json, LOCK_EX);
+    
+    return $res;
 }
 
 $uri = $_SERVER['REQUEST_URI'];
