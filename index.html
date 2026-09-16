@@ -359,45 +359,51 @@
       text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
     }
 
-    /* HERO CO-ORGANIZACIÓN ULTRA-MINIMALISTA (Debajo de la Fecha, Sin Fondo) */
+    /* HERO CO-ORGANIZACIÓN ULTRA-MINIMALISTA (Debajo de Cátedra San Jerónimo) */
     .hero-coorganizan-minimal {
-      margin-top: clamp(1.2rem, 2.5vw, 2.2rem);
+      margin: clamp(0.9rem, 2vw, 1.6rem) auto clamp(1rem, 2.2vw, 1.8rem);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: clamp(0.5rem, 1vw, 0.8rem);
+      gap: clamp(0.45rem, 0.9vw, 0.75rem);
     }
 
     .hero-coorganizan-label {
-      font-size: clamp(0.7rem, 1.1vw, 0.92rem);
+      font-size: clamp(0.68rem, 1.05vw, 0.88rem);
       font-weight: 800;
       color: #FFFFFF;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       margin: 0;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
     }
 
     .hero-coorganizan-logos {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: clamp(1.5rem, 4vw, 3.5rem);
-      padding: 0.4rem 0;
+      gap: clamp(1.4rem, 3.8vw, 3.2rem);
+      padding: 0.3rem 0;
     }
 
-    .hero-coorganizan-logos img {
-      height: clamp(48px, 6.8vw, 78px);
+    .hero-coorganizan-logos img.hero-min-logo-mdsj {
+      height: clamp(45px, 6vw, 72px);
       width: auto;
-      max-width: clamp(200px, 32vw, 360px);
+      max-width: clamp(180px, 30vw, 320px);
       object-fit: contain;
       opacity: 0.98;
       transition: opacity 0.25s ease, transform 0.25s ease, filter 0.25s ease;
       filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.3));
     }
 
-    .hero-coorganizan-logos img.logo-invert-white {
+    .hero-coorganizan-logos img.hero-min-logo-uc {
+      height: clamp(56px, 7.8vw, 92px);
+      width: auto;
+      max-width: clamp(220px, 36vw, 420px);
+      object-fit: contain;
+      opacity: 0.98;
+      transition: opacity 0.25s ease, transform 0.25s ease, filter 0.25s ease;
       filter: brightness(0) invert(1) drop-shadow(0 3px 10px rgba(0, 0, 0, 0.3)) !important;
     }
 
@@ -2584,7 +2590,17 @@
         Cátedra <span style="white-space: nowrap;">San Jerónimo</span>
       </h1>
 
-      <!-- ═══ COUNTDOWN (Directly below Title) ═══ -->
+      <!-- Co-organización Ultra-Minimalista (Debajo de Cátedra San Jerónimo) -->
+      <div class="hero-coorganizan-minimal reveal">
+        <span class="hero-coorganizan-label">En coorganización con</span>
+        <div class="hero-coorganizan-logos">
+          <img src="imagenes/Organizadores/MDSJ BLANCO.png" alt="Municipalidad Distrital de San Jerónimo" class="hero-min-logo-mdsj" />
+          <div class="hero-coorganizan-divider"></div>
+          <img src="imagenes/Organizadores/summit-universidad-continental.png" alt="Universidad Continental" class="hero-min-logo-uc logo-invert-white" />
+        </div>
+      </div>
+
+      <!-- ═══ COUNTDOWN (Directly below Co-organización) ═══ -->
       <div class="countdown-strip" id="cuenta">
         <div class="countdown-inner">
           <div class="cd-units">
@@ -2600,16 +2616,6 @@
       <div class="hero-date-badge reveal">
         <span>21 y 22 de setiembre</span>
         <span class="hero-date-sub">Auditorio Municipal de San Jerónimo</span>
-      </div>
-
-      <!-- Co-organización Ultra-Minimalista (Debajo de la Fecha, Sin Fondo) -->
-      <div class="hero-coorganizan-minimal reveal">
-        <span class="hero-coorganizan-label">En coorganización con</span>
-        <div class="hero-coorganizan-logos">
-          <img src="imagenes/Organizadores/MDSJ BLANCO.png" alt="Municipalidad Distrital de San Jerónimo" />
-          <div class="hero-coorganizan-divider"></div>
-          <img src="imagenes/Organizadores/summit-universidad-continental.png" alt="Universidad Continental" class="logo-invert-white" />
-        </div>
       </div>
     </div>
 
