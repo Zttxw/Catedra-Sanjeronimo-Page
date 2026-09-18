@@ -84,12 +84,14 @@ Cada vez que realices mejoras locales y las subas a GitHub (`git push`), para ac
 
 ---
 
-## 🌐 URLs de Producción
-
-- **Página Pública de Registro**: [https://sistema01.munisanjeronimocusco.gob.pe/catedra/](https://sistema01.munisanjeronimocusco.gob.pe/catedra/)
-- **Panel Administrativo**: [https://sistema01.munisanjeronimocusco.gob.pe/catedra/admin.html](https://sistema01.munisanjeronimocusco.gob.pe/catedra/admin.html)
-
----
-
 © 2026 Municipalidad Distrital de San Jerónimo — Cusco, Perú. *"Memoria, fe e identidad"*.  
 Desarrollado por la **Oficina de Tecnologías de la Información (OTI)**.
+
+<img width="1902" height="963" alt="image" src="https://github.com/user-attachments/assets/74a06496-31c4-4e65-9819-2f26322b32ff" />
+
+<img width="1902" height="963" alt="image" src="https://github.com/user-attachments/assets/2b63ed06-3e7f-465b-b91d-aa194dd4d67a" />
+
+<img width="1902" height="963" alt="image" src="https://github.com/user-attachments/assets/4eb9f1d7-f556-4dcc-aa40-776d1f8cf9a2" />
+
+
+
